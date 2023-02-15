@@ -100,3 +100,7 @@ fi
 
 export EDITOR=vim
 
+if [ -f $HOME/omni-socat/ubuntu-bash.setup.sh ]; then
+    source $HOME/omni-socat/ubuntu-bash.setup.sh
+fi
+

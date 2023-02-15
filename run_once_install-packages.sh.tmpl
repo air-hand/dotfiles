@@ -1,0 +1,13 @@
+#!/bin/bash
+
+sudo apt update && sudo apt install -y \
+    curl \
+    bash-completion \
+    make \
+    vim \
+    tig \
+    ;
+
+mkdir -p $HOME/omni-socat
+curl -sL https://raw.githubusercontent.com/masahide/OmniSSHAgent/main/hack/ubuntu-bash.setup.sh -o $HOME/omni-socat/ubuntu-bash.setup.sh
+
