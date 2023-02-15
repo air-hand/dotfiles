@@ -5,3 +5,7 @@ set showmode
 " v to visual block (no use visual)
 nnoremap v <c-v>
 
+set tabstop=4
+set shiftwidth=4
+set expandtab
+
