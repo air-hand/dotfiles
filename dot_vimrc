@@ -1,0 +1,7 @@
+set clipboard+=unnamed
+set ignorecase
+" set smartcase
+set showmode
+" v to visual block (no use visual)
+nnoremap v <c-v>
+
