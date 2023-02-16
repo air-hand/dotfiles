@@ -11,6 +11,6 @@ echo "create keybindings.json"
 cp --remove-destination {{ joinPath .chezmoi.sourceDir "vscode/keybindings.json" | quote }} $VSCODE_USER_SPACE/keybindings.json
 
 # settings.json hash: {{ include "vscode/settings.json" | sha256sum }}
-echo "create remote settings.json"
-cp --remove-destination {{ joinPath .chezmoi.sourceDir "vscode/settings.json" | quote }} ~/.vscode-server/data/Machine/settings.json
+#echo "create remote settings.json"
+#cp --remove-destination {{ joinPath .chezmoi.sourceDir "vscode/settings.json" | quote }} ~/.vscode-server/data/Machine/settings.json
 
