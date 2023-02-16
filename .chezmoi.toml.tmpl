@@ -1,3 +1,10 @@
+{{ $git_name := promptString "git_name" -}}
+{{ $git_email := promptString "git_email" -}}
+
 [edit]
     command = "vim"
+
+[data]
+    git_name = {{ $git_name | quote }}
+    git_email = {{ $git_email | quote }}
 
