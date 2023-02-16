@@ -11,3 +11,8 @@ sudo apt update && sudo apt install -y \
 mkdir -p $HOME/omni-socat
 curl -sL https://raw.githubusercontent.com/masahide/OmniSSHAgent/main/hack/ubuntu-bash.setup.sh -o $HOME/omni-socat/ubuntu-bash.setup.sh
 
+curl -o $HOME/.git-completion.sh -sL \
+    https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
+curl -o $HOME/.git-prompt.sh -sL \
+    https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh
+

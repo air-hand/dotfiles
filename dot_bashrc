@@ -98,6 +98,14 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
+if [ -f ~/.git-completion.sh ]; then
+    source ~/.git-completion.sh
+fi
+
+if [ -f ~/.git-prompt.sh ]; then
+    source ~/.git-prompt.sh
+fi
+
 if [ -f $HOME/omni-socat/ubuntu-bash.setup.sh ]; then
     source $HOME/omni-socat/ubuntu-bash.setup.sh
 fi
@@ -105,5 +113,4 @@ fi
 $HOME/.local/bin/fix-docker-desktop-slow.sh
 
 set -o vi
-
 
