@@ -98,10 +98,19 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
+# terraform
+if command -v terraform > /dev/null; then
+   $(command -v terraform) -install-autocomplete 
+fi
+# aws
+if command -v aws_completer > /dev/null; then
+   complete -C "$(command -v aws_completer)" aws 
+fi
+
+# git
 if [ -f ~/.git-completion.sh ]; then
     source ~/.git-completion.sh
 fi
-
 if [ -f ~/.git-prompt.sh ]; then
     source ~/.git-prompt.sh
 fi
