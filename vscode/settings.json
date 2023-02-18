@@ -1,4 +1,5 @@
 {
     "dotfiles.repository": "air-hand/dotfiles",
+    "dotfiles.targetPath": "~/dotfiles/",
     "dotfiles.installCommand": "~/dotfiles/install.sh"
 }
