@@ -1,11 +1,17 @@
-{{ $git_name := promptString "git_name" -}}
-{{ $git_email := promptString "git_email" -}}
+{/* skip apply .gitconfig on devcontainer */}}
+{{- if ne (env "REMOTE_CONTAINERS") "true" }}
+{{ $git_name := promptStringOnce . "git_name" "What is your name for git." }}
+{{ $git_email := promptStringOnce . "git_email" "What is your email for git." }}
+{{- end }}
 
 [edit]
     command = "vim"
     apply = true
 
 [data]
+{{- if ne (env "REMOTE_CONTAINERS") "true" }}
     git_name = {{ $git_name | quote }}
     git_email = {{ $git_email | quote }}
+{{- end }}
+
 
