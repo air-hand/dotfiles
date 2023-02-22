@@ -9,3 +9,6 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 
+set statusline+=%F
+set laststatus=2
+
