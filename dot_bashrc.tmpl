@@ -98,12 +98,16 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
+if [ -f $HOME/omni-socat/ubuntu-bash.setup.sh ]; then
+    source $HOME/omni-socat/ubuntu-bash.setup.sh
+fi
+
 # terraform
-if command -v terraform > /dev/null; then
+if command -v terraform &> /dev/null; then
    $(command -v terraform) -install-autocomplete 
 fi
 # aws
-if command -v aws_completer > /dev/null; then
+if command -v aws_completer &> /dev/null; then
    complete -C "$(command -v aws_completer)" aws 
 fi
 
@@ -117,11 +121,14 @@ fi
 
 export PS1='[\[\033[32m\]\u\[\033[00m\]:\[\033[33m\]\w\[\033[00m\]]\[\033[36m\]$(__git_ps1 " (%s)")\[\033[00m\]\n\$ '
 
-if [ -f $HOME/omni-socat/ubuntu-bash.setup.sh ]; then
-    source $HOME/omni-socat/ubuntu-bash.setup.sh
+# gh
+if command -v gh &> /dev/null; then
+    eval "$(gh completion -s bash)"
 fi
 
-$HOME/.local/bin/fix-docker-desktop-slow.sh
+~/.local/bin/fix-docker-desktop-slow.sh &> /dev/null
 
 set -o vi
+
+{{ completion "bash" }}
 
