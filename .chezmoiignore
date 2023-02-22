@@ -1,7 +1,8 @@
 install.sh
+LICENSE
+README.md
 vscode/
 {{- if eq (env "REMOTE_CONTAINERS") "true" }}
 {{/* skip apply .gitconfig on devcontainer */}}
 /.gitconfig
 {{- end }}
-
