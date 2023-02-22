@@ -3,6 +3,7 @@
 export PATH=~/.local/bin:~/bin:$PATH
 
 export EDITOR=vim
+export VISUAL=vim
 
 if [ "$BASH" ]; then
   if [ -f ~/.bashrc ]; then
