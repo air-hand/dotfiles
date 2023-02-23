@@ -98,7 +98,12 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
-if [ -f $HOME/omni-socat/ubuntu-bash.setup.sh ] && test ! -z $REMOTE_CONTAINERS; then
+on_wsl2()
+{
+    uname -a |grep WSL2 &> /dev/null    
+}
+
+if [ -f $HOME/omni-socat/ubuntu-bash.setup.sh ] && on_wsl2 && test -z $REMOTE_CONTAINERS; then
     source $HOME/omni-socat/ubuntu-bash.setup.sh
 fi
 
