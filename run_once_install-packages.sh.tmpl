@@ -10,6 +10,10 @@ sudo apt update && sudo apt install -y \
     jq \
     ;
 
+if $(uname -a |grep WSL2 &> /dev/null) && test -z $REMOTE_CONTAINERS; then
+    sudo apt install -y --no-install-recommends wslu
+fi
+
 mkdir -p $HOME/omni-socat
 curl -sL https://raw.githubusercontent.com/masahide/OmniSSHAgent/main/hack/ubuntu-bash.setup.sh -o $HOME/omni-socat/ubuntu-bash.setup.sh
 
