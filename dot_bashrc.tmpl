@@ -109,7 +109,7 @@ fi
 
 # terraform
 if command -v terraform &> /dev/null; then
-   $(command -v terraform) -install-autocomplete 
+   $(command -v terraform) -install-autocomplete 2>/dev/null
 fi
 # aws
 if command -v aws_completer &> /dev/null; then
