@@ -4,8 +4,8 @@
 {{ $git_name := "" }}
 {{ $git_email := "" }}
 {{- if $interactive }}
-{{ $git_name = promptString "What is your name for git." }}
-{{ $git_email = promptString "What is your email for git." }}
+{{ $git_name = promptStringOnce . "git_name" "What is your name for git." }}
+{{ $git_email = promptStringOnce . "git_email" "What is your email for git." }}
 {{- end }}
 
 [edit]
