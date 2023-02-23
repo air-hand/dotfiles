@@ -98,7 +98,7 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
-if [ -f $HOME/omni-socat/ubuntu-bash.setup.sh ]; then
+if [ -f $HOME/omni-socat/ubuntu-bash.setup.sh ] && $(uname -a |grep WSL2 &> /dev/null); then
     source $HOME/omni-socat/ubuntu-bash.setup.sh
 fi
 
