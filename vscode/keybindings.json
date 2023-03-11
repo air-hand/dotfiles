@@ -4,9 +4,11 @@
     {"key": "ctrl+`", "command": "workbench.action.focusActiveEditorGroup", "when": "terminalFocus"},
     {"key": "ctrl+shift+j", "command": "workbench.action.terminal.focusNext"},
     {"key": "ctrl+shift+k", "command": "workbench.action.terminal.focusPrevious"},
+    {"key": "ctrl+shift+l", "command": "workbench.action.terminal.new"},
+    {"key": "ctrl+shift+s", "command": "workbench.action.terminal.split", "when": "terminalFocus"},
+    {"key": "ctrl+shift+n", "command": "workbench.action.terminal.focusNextPane", "when": "terminalFocus"},
     {"key": "ctrl+shift+]", "command": "workbench.action.focusNextGroup"},
     {"key": "ctrl+shift+[", "command": "workbench.action.focusPreviousGroup"},
-    {"key": "ctrl+shift+l", "command": "workbench.action.terminal.new"},
     {"key": "ctrl+w", "command": "workbench.action.closeActiveEditor"},
     {"key": "ctrl+w", "command": "workbench.action.terminal.kill", "when": "terminalFocus"},
 ]
