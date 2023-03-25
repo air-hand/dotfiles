@@ -106,8 +106,12 @@ on_wsl2()
     uname -a |grep WSL2 &> /dev/null    
 }
 
-if [ -f $HOME/omni-socat/ubuntu-bash.setup.sh ] && on_wsl2 && test -z $REMOTE_CONTAINERS; then
-    source $HOME/omni-socat/ubuntu-bash.setup.sh
+#if [ -f $HOME/omni-socat/ubuntu-bash.setup.sh ] && on_wsl2 && test -z $REMOTE_CONTAINERS; then
+#    source $HOME/omni-socat/ubuntu-bash.setup.sh
+#fi
+
+if [ -f $HOME/.local/bin/setup-socat-ssh-agent.sh ] && on_wsl2 && test -z $REMOTE_CONTAINERS; then
+    source $HOME/.local/bin/setup-socat-ssh-agent.sh
 fi
 
 # terraform
