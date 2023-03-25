@@ -11,4 +11,5 @@ set expandtab
 
 set statusline+=%F
 set laststatus=2
+set number
 
