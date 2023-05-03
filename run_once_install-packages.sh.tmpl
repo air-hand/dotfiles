@@ -14,9 +14,8 @@ sudo apt update && sudo apt install -y \
     unzip \
     ;
 
-# git-core lunar がgpgキー署名されておらず、エラーになってしまうのでコメントアウト
-#sudo add-apt-repository -y ppa:git-core/ppa && \
-#sudo apt update && \
+sudo add-apt-repository -y ppa:git-core/ppa && \
+sudo apt update && \
 sudo apt install -y \
     git \
     tig \
