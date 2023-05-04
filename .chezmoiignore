@@ -1,4 +1,5 @@
 .editorconfig
+.github/
 install.sh
 LICENSE
 README.md
