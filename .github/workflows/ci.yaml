@@ -5,10 +5,13 @@ on:
   pull_request:
 
 jobs:
-  install:
+  run-install:
+    strategy:
+      matrix:
+        distro: ["ubuntu", "debian"]
     runs-on: ubuntu-latest
     container:
-      image: mcr.microsoft.com/vscode/devcontainers/base:ubuntu
+      image: mcr.microsoft.com/vscode/devcontainers/base:${{ matrix.distro }}
       env:
         CODESPACES: true
         REMOTE_CONTAINERS: true
