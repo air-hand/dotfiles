@@ -28,6 +28,9 @@ options = "metadata,umask=22,fmask=11"
 [boot]
 systemd = true
 
+[user]
+default=$(whoami)
+
 EOF
 
 # https://learn.microsoft.com/ja-jp/windows/ai/directml/gpu-cuda-in-wsl
