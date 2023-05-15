@@ -30,6 +30,7 @@ systemd = true
 
 EOF
 
+# https://learn.microsoft.com/ja-jp/windows/ai/directml/gpu-cuda-in-wsl
 # install nvidia-container-toolkit for use gpus in docker container
 # https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html#setting-up-nvidia-container-toolkit
 test ! -f /usr/share/keyrings/nvidia-container-toolkit-keyring.gpg && \
@@ -41,6 +42,12 @@ distribution=$(. /etc/os-release;echo $ID$VERSION_ID) \
             sudo tee /etc/apt/sources.list.d/nvidia-container-toolkit.list
 
 sudo apt update && sudo apt install -y nvidia-container-toolkit
+
+# https://docs.nvidia.com/cuda/wsl-user-guide/index.html#cuda-support-for-wsl-2
+wget https://developer.download.nvidia.com/compute/cuda/repos/wsl-ubuntu/x86_64/cuda-keyring_1.0-1_all.deb -O /tmp/cuda-keyring_all.deb
+sudo dpkg -i /tmp/cuda-keyring_all.deb
+sudo apt update
+sudo apt -y install cuda
 
 sudo mkdir -p /etc/docker
 
