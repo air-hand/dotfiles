@@ -7,6 +7,14 @@ if [ ! -z $REMOTE_CONTAINERS ] || [ ! -z $CODESPACES ] || [ -f /.dockerenv ] ; t
     exit 0
 fi
 
+# check docker running on wsl2 or docker desktop
+function is_docker_wsl2() {
+    if systemctl status docker &> /dev/null; then
+        return 0
+    fi
+    return 1
+}
+
 # enable systemd service on wsl2
 cat << EOF | sudo tee /etc/wsl.conf
 [automount]
@@ -54,12 +62,14 @@ sudo apt -y install cuda
 
 sudo mkdir -p /etc/docker
 
-sudo ln -s -f $(wslpath $(wslvar USERPROFILE))/.docker/daemon.json /etc/docker/daemon.json
+if ! is_docker_wsl2; then
+    sudo ln -s -f $(wslpath $(wslvar USERPROFILE))/.docker/daemon.json /etc/docker/daemon.json
+fi
 
 sudo nvidia-ctk runtime configure --runtime=docker
 
 # restart docker systemd service if installed on wsl2
-if systemctl status docker &>/dev/null; then
+if is_docker_wsl2; then
     sudo systemctl restart docker.service
 else
     # Docker Desktop for Windows
