@@ -1,0 +1,10 @@
+name: "Run install"
+
+runs:
+  using: "composite"
+  steps:
+    - run: ./install.sh
+      shell: bash
+    - name: chezmoi data
+      run: '"$HOME/.local/bin/chezmoi" data'
+      shell: bash
