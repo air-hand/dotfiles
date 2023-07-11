@@ -17,6 +17,4 @@ jobs:
         REMOTE_CONTAINERS: true
     steps:
       - uses: actions/checkout@v3
-      - run: ./install.sh
-      - name: chezmoi data
-        run: '"$HOME/.local/bin/chezmoi" data'
+      - uses: ./.github/actions/run-install
