@@ -3,8 +3,11 @@ name: "Run install"
 runs:
   using: "composite"
   steps:
-    - run: ./install.sh
+    - name: install
+      run: ./install.sh
       shell: bash
+      working-directory: ${{ github.workspace }} # explicitly set working directory
+
     - name: chezmoi data
       run: '"$HOME/.local/bin/chezmoi" data'
       shell: bash
