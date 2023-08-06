@@ -114,6 +114,8 @@ if [ -f $HOME/.local/bin/setup-socat-ssh-agent.sh ] && on_wsl2 && test -z $REMOT
     source $HOME/.local/bin/setup-socat-ssh-agent.sh
 fi
 
+test -f $HOME/.local/bin/functions.sh && source $HOME/.local/bin/functions.sh
+
 # terraform
 if command -v terraform &> /dev/null; then
    $(command -v terraform) -install-autocomplete 2>/dev/null
