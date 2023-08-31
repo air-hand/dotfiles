@@ -11,6 +11,8 @@ if [ "$BASH" ]; then
   fi
 fi
 
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+if test -f /home/linuxbrew/.linuxbrew/bin/brew; then
+  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+fi
 
 mesg n 2> /dev/null || true
