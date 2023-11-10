@@ -41,6 +41,8 @@ default=$(whoami)
 
 EOF
 
+brew install neovim
+
 # https://learn.microsoft.com/ja-jp/windows/ai/directml/gpu-cuda-in-wsl
 # install nvidia-container-toolkit for use gpus in docker container
 # https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html#setting-up-nvidia-container-toolkit
@@ -74,9 +76,8 @@ if is_docker_wsl2; then
 else
     # Docker Desktop for Windows
     echo 'running the command below to restart docker desktop on windows host!'
-    echo 'powershell.exe -Command "Stop-Process -Name 'Docker Desktop' -Force; Start-Process -FilePath 'C:\Program Files\Docker\Docker\Docker Desktop.exe'"'
-    powershell.exe -Command "Stop-Process -Name 'Docker Desktop' -Force; Start-Process -FilePath 'C:\Program Files\Docker\Docker\Docker Desktop.exe'"
-    sleep 60s
+    # In recent versions, the full path to the docker desktop has changed.
+    powershell.exe -Command '$ddPath="C:\Program Files\Docker\frontend\Docker Desktop.exe"; $ddProc=(Get-Process -Name "Docker Desktop" -ErrorAction SilentlyContinue | Select-Object ProcessName,Path -First 1); if ($ddProc) { $ddPath=$ddProc.Path; Stop-Process -Name $ddProc.ProcessName -Force; Wait-Process -Name $ddProc.ProcessName; } Start-Process -FilePath $ddPath; Start-Sleep 10;'
 fi
 
 # test
