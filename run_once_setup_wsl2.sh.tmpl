@@ -42,6 +42,14 @@ default=$(whoami)
 EOF
 
 brew install neovim
+# neovim + vscode + wsl2
+mkdir -p ~/.local/bin
+cd ~/.local/bin
+test ! -f spzenhan.exe && \
+    curl -fsSLO https://github.com/kaz399/spzenhan.vim/raw/master/zenhan/spzenhan.exe
+chmod a+x spzenhan.exe
+cd -
+sudo apt install -y xsel
 
 # https://learn.microsoft.com/ja-jp/windows/ai/directml/gpu-cuda-in-wsl
 # install nvidia-container-toolkit for use gpus in docker container
