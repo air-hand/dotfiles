@@ -13,6 +13,7 @@ sudo apt update && sudo apt install -y \
     p7zip-full \
     unzip \
     lsof \
+    inotify-tools \
     ;
 
 {{ if and (eq .chezmoi.os "linux") (eq .chezmoi.osRelease.id "ubuntu") }}
