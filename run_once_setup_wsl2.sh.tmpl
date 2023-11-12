@@ -43,11 +43,12 @@ EOF
 
 brew install neovim
 # neovim + vscode + wsl2
-mkdir -p ~/.local/bin
-cd ~/.local/bin
+# note: vscode-neovim won't load bashrc or profile, so put exe globally.
+sudo mkdir -p /usr/local/bin
+cd /usr/local/bin
 test ! -f spzenhan.exe && \
-    curl -fsSLO https://github.com/kaz399/spzenhan.vim/raw/master/zenhan/spzenhan.exe
-chmod a+x spzenhan.exe
+    curl -fsSLO https://github.com/kaz399/spzenhan.vim/raw/master/zenhan/spzenhan.exe | sudo tee spzenhan.exe
+sudo chmod a+x spzenhan.exe
 cd -
 sudo apt install -y xsel
 
