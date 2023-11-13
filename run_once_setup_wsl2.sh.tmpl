@@ -7,89 +7,40 @@ if [ ! -z $REMOTE_CONTAINERS ] || [ ! -z $CODESPACES ] || [ -f /.dockerenv ] ; t
     exit 0
 fi
 
-# check docker running on wsl2 or docker desktop
-function is_docker_wsl2() {
-    if systemctl status docker &> /dev/null; then
-        return 0
-    fi
-    return 1
-}
-
-# enable systemd service on wsl2
-cat << EOF | sudo tee /etc/wsl.conf
-[automount]
-enabled = true
-options = "metadata,umask=22,fmask=11"
-#mountFsTab = false
-
-#[network]
-#generateHosts = true
-#generateResolvConf = true
-
-#[interop]
-#enabled = true
-#appendWindowsPath = true
-
-#[service]
-#enabled = true
-
-[boot]
-systemd = true
-
-[user]
-default=$(whoami)
-
-EOF
-
 brew install neovim
 # neovim + vscode + wsl2
 # note: vscode-neovim won't load bashrc or profile, so put exe globally.
 sudo mkdir -p /usr/local/bin
 cd /usr/local/bin
-test ! -f spzenhan.exe && \
-    curl -fsSLO https://github.com/kaz399/spzenhan.vim/raw/master/zenhan/spzenhan.exe | sudo tee spzenhan.exe
-sudo chmod a+x spzenhan.exe
+for download in \
+    "https://github.com/kaz399/spzenhan.vim/raw/master/zenhan/spzenhan.exe" \
+    "https://github.com/suzusime/uclip/releases/download/v0.1.0/uclip.exe" \
+    ; \
+do
+    test ! -f $(basename $download) && \
+        sudo curl -fsSLO $download
+    sudo chmod a+x $(basename $download)
+done
+
+for download_exe in \
+    "https://github.com/equalsraf/win32yank/releases/download/v0.1.1/win32yank-x64.zip|win32yank.exe" \
+    ; \
+do
+    download=$(echo $download_exe | cut -d '|' -f 1)
+    exe=$(echo $download_exe | cut -d '|' -f 2)
+    test ! -f $(basename $download) && \
+        sudo curl -fsSLO $download
+    test ! -f $exe && \
+        $(basename $download | grep -q .zip) && \
+        unzip -p $(basename $download) $exe | sudo tee $exe > /dev/null
+    sudo chmod a+x $exe
+    # You need to install both windows and wsl2...
+    win_bin_dir=$(wslpath $(wslvar USERPROFILE))/AppData/Local/bin
+    mkdir -p $win_bin_dir
+    cp $exe $win_bin_dir
+done
+
 cd -
-sudo apt install -y xsel
-
-# https://learn.microsoft.com/ja-jp/windows/ai/directml/gpu-cuda-in-wsl
-# install nvidia-container-toolkit for use gpus in docker container
-# https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html#setting-up-nvidia-container-toolkit
-test ! -f /usr/share/keyrings/nvidia-container-toolkit-keyring.gpg && \
-    curl -fsSL https://nvidia.github.io/libnvidia-container/gpgkey | sudo gpg --dearmor -o /usr/share/keyrings/nvidia-container-toolkit-keyring.gpg
-
-distribution=$(. /etc/os-release;echo $ID$VERSION_ID) \
-      && curl -s -L https://nvidia.github.io/libnvidia-container/$distribution/libnvidia-container.list | \
-            sed 's#deb https://#deb [signed-by=/usr/share/keyrings/nvidia-container-toolkit-keyring.gpg] https://#g' | \
-            sudo tee /etc/apt/sources.list.d/nvidia-container-toolkit.list
-
-sudo apt update && sudo apt install -y nvidia-container-toolkit
-
-# https://docs.nvidia.com/cuda/wsl-user-guide/index.html#cuda-support-for-wsl-2
-wget https://developer.download.nvidia.com/compute/cuda/repos/wsl-ubuntu/x86_64/cuda-keyring_1.0-1_all.deb -O /tmp/cuda-keyring_all.deb
-sudo dpkg -i /tmp/cuda-keyring_all.deb
-sudo apt update
-sudo apt -y install cuda
-
-sudo mkdir -p /etc/docker
-
-if ! is_docker_wsl2; then
-    sudo ln -s -f $(wslpath $(wslvar USERPROFILE))/.docker/daemon.json /etc/docker/daemon.json
-fi
-
-sudo nvidia-ctk runtime configure --runtime=docker
-
-# restart docker systemd service if installed on wsl2
-if is_docker_wsl2; then
-    sudo systemctl restart docker.service
-else
-    # Docker Desktop for Windows
-    echo 'running the command below to restart docker desktop on windows host!'
-    # In recent versions, the full path to the docker desktop has changed.
-    powershell.exe -Command '$ddPath="C:\Program Files\Docker\frontend\Docker Desktop.exe"; $ddProc=(Get-Process -Name "Docker Desktop" -ErrorAction SilentlyContinue | Select-Object ProcessName,Path -First 1); if ($ddProc) { $ddPath=$ddProc.Path; Stop-Process -Name $ddProc.ProcessName -Force; Wait-Process -Name $ddProc.ProcessName; } Start-Process -FilePath $ddPath; Start-Sleep 10;'
-fi
-
-# test
-docker run --rm --runtime=nvidia --gpus all nvidia/cuda:11.6.2-base-ubuntu20.04 nvidia-smi
+sudo apt install -y nkf
 
 {{ end }}
