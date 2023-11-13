@@ -59,12 +59,14 @@ if which brew 2>&1; then
 else
     git clone --depth=1 https://github.com/tfutils/tfenv.git ~/.tfenv
     sudo ln -s ~/.tfenv/bin/* /usr/local/bin
-
-    cd /tmp
-    curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
-    rm -rf ./aws && unzip awscliv2.zip
-    sudo ./aws/install --bin-dir /usr/local/bin --install-dir /usr/local/aws-cli --update
-    cd -
 fi
+
+cd /tmp
+#curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+# https://github.com/aws/aws-cli/issues/8320
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.3.33.zip" -o "awscliv2.zip"
+rm -rf ./aws && unzip awscliv2.zip
+sudo ./aws/install --bin-dir /usr/local/bin --install-dir /usr/local/aws-cli --update
+cd -
 
 sudo apt install -y direnv
