@@ -13,13 +13,13 @@
         {
             "name": "win32yank",
             "url": "https://github.com/equalsraf/win32yank/releases/download/v0.1.1/win32yank-x64.zip",
-            "sha1sum": "053e5c5814d506788cc745f47de32718615043df",
+            "sha1sum": "15cba750ceadbf8bf6ad3b9a8dd941ffbebd24f1",
             "exe": "win32yank.exe"
         },
         {
             "name": "npiperelay",
             "url": "https://github.com/jstarks/npiperelay/releases/download/v0.1.0/npiperelay_windows_amd64.zip",
-            "sha1sum": "50d029442ef4432f685a4bf62c2b11a8abd91a88",
+            "sha1sum": "41c23ff328c05960203d8dab514416518db421d4",
             "exe": "npiperelay.exe"
         }
     ]

@@ -37,13 +37,11 @@ do
         exit 1
     fi
 
-    exists_checksum=$(test -f $file && echo $(sha1sum $file | cut -d ' ' -f 1 | tr -d ' ') || echo "")
+    exists_checksum=$(test -f $exe && echo $(sha1sum $exe | cut -d ' ' -f 1 | tr -d ' ') || echo "")
     if [ "${checksum}" != "${exists_checksum}" ]; then
         echo "download: ${url}"
         curl -fsSLO $url
-    fi
 
-    if [ "${checksum}" != "${exists_checksum}" ] || [ ! -f $exe ]; then
         extension="${file#*.}"
         case "${extension}" in
             "zip")
@@ -51,7 +49,12 @@ do
             *)
                 ;;
         esac
+
+        exists_checksum=$(sha1sum $exe | cut -d ' ' -f 1 | tr -d ' ')
+        [ "${checksum}" != "${exists_checksum}" ] && \
+            echo "checksum verfication failed for ${exe}" >&2 && exit 1
     fi
+
     chmod a+x $exe
     command -v $exe &>/dev/null || echo "WARN: couldn't find [${exe}]. To resolve this, add [${install_dir}] to your user's PATH environment variable in Windows." >&2
 done
