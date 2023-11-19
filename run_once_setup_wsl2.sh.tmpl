@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 {{ if and (eq .chezmoi.os "linux") (contains "WSL2" .chezmoi.kernel.osrelease) }}
 
@@ -7,40 +7,42 @@ if [ ! -z $REMOTE_CONTAINERS ] || [ ! -z $CODESPACES ] || [ -f /.dockerenv ] ; t
     exit 0
 fi
 
+# TODO: https://github.com/microsoft/WSL/issues/8943
+# depends on kernel version, call exe on wsl2 filesystem is soooooooo slowly, so put on windows filesystem.
+# clean: remove .exe from wsl2 fs if exists ...
+cat << 'EOF' | xargs -I{} $SHELL -c 'exe_path=$(command -v {} 2>/dev/null) && [[ ! ${exe_path} =~ ^/mnt/.* ]] && echo "${exe_path} on wsl2. removing..." && sudo rm ${exe_path} || true'
+spzenhan.exe
+uclip.exe
+win32yank.exe
+EOF
+
 brew install neovim
 # neovim + vscode + wsl2
 # note: vscode-neovim won't load bashrc or profile, so put exe globally.
-sudo mkdir -p /usr/local/bin
-cd /usr/local/bin
-for download in \
+install_dir=$(wslpath $(wslvar USERPROFILE))/AppData/Local/bin
+sudo mkdir -p $install_dir
+cd $install_dir
+
+download_urls=(
     "https://github.com/kaz399/spzenhan.vim/raw/master/zenhan/spzenhan.exe" \
     "https://github.com/suzusime/uclip/releases/download/v0.1.0/uclip.exe" \
-    ; \
-do
-    test ! -f $(basename $download) && \
-        sudo curl -fsSLO $download
-    sudo chmod a+x $(basename $download)
-done
-
-for download_exe in \
     "https://github.com/equalsraf/win32yank/releases/download/v0.1.1/win32yank-x64.zip|win32yank.exe" \
-    ; \
+)
+for download_url in "${download_urls[@]}";
 do
-    download=$(echo $download_exe | cut -d '|' -f 1)
-    exe=$(echo $download_exe | cut -d '|' -f 2)
+    download=$(echo $download_url | cut -d '|' -f 1)
+    exe=$(basename $(echo $download_url | cut -d '|' -f 2))
     test ! -f $(basename $download) && \
         sudo curl -fsSLO $download
+    # expand zip
     test ! -f $exe && \
         $(basename $download | grep -q .zip) && \
         unzip -p $(basename $download) $exe | sudo tee $exe > /dev/null
     sudo chmod a+x $exe
-    # You need to install both windows and wsl2...
-    win_bin_dir=$(wslpath $(wslvar USERPROFILE))/AppData/Local/bin
-    mkdir -p $win_bin_dir
-    cp $exe $win_bin_dir
+
+    command -v $exe &>/dev/null || echo "WARN: couldn't search ${exe}. maybe ${install_dir} is not in Env:PATH." >&2
 done
 
-cd -
-sudo apt install -y nkf
+cd - &>/dev/null
 
 {{ end }}
