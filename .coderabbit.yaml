@@ -16,4 +16,4 @@ reviews:
     drafts: false
     base_branches: []
 chat:
-  auto_reply: false
+  auto_reply: true
