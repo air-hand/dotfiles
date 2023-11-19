@@ -42,7 +42,7 @@ do
         unzip -p $(basename $download) $exe | sudo tee $exe > /dev/null
     sudo chmod a+x $exe
 
-    command -v $exe &>/dev/null || echo "WARN: couldn't search ${exe}. maybe ${install_dir} is not in Env:PATH." >&2
+    command -v $exe &>/dev/null || echo "echo "WARN: couldn't find ${exe}. To resolve this, add ${install_dir} to your user's PATH environment variable in Windows."" >&2
 done
 
 cd - &>/dev/null
