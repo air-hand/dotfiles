@@ -3,7 +3,7 @@
 {{ if and (eq .chezmoi.os "linux") (contains "WSL2" .chezmoi.kernel.osrelease) }}
 
 if [ ! -z $REMOTE_CONTAINERS ] || [ ! -z $CODESPACES ] || [ -f /.dockerenv ] ; then
-    echo "do not run in container this script".
+    echo "do not run this script in this container"
     exit 0
 fi
 
