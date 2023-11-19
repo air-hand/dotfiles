@@ -9,6 +9,9 @@
                 "--no-print-directory",
                 "watch",
             ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
             "isBackground": true,
             "problemMatcher": []
         }

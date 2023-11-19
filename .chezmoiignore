@@ -3,6 +3,7 @@
 install.sh
 LICENSE
 README.md
+.vscode/
 vscode/
 Makefile
 {{- if eq (env "REMOTE_CONTAINERS") "true" }}
