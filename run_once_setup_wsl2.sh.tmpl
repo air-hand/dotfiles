@@ -33,7 +33,7 @@ do
     exe=$(echo "${download}" | jq -r '.exe // .url | split("/") | last')
 
     if [ "${exe#*.}" != "exe" ]; then
-        echo "exe must end with .exe" >&2
+        echo "exe: ${exe} must end with .exe. fill exe attribute on json element." >&2
         exit 1
     fi
 
