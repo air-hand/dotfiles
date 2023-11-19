@@ -14,6 +14,7 @@ cat << 'EOF' | xargs -I{} $SHELL -c 'exe_path=$(command -v {} 2>/dev/null) && [[
 spzenhan.exe
 uclip.exe
 win32yank.exe
+npiperelay.exe
 EOF
 
 brew install neovim
@@ -27,12 +28,13 @@ download_urls=(
     "https://github.com/kaz399/spzenhan.vim/raw/master/zenhan/spzenhan.exe" \
     "https://github.com/suzusime/uclip/releases/download/v0.1.0/uclip.exe" \
     "https://github.com/equalsraf/win32yank/releases/download/v0.1.1/win32yank-x64.zip|win32yank.exe" \
+    "https://github.com/jstarks/npiperelay/releases/download/v0.1.0/npiperelay_windows_amd64.zip|npiperelay.exe" \
 )
 for download_url in "${download_urls[@]}";
 do
     download=$(echo $download_url | cut -d '|' -f 1)
     exe=$(basename $(echo $download_url | cut -d '|' -f 2))
-    test ! -f $(basename $download) && \
+    test ! -f $exe && \
         sudo curl -fsSLO $download
     # expand zip
     test ! -f $exe && \
