@@ -6,6 +6,7 @@ README.md
 .vscode/
 vscode/
 Makefile
+files/
 {{- if eq (env "REMOTE_CONTAINERS") "true" }}
 {{/* skip apply .gitconfig on devcontainer */}}
 /.gitconfig

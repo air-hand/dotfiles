@@ -10,12 +10,10 @@ fi
 # TODO: https://github.com/microsoft/WSL/issues/8943
 # depends on kernel version, call exe on wsl2 filesystem is soooooooo slowly, so put on windows filesystem.
 # clean: remove .exe from wsl2 fs if exists ...
-cat << 'EOF' | xargs -I{} $SHELL -c 'exe_path=$(command -v {} 2>/dev/null) && [[ ! ${exe_path} =~ ^/mnt/.* ]] && echo "${exe_path} on wsl2. removing..." && sudo rm ${exe_path} || true'
-spzenhan.exe
-uclip.exe
-win32yank.exe
-npiperelay.exe
-EOF
+# setup_wsl2_downloads.json hash: {{ include "files/setup_wsl2_downloads.json" | sha256sum }}
+cat {{ joinPath .chezmoi.sourceDir "files/setup_wsl2_downloads.json" | quote }} | \
+jq -c -r '.downloads[] | .exe // .url | split("/") | last' | \
+xargs -I{} $SHELL -c 'exe_path=$(command -v {} 2>/dev/null) && [[ ! ${exe_path} =~ ^/mnt/.* ]] && echo "${exe_path} on wsl2. removing..." && sudo rm ${exe_path} || true'
 
 brew install neovim
 # neovim + vscode + wsl2
@@ -24,25 +22,38 @@ install_dir=$(wslpath $(wslvar USERPROFILE))/AppData/Local/bin
 sudo mkdir -p $install_dir
 cd $install_dir
 
-download_urls=(
-    "https://github.com/kaz399/spzenhan.vim/raw/master/zenhan/spzenhan.exe" \
-    "https://github.com/suzusime/uclip/releases/download/v0.1.0/uclip.exe" \
-    "https://github.com/equalsraf/win32yank/releases/download/v0.1.1/win32yank-x64.zip|win32yank.exe" \
-    "https://github.com/jstarks/npiperelay/releases/download/v0.1.0/npiperelay_windows_amd64.zip|npiperelay.exe" \
-)
-for download_url in "${download_urls[@]}";
+# setup_wsl2_downloads.json hash: {{ include "files/setup_wsl2_downloads.json" | sha256sum }}
+cat {{ joinPath .chezmoi.sourceDir "files/setup_wsl2_downloads.json" | quote }} | \
+jq -c '.downloads[]' | \
+while read -r download;
 do
-    download=$(echo $download_url | cut -d '|' -f 1)
-    exe=$(basename $(echo $download_url | cut -d '|' -f 2))
-    test ! -f $exe && \
-        sudo curl -fsSLO $download
-    # expand zip
-    test ! -f $exe && \
-        $(basename $download | grep -q .zip) && \
-        unzip -p $(basename $download) $exe | sudo tee $exe > /dev/null
-    sudo chmod a+x $exe
+    url=$(echo "${download}" | jq -r '.url')
+    file=$(basename $url)
+    checksum=$(echo "${download}" | jq -r '.sha1sum')
+    exe=$(echo "${download}" | jq -r '.exe // .url | split("/") | last')
 
-    command -v $exe &>/dev/null || echo "echo "WARN: couldn't find ${exe}. To resolve this, add ${install_dir} to your user's PATH environment variable in Windows."" >&2
+    if [ "${exe#*.}" != "exe" ]; then
+        echo "exe must end with .exe" >&2
+        exit 1
+    fi
+
+    exists_checksum=$(test -f $file && echo $(sha1sum $file | cut -d ' ' -f 1 | tr -d ' ') || echo "")
+    if [ "${checksum}" != "${exists_checksum}" ]; then
+        echo "download: ${url}"
+        curl -fsSLO $url
+    fi
+
+    if [ "${checksum}" != "${exists_checksum}" ] || [ ! -f $exe ]; then
+        extension="${file#*.}"
+        case "${extension}" in
+            "zip")
+                unzip -p $file $exe | tee $exe > /dev/null;;
+            *)
+                ;;
+        esac
+    fi
+    chmod a+x $exe
+    command -v $exe &>/dev/null || echo "WARN: couldn't find [${exe}]. To resolve this, add [${install_dir}] to your user's PATH environment variable in Windows." >&2
 done
 
 cd - &>/dev/null

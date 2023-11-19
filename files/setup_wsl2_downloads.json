@@ -1,0 +1,26 @@
+{
+    "downloads": [
+        {
+            "name": "spzenhan",
+            "url": "https://github.com/kaz399/spzenhan.vim/raw/master/zenhan/spzenhan.exe",
+            "sha1sum": "8e08b45dd5f50074048d92e036623e9dbca1e24d"
+        },
+        {
+            "name": "uclip",
+            "url": "https://github.com/suzusime/uclip/releases/download/v0.1.0/uclip.exe",
+            "sha1sum": "c4141dc5fccb97a270f7fd23e739ada07231506f"
+        },
+        {
+            "name": "win32yank",
+            "url": "https://github.com/equalsraf/win32yank/releases/download/v0.1.1/win32yank-x64.zip",
+            "sha1sum": "053e5c5814d506788cc745f47de32718615043df",
+            "exe": "win32yank.exe"
+        },
+        {
+            "name": "npiperelay",
+            "url": "https://github.com/jstarks/npiperelay/releases/download/v0.1.0/npiperelay_windows_amd64.zip",
+            "sha1sum": "50d029442ef4432f685a4bf62c2b11a8abd91a88",
+            "exe": "npiperelay.exe"
+        }
+    ]
+}
