@@ -50,17 +50,3 @@ if has('clipboard') || exists('g:vscode')
           \ }
     endif
 endif
-
-" win32yank.exe version
-"        let g:clipboard = {
-"          \   'name': 'WslClipboard',
-"          \   'copy': {
-"          \      '+': ['win32yank.exe', '-i'],
-"          \      '*': ['win32yank.exe', '-i'],
-"          \    },
-"          \   'paste': {
-"          \      '+': ['win32yank.exe', '-o'],
-"          \      '*': ['win32yank.exe', '-o'],
-"          \   },
-"          \   'cache_enabled': 0,
-"          \ }
