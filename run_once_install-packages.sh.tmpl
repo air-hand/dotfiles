@@ -54,8 +54,9 @@ curl -fsSL https://raw.githubusercontent.com/nektos/act/master/install.sh | sudo
 # install homebrew
 NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" || true
 
-if which brew 2>&1; then
+if command -v brew &>/dev/null; then
     brew install tfenv
+    brew install aquaproj/aqua/aqua
 else
     git clone --depth=1 https://github.com/tfutils/tfenv.git ~/.tfenv
     sudo ln -s ~/.tfenv/bin/* /usr/local/bin
