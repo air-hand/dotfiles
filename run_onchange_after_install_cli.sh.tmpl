@@ -4,6 +4,7 @@
 brew install aquaproj/aqua/aqua
 
 # install cli globally by aqua. aqua.yaml hash: {{ include "dot_config/aquaproj-aqua/aqua.yaml" | sha256sum }}
+export AQUA_GLOBAL_CONFIG=$HOME/.config/aquaproj-aqua/aqua.yaml
 aqua install --all
 
 cd /tmp
