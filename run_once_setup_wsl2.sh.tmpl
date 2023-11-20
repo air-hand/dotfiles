@@ -15,8 +15,7 @@ cat {{ joinPath .chezmoi.sourceDir "files/setup_wsl2_downloads.json" | quote }} 
 jq -c -r '.downloads[] | .exe // .url | split("/") | last' | \
 xargs -I{} $SHELL -c 'exe_path=$(command -v {} 2>/dev/null) && [[ ! ${exe_path} =~ ^/mnt/.* ]] && echo "${exe_path} on wsl2. removing..." && sudo rm ${exe_path} || true'
 
-brew install neovim
-# neovim + vscode + wsl2
+# neovim with vscode + wsl2
 # note: vscode-neovim won't load bashrc or profile, so put exe globally.
 install_dir=$(wslpath $(wslvar USERPROFILE))/AppData/Local/bin
 sudo mkdir -p $install_dir

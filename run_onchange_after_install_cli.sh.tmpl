@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+# install aqua by brew
+brew install aquaproj/aqua/aqua
+
+# install cli globally by aqua. aqua.yaml hash: {{ include "dot_config/aquaproj-aqua/aqua.yaml" | sha256sum }}
+aqua install --all
+
+cd /tmp
+curl "https://s3.amazonaws.com/session-manager-downloads/plugin/latest/ubuntu_64bit/session-manager-plugin.deb" -o "session-manager-plugin.deb"
+sudo dpkg -i session-manager-plugin.deb
+session-manager-plugin
+cd - &>/dev/null

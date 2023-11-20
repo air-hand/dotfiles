@@ -2,9 +2,9 @@
 
 export PATH=~/.local/bin:~/bin:$PATH
 
-export EDITOR=vim
-export VISUAL=vim
-export LANG=ja_JP.UTF-8
+export EDITOR=nvim
+export VISUAL=nvim
+export LANG=en_US.UTF-8
 
 if [ "$BASH" ]; then
   if [ -f ~/.bashrc ]; then
@@ -15,5 +15,8 @@ fi
 if test -f /home/linuxbrew/.linuxbrew/bin/brew; then
   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
+
+command -v aqua &> /dev/null && export PATH="$(aqua root-dir)/bin:$PATH"
+export AQUA_GLOBAL_CONFIG=$HOME/.config/aquaproj-aqua/aqua.yaml
 
 mesg n 2> /dev/null || true

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 sudo apt update && sudo apt install -y \
     curl \
@@ -6,7 +6,6 @@ sudo apt update && sudo apt install -y \
     make \
     vim \
     tree \
-    jq \
     socat \
     software-properties-common \
     apt-file \
@@ -34,13 +33,6 @@ curl -o $HOME/.git-completion.sh -sL \
 curl -o $HOME/.git-prompt.sh -sL \
     https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh
 
-type -p curl >/dev/null || sudo apt install curl -y
-curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg \
-&& sudo chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg \
-&& echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null \
-&& sudo apt update \
-&& sudo apt install gh -y
-
 sudo apt update \
 && sudo apt install -y ca-certificates curl gnupg \
 && sudo mkdir -p /etc/apt/keyrings \
@@ -49,25 +41,5 @@ sudo apt update \
 && sudo apt update && sudo apt install -y nodejs build-essential \
 && sudo npm install -g @devcontainers/cli
 
-curl -fsSL https://raw.githubusercontent.com/nektos/act/master/install.sh | sudo bash -
-
 # install homebrew
 NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" || true
-
-if command -v brew &>/dev/null; then
-    brew install tfenv
-    brew install aquaproj/aqua/aqua
-else
-    git clone --depth=1 https://github.com/tfutils/tfenv.git ~/.tfenv
-    sudo ln -s ~/.tfenv/bin/* /usr/local/bin
-fi
-
-cd /tmp
-#curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
-# https://github.com/aws/aws-cli/issues/8320
-curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.3.33.zip" -o "awscliv2.zip"
-rm -rf ./aws && unzip awscliv2.zip
-sudo ./aws/install --bin-dir /usr/local/bin --install-dir /usr/local/aws-cli --update
-cd -
-
-sudo apt install -y direnv
