@@ -24,3 +24,4 @@ packages:
 - name: aquasecurity/tfsec@v1.28.4
 - name: rhysd/actionlint@v1.6.26
 - name: tsenart/vegeta@v12.11.1
+- name: argoproj/argo-cd@v2.9.1
