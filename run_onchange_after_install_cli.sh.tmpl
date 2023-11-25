@@ -1,7 +1,16 @@
 #!/usr/bin/env bash
 
-# install aqua by brew
-brew install aquaproj/aqua/aqua
+# install by brew
+for inst in \
+    "nvim" \
+    "aquaproj/aqua/aqua" \
+    ; \
+do
+    brew install $inst
+done
+
+# remove nvim managed by aqua if exists for vscode-neovim.
+test -f "$(aqua root-dir)/bin/nvim" && rm "$(aqua root-dir)/bin/nvim"
 
 # install cli globally by aqua. aqua.yaml hash: {{ include "dot_config/aquaproj-aqua/aqua.yaml" | sha256sum }}
 export AQUA_GLOBAL_CONFIG=$HOME/.config/aquaproj-aqua/aqua.yaml

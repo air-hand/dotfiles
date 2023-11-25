@@ -13,7 +13,6 @@ packages:
 - name: cli/cli@v2.39.1
 - name: direnv/direnv@v2.32.3
 - name: nektos/act@v0.2.54
-- name: neovim/neovim@stable
 - name: jqlang/jq@jq-1.7
 - name: kubernetes/kubectl@v1.25.16
 - name: helm/helm@v3.13.2
