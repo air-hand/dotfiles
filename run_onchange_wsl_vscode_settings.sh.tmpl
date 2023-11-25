@@ -1,8 +1,6 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-if ! command -v wslpath &> /dev/null; then
-    exit 0
-fi
+{{ if .is_wsl2 -}}
 
 # create vscode settings
 VSCODE_USER_SPACE=$(wslpath "$(wslvar APPDATA)/Code/User")
@@ -14,3 +12,4 @@ cp --remove-destination {{ joinPath .chezmoi.sourceDir "vscode/keybindings.json"
 #echo "create remote settings.json"
 #cp --remove-destination {{ joinPath .chezmoi.sourceDir "vscode/settings.json" | quote }} ~/.vscode-server/data/Machine/settings.json
 
+{{- end }}
