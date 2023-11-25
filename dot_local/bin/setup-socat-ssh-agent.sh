@@ -22,4 +22,14 @@ EOF
     fi
 }
 
+stop_ssh_agent() {
+    socat_pid=$(ss -ap |grep $SSH_AUTH_SOCK | sed -r 's/.+pid=([1-9][0-9]+).+/\1/')
+    if test -z $socat_pid; then
+        echo "Not found: agent socket."
+        return
+    fi
+    echo "kill pid: ${socat_pid}"
+    kill $socat_pid
+}
+
 start_ssh_agent
