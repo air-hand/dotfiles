@@ -4,6 +4,11 @@ repo_root() {
     cd $(git rev-parse --show-toplevel)
 }
 
+on_wsl2()
+{
+    uname -a |grep WSL2 &> /dev/null
+}
+
 is_in_container() {
     if test -f /.dockerenv; then
         return 0
