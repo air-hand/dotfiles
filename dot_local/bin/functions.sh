@@ -4,6 +4,16 @@ repo_root() {
     cd $(git rev-parse --show-toplevel)
 }
 
+is_in_container() {
+    if test -f /.dockerenv; then
+        return 0
+    fi
+    if ! test -z "${REMOTE_CONTAINERS}" || ! test -z "${CODESPACES}"; then
+        return 0
+    fi
+    return 1
+}
+
 watch_cmd() {
     if [ $# -lt 2 ]; then
         cat << EOF
