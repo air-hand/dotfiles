@@ -12,11 +12,12 @@ if [ "$BASH" ]; then
   fi
 fi
 
-if test -f /home/linuxbrew/.linuxbrew/bin/brew; then
-  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+if command -v brew &> /dev/null; then
+  eval "$($(command -v brew) shellenv)"
 fi
 
 command -v aqua &> /dev/null && export PATH="$(aqua root-dir)/bin:$PATH"
 export AQUA_GLOBAL_CONFIG=$HOME/.config/aquaproj-aqua/aqua.yaml
+
 
 mesg n 2> /dev/null || true
