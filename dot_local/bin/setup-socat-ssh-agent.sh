@@ -2,10 +2,13 @@
 
 NPIPERELAY=npiperelay.exe
 
-start_ssh_agent() {
-    export SSH_AUTH_SOCK=$HOME/.ssh/agent.sock
+export SSH_AUTH_SOCK=$HOME/.ssh/agent.sock
 
-    command -v $NPIPERELAY &> /dev/null || echo "WARN: not found ${NPIPERELAY}" >&2 && return
+start_ssh_agent() {
+    if ! command -v $NPIPERELAY &> /dev/null; then
+        echo "WARN: not found ${NPIPERELAY}" >&2
+        return
+    fi
 
     if ! ss -a | grep -q $SSH_AUTH_SOCK; then
         rm -f $SSH_AUTH_SOCK
