@@ -1,0 +1,18 @@
+{{ $is_in_container := false }}
+{{- if or
+    (eq (env "REMOTE_CONTAINERS") "true")
+    (eq (env "CODESPACES") "true")
+    (stat "/.dockerenv")
+-}}
+{{ $is_in_container = true }}
+{{- end -}}
+is_in_container = {{ $is_in_container }}
+
+{{ $is_wsl2 := false }}
+{{- if and
+    (eq .os "linux")
+    (contains "WSL2" .kernel.osrelease)
+-}}
+{{ $is_wsl2 = true }}
+{{- end -}}
+is_wsl2 = {{ and $is_wsl2 (not $is_in_container) }}

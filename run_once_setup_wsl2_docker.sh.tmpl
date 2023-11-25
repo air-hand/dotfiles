@@ -1,11 +1,6 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-{{ if and (eq .chezmoi.os "linux") (contains "WSL2" .chezmoi.kernel.osrelease) }}
-
-if [ ! -z $REMOTE_CONTAINERS ] || [ ! -z $CODESPACES ] || [ -f /.dockerenv ] ; then
-    echo "do not run in container this script".
-    exit 0
-fi
+{{ if .is_wsl2 -}}
 
 # check docker running on wsl2 or docker desktop
 function is_docker_wsl2() {
@@ -81,4 +76,4 @@ fi
 # test
 docker run --rm --runtime=nvidia --gpus all nvidia/cuda:11.6.2-base-ubuntu20.04 nvidia-smi
 
-{{ end }}
+{{- end }}

@@ -2,5 +2,6 @@
     "files.associations": {
         "*.sh.tmpl": "shellscript",
         "*bash*.tmpl": "shellscript",
-    }
+        ".chezmoitemplates/**": "gotmpl",
+    },
 }

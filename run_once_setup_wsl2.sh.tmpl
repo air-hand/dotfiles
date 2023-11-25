@@ -1,11 +1,6 @@
 #!/usr/bin/env bash
 
-{{ if and (eq .chezmoi.os "linux") (contains "WSL2" .chezmoi.kernel.osrelease) }}
-
-if [ ! -z $REMOTE_CONTAINERS ] || [ ! -z $CODESPACES ] || [ -f /.dockerenv ] ; then
-    echo "do not run this script in this container"
-    exit 0
-fi
+{{ if .is_wsl2 -}}
 
 # TODO: https://github.com/microsoft/WSL/issues/8943
 # depends on kernel version, call exe on wsl2 filesystem is soooooooo slowly, so put on windows filesystem.
@@ -60,4 +55,4 @@ done
 
 cd - &>/dev/null
 
-{{ end }}
+{{- end }}

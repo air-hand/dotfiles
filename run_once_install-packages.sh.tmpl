@@ -25,9 +25,11 @@ sudo apt install -y \
     tig \
     ;
 
-if $(uname -a |grep WSL2 &> /dev/null) && test -z $REMOTE_CONTAINERS; then
-    sudo add-apt-repository -y ppa:wslutilities/wslu && sudo apt update && sudo apt install -y --no-install-recommends wslu
-fi
+{{ if .is_wsl2 }}
+sudo add-apt-repository -y ppa:wslutilities/wslu && \
+    sudo apt update && \
+    sudo apt install -y --no-install-recommends wslu
+{{ end }}
 
 curl -o $HOME/.git-completion.sh -sL \
     https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
