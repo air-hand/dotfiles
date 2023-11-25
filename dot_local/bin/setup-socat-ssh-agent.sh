@@ -4,13 +4,28 @@ NPIPERELAY=npiperelay.exe
 
 export SSH_AUTH_SOCK=$HOME/.ssh/agent.sock
 
+_get_ssh_agent_pid() {
+    if ! test -S $SSH_AUTH_SOCK; then
+        echo "Not found: agent socket." >&2
+        return 1
+    fi
+    
+    socat_pid=$(lsof -t $SSH_AUTH_SOCK)
+    if test -z "${socat_pid}"; then
+        echo "No socat process found for agent socket." >&2
+        return 1
+    fi
+    echo $socat_pid
+}
+
 start_ssh_agent() {
     if ! command -v $NPIPERELAY &> /dev/null; then
         echo "WARN: not found ${NPIPERELAY}" >&2
         return
     fi
 
-    if ! ss -a | grep -q $SSH_AUTH_SOCK; then
+    if ! _get_ssh_agent_pid &> /dev/null; then
+        # remove if normal file.
         rm -f $SSH_AUTH_SOCK
         cat << 'EOF'
 Prerequisite for ssh-agent with npiperelay below
@@ -23,13 +38,8 @@ EOF
 }
 
 stop_ssh_agent() {
-    socat_pid=$(ss -ap |grep $SSH_AUTH_SOCK | sed -r 's/.+pid=([1-9][0-9]+).+/\1/')
-    if test -z $socat_pid; then
-        echo "Not found: agent socket."
-        return
-    fi
-    echo "kill pid: ${socat_pid}"
-    kill $socat_pid
+    socat_pid=$(_get_ssh_agent_pid) \
+        && echo "kill pid: ${socat_pid}" && kill $socat_pid
 }
 
 start_ssh_agent
