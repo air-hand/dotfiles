@@ -12,9 +12,12 @@ done
 # remove nvim managed by aqua if exists for vscode-neovim.
 test -f "$(aqua root-dir)/bin/nvim" && rm "$(aqua root-dir)/bin/nvim"
 
+{{/* install cli globally except for a dev-container. */}}
+{{ if not .is_in_container }}
 # install cli globally by aqua. aqua.yaml hash: {{ include "dot_config/aquaproj-aqua/aqua.yaml" | sha256sum }}
 export AQUA_GLOBAL_CONFIG=$HOME/.config/aquaproj-aqua/aqua.yaml
 aqua install --all
+{{ end }}
 
 cd /tmp
 curl "https://s3.amazonaws.com/session-manager-downloads/plugin/latest/ubuntu_64bit/session-manager-plugin.deb" -o "session-manager-plugin.deb"
