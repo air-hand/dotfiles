@@ -47,6 +47,6 @@ sudo apt update \
 {{ end }}
 
 # install homebrew if not exists
-command -v brew &>/dev/null ||
-    test -f /home/linuxbrew/.linuxbrew/bin/brew ||
+command -v brew &>/dev/null || \
+    test -f /home/linuxbrew/.linuxbrew/bin/brew || \
     NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" || true
