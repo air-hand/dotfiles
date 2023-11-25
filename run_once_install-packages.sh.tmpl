@@ -13,6 +13,7 @@ sudo apt update && sudo apt install -y \
     unzip \
     lsof \
     inotify-tools \
+    language-pack-en \
     ;
 
 {{ if and (eq .chezmoi.os "linux") (eq .chezmoi.osRelease.id "ubuntu") }}
