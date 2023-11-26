@@ -6,17 +6,17 @@ export EDITOR=nvim
 export VISUAL=nvim
 #export LANG=en_US.UTF-8
 
+if [ "$BASH" ]; then
+  if [ -f ~/.bashrc ]; then
+    . ~/.bashrc
+  fi
+fi
+
 if test -f /home/linuxbrew/.linuxbrew/bin/brew; then
   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
 
 command -v aqua &> /dev/null && export PATH="$(aqua root-dir)/bin:$PATH"
 export AQUA_GLOBAL_CONFIG=$HOME/.config/aquaproj-aqua/aqua.yaml
-
-if [ "$BASH" ]; then
-  if [ -f ~/.bashrc ]; then
-    . ~/.bashrc
-  fi
-fi
 
 mesg n 2> /dev/null || true
