@@ -21,9 +21,11 @@ set number
 " https://wonwon-eater.com/wsl2-neovim/#outline__4_2
 " ime off
 if executable('spzenhan.exe')
-autocmd InsertLeave * :call system('spzenhan.exe 0')
-autocmd CmdlineLeave * :call system('spzenhan.exe 0')
-autocmd InsertEnter * :call system('spzenhan.exe 0')
+"autocmd InsertLeave * :call system('spzenhan.exe 0')
+"autocmd CmdlineLeave * :call system('spzenhan.exe 0')
+"autocmd InsertEnter * :call system('spzenhan.exe 0')
+" Turn off IME asynchronously when entering normal mode.
+autocmd ModeChanged *:n* :call jobstart(['spzenhan.exe', '0'])
 endif
 
 " https://zenn.dev/link/comments/67d1f41c9a335d
