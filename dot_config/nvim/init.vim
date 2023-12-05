@@ -16,6 +16,8 @@ set expandtab
 set statusline+=%F
 set laststatus=2
 set number
+"set belloff=all
+set visualbell
 
 " https://gitpress.io/@mimori37/VSCode%E3%81%A7%E3%82%82normal%E7%A7%BB%E8%A1%8C%E6%99%82%E3%81%ABIME%E5%88%87%E3%82%8A%E6%9B%BF%E3%81%88%E3%81%9F%E3%81%84
 " https://wonwon-eater.com/wsl2-neovim/#outline__4_2
