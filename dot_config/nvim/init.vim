@@ -22,32 +22,9 @@ set number
 "set belloff=all
 set visualbell
 
-" https://zenn.dev/link/comments/67d1f41c9a335d
-
-" set clipboard+=unnamed
-" set clipboard+=unnamedplus
-" set clipboard&
-" set clipboard^=unnamedplus
-
-if has('clipboard') || exists('g:vscode')
-    set clipboard^=unnamed
-    if has('nvim') && (system('uname -a |grep -i microsoft') != '')
-        let g:clipboard = {
-          \   'name': 'WslClipboard',
-          \   'copy': {
-          \      '+': ['uclip', '-i'],
-          \      '*': ['uclip', '-i'],
-          \    },
-          \   'paste': {
-          \      '+': ['powershell.exe', '-c', '[Console]::Out.Write($(Get-Clipboard -Raw).ToString().Replace("`r", ""))'],
-          \      '*': ['powershell.exe', '-c', '[Console]::Out.Write($(Get-Clipboard -Raw).ToString().Replace("`r", ""))'],
-          \   },
-          \   'cache_enabled': 0,
-          \ }
-    endif
-endif
 let g:nvim_config_root = stdpath('config')
 let s:config_files = [
+    \ 'clipboard.vim',
     \ 'zenhan.vim',
     \ 'dein.vim'
     \ ]
