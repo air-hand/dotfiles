@@ -9,6 +9,9 @@ let mapleader = "\<space>"
 " space+r: source vimrk
 nnoremap <leader>r :source $MYVIMRC<cr>
 
+" clear last searched register
+nnoremap <leader>c :let @/ = ""<cr>
+
 set tabstop=4
 set shiftwidth=4
 set expandtab
