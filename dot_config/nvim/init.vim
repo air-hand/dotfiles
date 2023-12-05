@@ -57,3 +57,10 @@ if has('clipboard') || exists('g:vscode')
           \ }
     endif
 endif
+let g:nvim_config_root = stdpath('config')
+let s:config_files = [
+    \ 'dein.vim'
+    \ ]
+for conf in s:config_files
+    execute 'source ' . g:nvim_config_root . '/' . conf
+endfor
