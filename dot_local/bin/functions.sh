@@ -4,8 +4,7 @@ repo_root() {
     cd $(git rev-parse --show-toplevel)
 }
 
-on_wsl2()
-{
+on_wsl2() {
     uname -a |grep WSL2 &> /dev/null
 }
 
@@ -56,4 +55,9 @@ EOF
             test ! -z $DEBUG && echo "T: ${TIME}, F: ${FILEPATH}, E: ${EVENTS}"; \
             $POST_COMMAND; \
         done
+}
+
+random_string() {
+    LENGTH=${1:-32}
+    cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w $LENGTH | head -n 1
 }
