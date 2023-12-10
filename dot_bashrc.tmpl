@@ -107,6 +107,9 @@ if [ -f $HOME/.local/bin/setup-socat-ssh-agent.sh ] && on_wsl2 && ! is_in_contai
     source $HOME/.local/bin/setup-socat-ssh-agent.sh
 fi
 
+command -v rtx &> /dev/null && \
+    eval "$(rtx activate bash)" && \
+    eval "$(rtx completion bash)"
 command -v aqua &> /dev/null && source <(aqua completion bash)
 
 # terraform
