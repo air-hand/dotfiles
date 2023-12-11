@@ -6,15 +6,19 @@ VSCODE_PATH := $(MAKEFILE_DIR)/vscode
 
 MAKE := make --no-print-directory
 
-all: apply
+all: apply post-setup
 
 .PHONY: apply
 apply:
 	chezmoi apply
 
+.PHONY: post-setup
+post-setup:
+	pre-commit install
+
 .PHONY: watch
 watch:
-	/bin/bash -i -c 'EXCLUDE=1 watch_cmd "\.git\/" "$(MAKE)"'
+	/bin/bash -i -c 'EXCLUDE=1 watch_cmd "\.git\/" "$(MAKE) apply"'
 
 .PHONY: copy_from_current
 copy_from_current:
