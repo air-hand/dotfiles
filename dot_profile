@@ -5,7 +5,7 @@ export PATH=~/.local/bin:~/bin:$PATH
 export EDITOR=nvim
 export VISUAL=nvim
 #export LANG=en_US.UTF-8
-export LESS="${LESS} -Q"
+export LESS="${LESS} -Q -i -R"
 
 if test -f /home/linuxbrew/.linuxbrew/bin/brew; then
   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
