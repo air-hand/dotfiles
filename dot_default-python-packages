@@ -1,3 +1,4 @@
 # rtx python
 pipenv
 poetry
+pre-commit
