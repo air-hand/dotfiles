@@ -101,7 +101,7 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
-test -f $HOME/.local/bin/functions.sh && source $HOME/.local/bin/functions.sh
+test -f $HOME/.local/lib/functions.sh && source $HOME/.local/lib/functions.sh
 
 if [ -f $HOME/.local/bin/setup-socat-ssh-agent.sh ] && on_wsl2 && ! is_in_container; then
     source $HOME/.local/bin/setup-socat-ssh-agent.sh

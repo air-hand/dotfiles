@@ -61,3 +61,25 @@ random_string() {
     LENGTH=${1:-32}
     cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w $LENGTH | head -n 1
 }
+
+prepend_to_all() {
+    if [ $# -lt 2 ]; then
+        echo "Usage: ${0} <prefix> <string1> <string2> ..." >&2
+        return 1
+    fi
+
+    PREFIX="${1}"
+    shift 1
+    STRINGS=("$@")
+    printf -- "${PREFIX}%s" "${STRINGS[@]}"
+}
+
+super-linter () {
+    envs=(
+        RUN_LOCAL=true
+        DEFAULT_BRANCH=$(git branch --show-current)
+        VALIDATE_ALL_CODEBASE=false
+    )
+    envs_as_string=$(prepend_to_all ' -e ' "${envs[@]}")
+    docker run --rm ${envs_as_string} -v $(pwd):/tmp/lint ghcr.io/super-linter/super-linter:slim-latest $@
+}
