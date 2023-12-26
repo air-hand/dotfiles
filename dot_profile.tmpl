@@ -22,10 +22,4 @@ export AQUA_GLOBAL_CONFIG=$HOME/.config/aquaproj-aqua/aqua.yaml
 export RTX_CONFIG_FILE=$HOME/.config/rtx/config-global.toml
 {{ end }}
 
-if [ "$BASH" ]; then
-  if [ -f ~/.bashrc ]; then
-    . ~/.bashrc
-  fi
-fi
-
 mesg n 2> /dev/null || true

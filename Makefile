@@ -25,3 +25,8 @@ copy_from_current:
 	@VSCODE_USER_SPACE=$$(wslpath "$$(wslvar APPDATA)/Code/User") \
 	&& test -f "$${VSCODE_USER_SPACE}/keybindings.json" && \
 		cp  "$${VSCODE_USER_SPACE}/keybindings.json" $(VSCODE_PATH)/keybindings.json || true
+
+.PHONY: test
+test:
+	@shellspec -s bash
+

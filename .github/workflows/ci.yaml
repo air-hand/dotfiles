@@ -2,9 +2,14 @@ name: check
 
 on:
   push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
-  run-install:
+  run-install-test:
     strategy:
       matrix:
         distro: ["ubuntu", "debian"]
@@ -17,3 +22,21 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/run-install
+      - run: |
+          echo "AQUA_GLOBAL_CONFIG=$HOME/.config/aquaproj-aqua/aqua.yaml" >> $GITHUB_ENV
+      - name: test
+        shell: bash --login -eo pipefail {0}
+        run: |
+          aqua i -a
+          make test
+
+  test:
+    name: make test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/run-install
+      - name: Run tests
+        shell: bash --login -eo pipefail {0} 
+        run: |
+          make test

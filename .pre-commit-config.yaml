@@ -5,3 +5,12 @@ repos:
     rev: v1.6.26
     hooks:
       - id: actionlint-system
+  - repo: local
+    hooks:
+      - id: make_test
+        name: "Make test"
+        language: system
+        entry: make test
+        files: '^.*/.*\.sh$'
+        pass_filenames: false
+
