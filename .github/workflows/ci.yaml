@@ -30,3 +30,13 @@ jobs:
           aqua i -a
           make test
 
+  test:
+    name: make test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/run-install
+      - name: Run tests
+        shell: bash --login -eo pipefail {0} 
+        run: |
+          make test
