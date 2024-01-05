@@ -25,3 +25,10 @@
 [credential "https://gist.github.com"]
     helper = 
     helper = !/usr/bin/gh auth git-credential
+[alias]
+    ft = fetch
+    co = checkout
+    log-npo = !"git --no-pager log --oneline"
+    prn = fetch --prune
+    push-f = push --force-with-lease --force-if-includes
+
