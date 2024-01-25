@@ -8,22 +8,22 @@
 #   - all
 registries:
 - type: standard
-  ref: v4.91.0 # renovate: depName=aquaproj/aqua-registry
+  ref: v4.123.0 # renovate: depName=aquaproj/aqua-registry
 packages:
-- name: cli/cli@v2.39.1
-- name: direnv/direnv@v2.32.3
-- name: nektos/act@v0.2.54
-- name: jqlang/jq@jq-1.7
-- name: kubernetes/kubectl@v1.25.16
-- name: helm/helm@v3.13.2
-- name: twistedpair/google-cloud-sdk@455.0.0
-- name: aws/aws-cli@2.13.37
-- name: tfutils/tfenv@v3.0.0
-- name: aquasecurity/trivy@v0.47.0
-- name: aquasecurity/tfsec@v1.28.4
+- name: cli/cli@v2.42.1
+- name: nektos/act@v0.2.57
+- name: jqlang/jq@jq-1.7.1
+- name: kubernetes/kubectl@v1.26.13
+- name: helm/helm@v3.14.0
+- name: twistedpair/google-cloud-sdk@458.0.1
+- name: aws/aws-cli@2.15.14
+- name: aquasecurity/trivy@v0.48.3
+- name: aquasecurity/tfsec@v1.28.5
 - name: rhysd/actionlint@v1.6.26
 - name: tsenart/vegeta@v12.11.1
-- name: argoproj/argo-cd@v2.9.1
-- name: jdx/rtx@v2023.12.23
-- name: reviewdog/reviewdog@v0.15.0
+- name: argoproj/argo-cd@v2.8.9
+- name: reviewdog/reviewdog@v0.17.0
 - name: shellspec/shellspec@0.28.1
+- name: jdx/mise@v2024.1.25
+- name: junegunn/fzf@0.46.0
+- name: hashicorp/terraform@v1.7.1
