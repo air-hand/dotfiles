@@ -29,7 +29,7 @@ export PATH="$(aqua root-dir)/bin:$PATH"
 
 # install cli globally by mise. mise/config-global.toml hash: {{ include "dot_config/mise/config-global.toml" | sha256sum }}
 # change default env to avoid using in dev-containers as it may conflict with container tools.
-MISE_CONFIG_FILE=$HOME/.config/mise/config-global.toml mise install
+MISE_JOBS=$(fgrep 'processor' /proc/cpuinfo | wc -l) MISE_CONFIG_FILE=$HOME/.config/mise/config-global.toml mise install
 {{ end }}
 
 # misc
