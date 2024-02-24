@@ -8,7 +8,7 @@ Describe 'functions.sh'
 
     Include ../functions.sh
 
-    Describe 'random_string()' 
+    Describe 'random_string()'
         It 'should return random string default length.'
             When call random_string
             The output should regexp '^[a-zA-Z0-9]{32}$'
@@ -19,28 +19,35 @@ Describe 'functions.sh'
         End
     End
 
-    Describe 'prepend_to_all()'
-        It 'should prepend strings with prefix.'
-            When call prepend_to_all ',' 'a' 'b' 'c'
-            The output should eq ',a,b,c'
+    Describe 'prepend()'
+        Describe 'parameters'
+            Parameters
+                # prefix expected input
+                ',' ',aaa ,bbb ,ccc' "aaa bbb ccc"
+                '-e ' '-e aaa=FFF -e bbb -e ccc' 'aaa=FFF' 'bbb' 'ccc'
+            End
+
+            It 'should prepend strings with prefix.'
+                Data:expand "${@:3}"
+                When call prepend "$1"
+                The output should eq "$2"
+            End
         End
 
-        It 'should prepend strings with prefix.'
-            params=(a b c)
-            When call prepend_to_all ',' "${params[@]}"
-            The output should eq ',a,b,c'
+        It 'should echo usage to stderr.'
+            When call prepend
+            The stderr should regexp "Usage: .* | prepend .+"
+            The status should be failure
         End
-        
-        It 'should prepend strings with prefix.'
-            params=(a b c)
-            When call prepend_to_all ' -f ' "${params[@]}"
-            The output should eq ' -f a -f b -f c'
-        End
+    End
 
-        It 'should prepend strings with prefix.'
-            params=(a b)
-            When call prepend_to_all '-e ' "${params[@]}"
-            The output should eq '-e a-e b'
+    Describe 'super-linter()'
+        # Mock docker command
+        docker() { echo "${@}"; }
+
+        It 'should pass arguments to envs'
+            When call super-linter FOO=BAR
+            The stdout should regexp "-e FOO=BAR"
         End
     End
 End

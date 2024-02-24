@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 {{ if .is_wsl2 -}}
 
 # create vscode settings
@@ -8,4 +7,4 @@ VSCODE_USER_SPACE=$(wslpath "$(wslvar APPDATA)/Code/User")
 echo "create keybindings.json"
 cp --remove-destination {{ joinPath .chezmoi.sourceDir "vscode/keybindings.json" | quote }} $VSCODE_USER_SPACE/keybindings.json
 
-{{- end }}
+{{- end -}}

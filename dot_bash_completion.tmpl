@@ -6,17 +6,17 @@ command -v aqua &> /dev/null && source <(aqua completion bash)
 
 # terraform
 if command -v terraform &> /dev/null; then
-   #$(command -v terraform) -install-autocomplete 2>/dev/null
-   complete -C $(command -v terraform) terraform
+    #$(command -v terraform) -install-autocomplete 2>/dev/null
+    complete -C $(command -v terraform) terraform
 fi
 # terragrunt
 if command -v terragrunt &> /dev/null; then
-   #$(command -v terragrunt) -install-autocomplete 2>/dev/null
-   complete -C $(command -v terragrunt) terragrunt
+    #$(command -v terragrunt) -install-autocomplete 2>/dev/null
+    complete -C $(command -v terragrunt) terragrunt
 fi
 # aws
 if command -v aws_completer &> /dev/null; then
-   complete -C "$(command -v aws_completer)" aws 
+    complete -C "$(command -v aws_completer)" aws 
 fi
 
 # git

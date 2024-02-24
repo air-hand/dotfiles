@@ -1,0 +1,11 @@
+# env for super-linter (not official)
+# be used both in local and github action
+LINTER_RULES_PATH=.github/linters
+FILTER_REGEX_EXCLUDE=spec\/.*|\.venv\/.*|\.vscode|vscode\/.*
+# lint shell script outside of super-linter
+VALIDATE_BASH=false
+VALIDATE_SHELL_SHFMT=false
+VALIDATE_ALL_CODEBASE=false
+VALIDATE_BASH_EXEC=false
+LOG_LEVEL=WARN
+DEFAULT_BRANCH=main

@@ -3,10 +3,15 @@
 --default-path "**/spec"
 --execdir @specfile
 
-## Default kcov (coverage) options
-# --kcov-options "--include-path=. --path-strip-level=1"
-# --kcov-options "--include-pattern=.sh"
-# --kcov-options "--exclude-pattern=/.shellspec,/spec/,/coverage/,/report/"
+--warning-as-failure
+
+# coverage
+#--kcov
+
+### Default kcov (coverage) options
+#--kcov-options "--include-path=. --path-strip-level=1"
+#--kcov-options "--include-pattern=.sh"
+#--kcov-options "--exclude-pattern=/.shellspec,_spec.sh,/coverage/,/report/,/run_"
 
 ## Example: Include script "myprog" with no extension
 # --kcov-options "--include-pattern=.sh,myprog"

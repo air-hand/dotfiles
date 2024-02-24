@@ -6,7 +6,8 @@ runs:
     - name: install
       run: ./install.sh
       shell: bash
-      working-directory: ${{ github.workspace }} # explicitly set working directory
+      # explicitly set working directory
+      working-directory: ${{ github.workspace }}
 
     - name: chezmoi data
       run: '"$HOME/.local/bin/chezmoi" data'
