@@ -5,8 +5,6 @@
 
 --warning-as-failure
 
---format debug
-
 # coverage
 #--kcov
 
