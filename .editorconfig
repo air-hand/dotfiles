@@ -6,6 +6,9 @@ indent_style = space
 indent_size = 4
 insert_final_newline = true
 
+[*.{json,json5}]
+indent_size = 2
+
 [{Makefile*,*.mk}]
 indent_style = tab
 
