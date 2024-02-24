@@ -18,4 +18,4 @@ packages:
   - name: editorconfig-checker/editorconfig-checker@2.8.0
   - name: suzuki-shunsuke/ghalint@v0.2.9
   - name: mrtazz/checkmake@0.2.2
-  - name: jdx/mise@v2024.1.25
+  - name: jdx/mise@v2024.2.18
