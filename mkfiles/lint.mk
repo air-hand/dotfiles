@@ -1,5 +1,5 @@
 .PHONY: lint
-lint: lint-shell lint-gha super-linter
+lint: lint-shell lint-gha
 
 .PHONY: lint-shell
 lint-shell:
