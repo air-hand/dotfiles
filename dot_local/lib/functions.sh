@@ -69,7 +69,7 @@ prepend() {
     fi
     local PREFIX="${1}"
     read -r STRING
-    echo $STRING | awk '{for(i=1; i<=NF; i++) $i="'"${PREFIX}"'"$i}1'
+    echo "${STRING}" | awk '{for(i=1; i<=NF; i++) $i="'"${PREFIX}"'"$i}1'
 }
 
 super-linter() {
@@ -78,8 +78,4 @@ super-linter() {
     )
     envs+=("$@")
     docker run --rm $(echo "${envs[@]}" | prepend '-e ') -v $(pwd):/tmp/lint ghcr.io/super-linter/super-linter:slim-latest
-}
-
-notify() {
-    say -v Kyoko "$@"
 }
