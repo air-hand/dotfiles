@@ -29,6 +29,9 @@ jobs:
         shell: bash
     steps:
       - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
+        with:
+          # for super-linter
+          fetch-depth: 0
       # install for lint and test
       - uses: ./.github/actions/run-install
       - run: |
