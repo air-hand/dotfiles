@@ -2,19 +2,18 @@ MAKEFILE_DIR := $(dir $(abspath $(lastword $(MAKEFILE_LIST))))
 
 VSCODE_PATH := $(MAKEFILE_DIR)/vscode
 
+SHELL := /bin/bash
+
 .DEFAULT := all
 
 MAKE := make --no-print-directory
 
-all: apply post-setup
+.PHONY: all
+all: apply
 
 .PHONY: apply
 apply:
 	chezmoi apply
-
-.PHONY: post-setup
-post-setup:
-	pre-commit install
 
 .PHONY: watch
 watch:
@@ -26,7 +25,16 @@ copy_from_current:
 	&& test -f "$${VSCODE_USER_SPACE}/keybindings.json" && \
 		cp  "$${VSCODE_USER_SPACE}/keybindings.json" $(VSCODE_PATH)/keybindings.json || true
 
+.PHONY: clean
+clean:
+	@rm -rf coverage
+
 .PHONY: test
-test:
+test: clean
 	@shellspec -s bash
 
+.PHONY: watch-test
+watch-test:
+	/bin/bash -i -c 'watch_cmd "\.sh" "$(MAKE) test"'
+
+include $(MAKEFILE_DIR)mkfiles/*.mk

@@ -1,6 +1,6 @@
 name: check
 
-on:
+on: # yamllint disable-line rule:truthy
   push:
     branches:
       - main
@@ -8,35 +8,56 @@ on:
     branches:
       - main
 
+permissions: {}
+
 jobs:
   run-install-test:
+    permissions:
+      statuses: write
+    runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
         distro: ["ubuntu", "debian"]
-    runs-on: ubuntu-latest
     container:
       image: mcr.microsoft.com/vscode/devcontainers/base:${{ matrix.distro }}
       env:
         CODESPACES: true
         REMOTE_CONTAINERS: true
+    defaults:
+      run:
+        shell: bash
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
+      # install for lint and test
       - uses: ./.github/actions/run-install
       - run: |
-          echo "AQUA_GLOBAL_CONFIG=$HOME/.config/aquaproj-aqua/aqua.yaml" >> $GITHUB_ENV
-      - name: test
-        shell: bash --login -eo pipefail {0}
+          git config --global --add safe.directory "${GITHUB_WORKSPACE}"
+      - uses: aarcangeli/load-dotenv@07308abf0428acf37ca91476fbd580ab2ceb8423 # v1.0.0
+        with:
+          filenames: |
+            .superlinterenv
+      - uses: super-linter/super-linter/slim@25003d0370b45d97187597838ecb9fdadfc08aea # v6
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: setup
         run: |
-          aqua i -a
+          make setup
+        shell: bash -leo pipefail {0}
+      - name: mise env
+        uses: ./.github/actions/mise-hook-env
+      - name: lint
+        run: |
+          make lint
+        shell: bash -leo pipefail {0}
+      - name: test
+        run: |
           make test
+        shell: bash -leo pipefail {0}
 
-  test:
-    name: make test
+  run-install-vm:
+    permissions: {}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
       - uses: ./.github/actions/run-install
-      - name: Run tests
-        shell: bash --login -eo pipefail {0} 
-        run: |
-          make test

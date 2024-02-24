@@ -5,12 +5,33 @@ repos:
     rev: v1.6.26
     hooks:
       - id: actionlint-system
+        args: ['--config-file', '.github/linters/actionlint.yml']
+  - repo: https://github.com/mrtazz/checkmake
+    rev: 0.2.2
+    hooks:
+      - id: checkmake-system
+        exclude: mkfiles/.*
+  - repo: https://github.com/editorconfig-checker/editorconfig-checker.python
+    rev: 2.7.3
+    hooks:
+      - id: editorconfig-checker-system
+        alias: ec
   - repo: local
     hooks:
+      - id: yamllint-system
+        name: "YAML lint"
+        language: python
+        entry: yamllint
+        args: ['--config-file', '.github/linters/.yaml-lint.yml']
+        types: [file, yaml]
+      - id: make_lint
+        name: "Make lint"
+        language: system
+        entry: make lint
+        pass_filenames: false
       - id: make_test
         name: "Make test"
         language: system
         entry: make test
         files: '^.*/.*\.sh$'
         pass_filenames: false
-

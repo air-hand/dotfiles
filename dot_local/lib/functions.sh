@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 
 repo_root() {
-    cd $(git rev-parse --show-toplevel)
+    cd "$(git rev-parse --show-toplevel)"
 }
 
 on_wsl2() {
-    uname -a |grep WSL2 &> /dev/null
+    uname -a | grep WSL2 &>/dev/null
 }
 
 is_in_container() {
@@ -20,17 +20,17 @@ is_in_container() {
 
 watch_cmd() {
     if [ $# -lt 2 ]; then
-        cat << EOF
+        cat <<EOF
 Usage
 
-${0} .*\.txt date
-${0} '.*\.(c|cc|cpp|h|hpp)$' make all
+${FUNCNAME[0]} .*\.txt date
+${FUNCNAME[0]} '.*\.(c|cc|cpp|h|hpp)$' make all
 
 # exclude file pattern
-EXCLUDE=1 ${0} '.*\.(c|cc|cpp|h|hpp)$' echo ignore_cpp_files
+EXCLUDE=1 ${FUNCNAME[0]} '.*\.(c|cc|cpp|h|hpp)$' echo ignore_cpp_files
 
 # debug inotify events
-DEBUG=1 ${0} '.*\.(c|cc|cpp|h|hpp)$' make build
+DEBUG=1 ${FUNCNAME[0]} '.*\.(c|cc|cpp|h|hpp)$' make build
 
 EOF
         return 1
@@ -43,17 +43,17 @@ EOF
         PATTERN_OPTION="--exclude ${PATTERN}"
     fi
 
-    if ! command -v inotifywait &> /dev/null; then
+    if ! command -v inotifywait &>/dev/null; then
         sudo apt install -y inotify-tools
     fi
 
     inotifywait -m -e modify -e create -e delete -r $(pwd) \
         --format '%T %w%f %e' --timefmt '%FT%T' \
-        $PATTERN_OPTION | \
-        while read -r TIME FILEPATH EVENTS; do \
+        $PATTERN_OPTION |
+        while read -r TIME FILEPATH EVENTS; do
             # debug inotify events
-            test ! -z $DEBUG && echo "T: ${TIME}, F: ${FILEPATH}, E: ${EVENTS}"; \
-            $POST_COMMAND; \
+            test ! -z $DEBUG && echo "T: ${TIME}, F: ${FILEPATH}, E: ${EVENTS}"
+            $POST_COMMAND
         done
 }
 
@@ -62,24 +62,24 @@ random_string() {
     cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w $LENGTH | head -n 1
 }
 
-prepend_to_all() {
-    if [ $# -lt 2 ]; then
-        echo "Usage: ${0} <prefix> <string1> <string2> ..." >&2
+prepend() {
+    if [ $# -lt 1 ]; then
+        echo "Usage: echo '<string1> <string2> ...' | ${FUNCNAME[0]} <prefix>" >&2
         return 1
     fi
-
-    PREFIX="${1}"
-    shift 1
-    STRINGS=("$@")
-    printf -- "${PREFIX}%s" "${STRINGS[@]}"
+    local PREFIX="${1}"
+    read -r STRING
+    echo $STRING | awk '{for(i=1; i<=NF; i++) $i="'"${PREFIX}"'"$i}1'
 }
 
-super-linter () {
+super-linter() {
     envs=(
         RUN_LOCAL=true
-        DEFAULT_BRANCH=$(git branch --show-current)
-        VALIDATE_ALL_CODEBASE=false
     )
-    envs_as_string=$(prepend_to_all ' -e ' "${envs[@]}")
-    docker run --rm ${envs_as_string} -v $(pwd):/tmp/lint ghcr.io/super-linter/super-linter:slim-latest $@
+    envs+=("$@")
+    docker run --rm $(echo "${envs[@]}" | prepend '-e ') -v $(pwd):/tmp/lint ghcr.io/super-linter/super-linter:slim-latest
+}
+
+notify() {
+    say -v Kyoko "$@"
 }

@@ -2,7 +2,7 @@
 
 echo "run $0"
 
-if ! command -v docker-credential-desktop.exe &> /dev/null; then
+if ! command -v docker-credential-desktop.exe &>/dev/null; then
     exit 0
 fi
 
@@ -13,10 +13,9 @@ if [ ! -f ~/.docker/config.json ]; then
     exit 0
 fi
 
-if ! grep "credsStore" ~/.docker/config.json > /dev/null 2>&1; then
+if ! grep "credsStore" ~/.docker/config.json >/dev/null 2>&1; then
     exit 0
 fi
 
-cat ~/.docker/config.json | grep -v "credsStore" > /tmp/fixed-docker-config.json
+cat ~/.docker/config.json | grep -v "credsStore" >/tmp/fixed-docker-config.json
 mv -f /tmp/fixed-docker-config.json ~/.docker/config.json
-
