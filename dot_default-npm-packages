@@ -1,3 +1,4 @@
 # mise nodejs
 @devcontainers/cli
 prettier
+renovate

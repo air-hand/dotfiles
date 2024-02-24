@@ -37,4 +37,8 @@ test: clean
 watch-test:
 	/bin/bash -i -c 'watch_cmd "\.sh" "$(MAKE) test"'
 
+.PHONY: renovate
+renovate:
+	npx renovate --platform=local
+
 include $(MAKEFILE_DIR)mkfiles/*.mk
