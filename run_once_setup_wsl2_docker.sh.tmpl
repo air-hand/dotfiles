@@ -4,14 +4,14 @@
 
 # check docker running on wsl2 or docker desktop
 function is_docker_wsl2() {
-    if systemctl status docker &> /dev/null; then
+    if systemctl status docker &>/dev/null; then
         return 0
     fi
     return 1
 }
 
 # enable systemd service on wsl2
-cat << EOF | sudo tee /etc/wsl.conf
+cat <<EOF | sudo tee /etc/wsl.conf
 [automount]
 enabled = true
 options = "metadata,umask=22,fmask=11"
@@ -39,13 +39,16 @@ EOF
 # https://learn.microsoft.com/ja-jp/windows/ai/directml/gpu-cuda-in-wsl
 # install nvidia-container-toolkit for use gpus in docker container
 # https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html#setting-up-nvidia-container-toolkit
-test ! -f /usr/share/keyrings/nvidia-container-toolkit-keyring.gpg && \
+test ! -f /usr/share/keyrings/nvidia-container-toolkit-keyring.gpg &&
     curl -fsSL https://nvidia.github.io/libnvidia-container/gpgkey | sudo gpg --dearmor -o /usr/share/keyrings/nvidia-container-toolkit-keyring.gpg
 
-distribution=$(. /etc/os-release;echo $ID$VERSION_ID) \
-      && curl -s -L https://nvidia.github.io/libnvidia-container/$distribution/libnvidia-container.list | \
-            sed 's#deb https://#deb [signed-by=/usr/share/keyrings/nvidia-container-toolkit-keyring.gpg] https://#g' | \
-            sudo tee /etc/apt/sources.list.d/nvidia-container-toolkit.list
+distribution=$(
+    . /etc/os-release
+    echo $ID$VERSION_ID
+) &&
+    curl -s -L https://nvidia.github.io/libnvidia-container/$distribution/libnvidia-container.list |
+    sed 's#deb https://#deb [signed-by=/usr/share/keyrings/nvidia-container-toolkit-keyring.gpg] https://#g' |
+        sudo tee /etc/apt/sources.list.d/nvidia-container-toolkit.list
 
 sudo apt update && sudo apt install -y nvidia-container-toolkit
 

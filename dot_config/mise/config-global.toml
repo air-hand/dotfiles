@@ -2,7 +2,9 @@
 python = ['3.12']
 go = ['1.20']
 rust = 'stable'
-node = '20'
+node = '21'
 
 [settings]
 legacy_version_file = true
+experimental = true
+python_venv_auto_create = true

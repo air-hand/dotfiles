@@ -3,25 +3,26 @@
 set -eo pipefail
 
 # setup path for not login shell
-test -f /home/linuxbrew/.linuxbrew/bin/brew && \
+test -f /home/linuxbrew/.linuxbrew/bin/brew &&
     eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 # install by brew
 install_by_brew=(
-    "aquaproj/aqua/aqua" \
+    "aquaproj/aqua/aqua"
     # not managed by aqua or for some reasons.
-    "nvim" # for vscode-neovim
+    # for vscode-neovim
+    "nvim"
+    "kcov"
 )
-for inst in ${install_by_brew[@]}
-do
+for inst in "${install_by_brew[@]}"; do
     brew install $inst
 done
 
 # remove nvim managed by aqua if exists for vscode-neovim.
 test -f "$(aqua root-dir)/bin/nvim" && rm "$(aqua root-dir)/bin/nvim"
 
-{{/* install cli globally except for a dev-container. */}}
-{{ if not .is_in_container }}
+{{ if not .is_in_container -}}
+{{/* install cli globally except for a dev-container. -*/}}
 # install cli globally by aqua. aqua.yaml hash: {{ include "dot_config/aquaproj-aqua/aqua.yaml" | sha256sum }}
 export AQUA_GLOBAL_CONFIG=$HOME/.config/aquaproj-aqua/aqua.yaml
 aqua install --all

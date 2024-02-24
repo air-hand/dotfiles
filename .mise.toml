@@ -1,0 +1,10 @@
+# https://github.com/jdx/mise#configuration
+[env]
+
+[tools]
+poetry = {version='1.7.1'}
+python = {version='3.12.1', virtualenv='.venv'}
+
+[settings]
+experimental = true
+python_venv_auto_create = true

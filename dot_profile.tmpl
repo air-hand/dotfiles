@@ -8,7 +8,7 @@ export VISUAL=nvim
 export LESS="${LESS} -Q -i -R"
 
 if test -f /home/linuxbrew/.linuxbrew/bin/brew; then
-  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
 
 command -v aqua &> /dev/null && export PATH="$(aqua root-dir)/bin:$PATH"

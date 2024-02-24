@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "dotfiles"
+version = "1.0.0"
+description = "My dotfiles"
+authors = ["air-hand <45233435+air-hand@users.noreply.github.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+
+
+[tool.poetry.group.dev.dependencies]
+pre-commit = "^3.6.0"
+pyflakes = "^3.1.0"
+yamllint = "^1.35.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

@@ -1,0 +1,9 @@
+name: "Mise hook env for actions"
+
+runs:
+  using: "composite"
+  steps:
+    - name: export
+      run: ./export.sh
+      shell: bash
+      working-directory: ${{ github.action_path }}
