@@ -3,5 +3,5 @@
     "github>aquaproj/aqua-renovate-config#1.13.0"
   ],
   "prConcurrentLimit": 10,
-  "enabledManagers": ["regex"], // update only aqua compoments.
+  "enabledManagers": ["custom.regex"], // update only aqua compoments.
 }
