@@ -12,9 +12,7 @@ if test -f /home/linuxbrew/.linuxbrew/bin/brew; then
 fi
 
 command -v aqua &> /dev/null && export PATH="$(aqua root-dir)/bin:$PATH"
-{{ if not .is_in_container }}
 export AQUA_GLOBAL_CONFIG=$HOME/.config/aquaproj-aqua/aqua.yaml
-{{ end }}
 
 # mise
 {{ if not .is_in_container }}
