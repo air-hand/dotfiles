@@ -11,7 +11,7 @@ registries:
     ref: v4.154.0 # renovate: depName=aquaproj/aqua-registry
 packages:
   - name: cli/cli@v2.42.1
-  - name: nektos/act@v0.2.57
+  - name: nektos/act@v0.2.60
   - name: jqlang/jq@jq-1.7.1
   - name: kubernetes/kubectl@v1.29.2
   - name: helm/helm@v3.14.2
