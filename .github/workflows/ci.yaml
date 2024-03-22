@@ -49,6 +49,13 @@ jobs:
         shell: bash -leo pipefail {0}
 
   run-install-vm:
+    permissions: {}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@9bb56186c3b09b4f86b1c65136769dd318469633 # v4
+      - uses: ./.github/actions/run-install
+
+  super-linter:
     permissions:
       statuses: write
     runs-on: ubuntu-latest
@@ -57,8 +64,6 @@ jobs:
         with:
           # for super-linter
           fetch-depth: 0
-      # also need for lint
-      - uses: ./.github/actions/run-install
       - uses: aarcangeli/load-dotenv@07308abf0428acf37ca91476fbd580ab2ceb8423 # v1.0.0
         with:
           filenames: |
