@@ -1,0 +1,66 @@
+name: "Terraform plan and apply"
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - terraform/**
+    types:
+      - opened
+      - synchronize
+      - reopened
+      - closed
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions: {}
+
+jobs:
+  terraform:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+    env:
+      TF_CLOUD_WORKSPACE: dotfiles
+    steps:
+      - uses: actions/checkout@9bb56186c3b09b4f86b1c65136769dd318469633 # v4
+
+      # just use to login to terraform cloud
+      - uses: hashicorp/setup-terraform@a75f1a3ccea3c602b976c7c8c15b0c200cf101d0 # v3
+        with:
+          cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
+
+      - uses: aquaproj/aqua-installer@4551ec64e21bf0f557c2525135ff0bd2cba40ec7 # v3.0.0
+        with:
+          aqua_version: v2.25.1
+
+      - name: init
+        run: |
+          terragrunt run-all init --terragrunt-non-interactive --terragrunt-tfpath "${GITHUB_WORKSPACE}/.github/scripts/tfwrapper.sh"
+        env:
+          TF_CLOUD_ORGANIZATION: ${{ secrets.TF_CLOUD_ORGANIZATION }}
+
+      - name: plan
+        run: |
+          terragrunt run-all plan --terragrunt-non-interactive --terragrunt-tfpath "${GITHUB_WORKSPACE}/.github/scripts/tfwrapper.sh"
+        env:
+          TF_CLOUD_ORGANIZATION: ${{ secrets.TF_CLOUD_ORGANIZATION }}
+          GITHUB_APP_ID: ${{ secrets.GH_APP_ID }}
+          GITHUB_APP_INSTALLATION_ID: ${{ secrets.GH_APP_INSTALLATION_ID }}
+          GITHUB_APP_PEM_FILE: ${{ secrets.GH_APP_PEM_FILE }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: apply
+        if: github.event.pull_request.merged == true
+        run: |
+          terragrunt run-all apply --terragrunt-non-interactive --terragrunt-tfpath "${GITHUB_WORKSPACE}/.github/scripts/tfwrapper.sh"
+        env:
+          TF_CLOUD_ORGANIZATION: ${{ secrets.TF_CLOUD_ORGANIZATION }}
+          GITHUB_APP_ID: ${{ secrets.GH_APP_ID }}
+          GITHUB_APP_INSTALLATION_ID: ${{ secrets.GH_APP_INSTALLATION_ID }}
+          GITHUB_APP_PEM_FILE: ${{ secrets.GH_APP_PEM_FILE }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
