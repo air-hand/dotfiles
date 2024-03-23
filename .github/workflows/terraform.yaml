@@ -14,7 +14,7 @@ on:
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 permissions: {}
 
@@ -43,6 +43,16 @@ jobs:
           terragrunt run-all init --terragrunt-non-interactive --terragrunt-tfpath "${GITHUB_WORKSPACE}/.github/scripts/tfwrapper.sh"
         env:
           TF_CLOUD_ORGANIZATION: ${{ secrets.TF_CLOUD_ORGANIZATION }}
+
+      - name: validate
+        run: |
+          terragrunt run-all validate --terragrunt-non-interactive --terragrunt-tfpath "${GITHUB_WORKSPACE}/.github/scripts/tfwrapper.sh"
+        env:
+          TF_CLOUD_ORGANIZATION: ${{ secrets.TF_CLOUD_ORGANIZATION }}
+          GITHUB_APP_ID: ${{ secrets.GH_APP_ID }}
+          GITHUB_APP_INSTALLATION_ID: ${{ secrets.GH_APP_INSTALLATION_ID }}
+          GITHUB_APP_PEM_FILE: ${{ secrets.GH_APP_PEM_FILE }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: plan
         run: |

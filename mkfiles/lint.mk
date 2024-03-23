@@ -23,14 +23,16 @@ pre-commit-all:
 	@pre-commit run --all-files
 
 .PHONY: super-linter
+super-linter: SUPERLINTER_IMAGE ?= ghcr.io/super-linter/super-linter:slim-v6
 super-linter:
-	@ARGS=""; \
+	@docker pull $(SUPERLINTER_IMAGE); \
+	ARGS=""; \
 	if [[ -z "$$GITHUB_ACTION" ]]; then \
-		ARGS="-e RUN_LOCAL=true"; \
+		ARGS="-e RUN_LOCAL=true -e VALIDATE_ALL_CODEBASE=true"; \
 	fi; \
 	docker run --rm \
-		$${ARGS} \
 		--env-file .superlinterenv \
 		-e TZ="$${TZ:-Asia/Tokyo}" \
+		$${ARGS} \
 		-v $$(pwd):/tmp/lint \
-		ghcr.io/super-linter/super-linter:slim-v6 2>&1 | tee superlinter.log
+		$(SUPERLINTER_IMAGE) 2>&1 | tee superlinter.log
