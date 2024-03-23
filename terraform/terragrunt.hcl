@@ -36,6 +36,7 @@ terraform {
     commands = ["validate"]
     execute = [
       "tflint",
+      "--terragrunt-external-tflint",
       "--config",
       "${get_repo_root()}/.github/linters/.tflint.hcl"
     ]
