@@ -64,10 +64,9 @@ jobs:
         with:
           # for super-linter
           fetch-depth: 0
-      - uses: aarcangeli/load-dotenv@07308abf0428acf37ca91476fbd580ab2ceb8423 # v1.0.0
-        with:
-          filenames: |
-            .superlinterenv
+      - name: load env
+        run: |
+          cat .superlinterenv >> "$GITHUB_ENV"
       - uses: super-linter/super-linter/slim@e0fc164bba85f4b58c6cd17ba1dfd435d01e8a06 # v6
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
