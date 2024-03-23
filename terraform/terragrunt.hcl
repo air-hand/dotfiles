@@ -30,3 +30,14 @@ generate "data" {
   if_exists = "overwrite_terragrunt"
   contents  = file("shared/data.tf")
 }
+
+terraform {
+  after_hook "validate_tflint" {
+    commands = ["validate"]
+    execute = [
+      "tflint",
+      "--config",
+      "${get_repo_root()}/.github/linters/.tflint.hcl"
+    ]
+  }
+}
