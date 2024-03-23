@@ -38,7 +38,7 @@ terraform {
       "tflint",
       "--terragrunt-external-tflint",
       "--config",
-      "${get_repo_root()}/.github/linters/.tflint.hcl"
+      "${get_repo_root()}/terraform/.tflint.hcl"
     ]
   }
 }
