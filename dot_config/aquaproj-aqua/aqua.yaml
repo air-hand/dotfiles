@@ -25,7 +25,7 @@ packages:
   - name: reviewdog/reviewdog@v0.17.2
   - name: shellspec/shellspec@0.28.1
   - name: jdx/mise@v2024.3.9
-  - name: junegunn/fzf@0.46.1
+  - name: junegunn/fzf@0.48.1
   - name: hashicorp/terraform@v1.7.5
   - name: helmfile/helmfile@v0.163.0
   - name: ahmetb/kubectx/kubens@v0.9.5
