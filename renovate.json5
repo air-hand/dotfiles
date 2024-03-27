@@ -1,6 +1,6 @@
 {
   "extends": [
-    "github>aquaproj/aqua-renovate-config#2.2.0"
+    "github>aquaproj/aqua-renovate-config#2.2.1"
   ],
   "prConcurrentLimit": 10,
   "enabledManagers": ["custom.regex"], // update only aqua compoments.
