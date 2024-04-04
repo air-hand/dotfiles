@@ -15,7 +15,7 @@ packages:
   - name: rhysd/actionlint@v1.6.27
   - name: koalaman/shellcheck@v0.10.0
   - name: shellspec/shellspec@0.28.1
-  - name: editorconfig-checker/editorconfig-checker@v3.0.0
+  - name: editorconfig-checker/editorconfig-checker@v3.0.1
   - name: suzuki-shunsuke/ghalint@v0.2.9
   - name: mrtazz/checkmake@0.2.2
   - name: jdx/mise@v2024.3.9
