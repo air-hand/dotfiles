@@ -28,7 +28,7 @@ jobs:
     env:
       TF_CLOUD_WORKSPACE: ${{ vars.TF_CLOUD_WORKSPACE }}
     steps:
-      - uses: actions/checkout@9bb56186c3b09b4f86b1c65136769dd318469633 # v4
+      - uses: actions/checkout@0ad4b8fadaa221de15dcec353f45205ec38ea70b # v4
 
       # just use to login to terraform cloud
       - uses: hashicorp/setup-terraform@a75f1a3ccea3c602b976c7c8c15b0c200cf101d0 # v3
