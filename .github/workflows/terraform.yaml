@@ -31,7 +31,7 @@ jobs:
       - uses: actions/checkout@0ad4b8fadaa221de15dcec353f45205ec38ea70b # v4
 
       # just use to login to terraform cloud
-      - uses: hashicorp/setup-terraform@85c6779ba663fba59057333bd3cb12abb7259051 # v3
+      - uses: hashicorp/setup-terraform@fa933962d0efbe0dd57ac844e52cdb97ff655f84 # v3
         with:
           cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
 
