@@ -55,8 +55,14 @@ Describe 'functions.sh'
         It 'should return 0 if in container.'
             # stub /proc/1/cgroup
             cat() {
-                printf "%s\n" \
-                    "2:cpu:/\ocker/foobarbazn1:cpuset:/\docker/foobarbazn0::/docker/foobarbaz"
+                if [ "${1:-}" != "/proc/1/cgroup" ]; then
+                    command cat "$@"
+                    return
+                fi
+                %text
+                #| 2:cpu:/docker/foobarbaz
+                #| 1:cpuset:/docker/foobarbaz
+                #| 0::/docker/foobarbaz
             }
 
             When call is_in_container
@@ -66,8 +72,14 @@ Describe 'functions.sh'
         It 'should return 1 if not in container.'
             # stub /proc/1/cgroup
             cat() {
-                printf "%s\n" \
-                    "2:cpu:/\n1:cpuset:/\n0::/init.scope"
+                if [ "${1:-}" != "/proc/1/cgroup" ]; then
+                    command cat "$@"
+                    return
+                fi
+                %text
+                #| 2:cpu:/
+                #| 1:cpuset:/
+                #| 0::/init.scope
             }
 
             When call is_in_container
