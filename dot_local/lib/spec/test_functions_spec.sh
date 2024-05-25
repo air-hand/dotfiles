@@ -42,7 +42,7 @@ Describe 'functions.sh'
     End
 
     Describe 'super-linter()'
-        # Mock docker command
+        # Stub docker command
         docker() { echo "${@}"; }
 
         It 'should pass arguments to envs'
@@ -53,7 +53,7 @@ Describe 'functions.sh'
 
     Describe 'is_in_container()'
         It 'should return 0 if in container.'
-            # Mock /proc/1/cgroup
+            # stub /proc/1/cgroup
             cat() {
                 printf "%s\n" \
                     "2:cpu:/\ocker/foobarbazn1:cpuset:/\docker/foobarbazn0::/docker/foobarbaz"
@@ -64,7 +64,7 @@ Describe 'functions.sh'
         End
 
         It 'should return 1 if not in container.'
-            # Mock /proc/1/cgroup
+            # stub /proc/1/cgroup
             cat() {
                 printf "%s\n" \
                     "2:cpu:/\n1:cpuset:/\n0::/init.scope"

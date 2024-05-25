@@ -27,10 +27,11 @@ Describe 'export.sh'
         Include ../.github/actions/mise-hook-env/export.sh
 
         It 'should export variables'
-            # Mock mise command
+            # stub mise command
             mise() {
                 if [[ "$1" != "hook-env" ]]; then
                     command mise "$@"
+                    return
                 fi
                 %text
                 #|export FOO=BAR1
@@ -45,10 +46,11 @@ Describe 'export.sh'
         End
 
         It 'should export variables (path)'
-            # Mock mise command
+            # stub mise command
             mise() {
                 if [[ "$1" != "hook-env" ]]; then
                     command mise "$@"
+                    return
                 fi
                 %text
                 #|export PATH=/usr/local/bin:/usr/bin
