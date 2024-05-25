@@ -1,4 +1,4 @@
-# tests for dot_local/bin/functions.sh
+# tests for dot_local/lib/functions.sh
 
 Describe 'functions.sh'
     setup() { :; }
@@ -48,6 +48,30 @@ Describe 'functions.sh'
         It 'should pass arguments to envs'
             When call super-linter FOO=BAR
             The stdout should regexp "-e FOO=BAR"
+        End
+    End
+
+    Describe 'is_in_container()'
+        It 'should return 0 if in container.'
+            # Mock /proc/1/cgroup
+            cat() {
+                printf "%s\n" \
+                    "2:cpu:/\ocker/foobarbazn1:cpuset:/\docker/foobarbazn0::/docker/foobarbaz"
+            }
+
+            When call is_in_container
+            The status should be success
+        End
+
+        It 'should return 1 if not in container.'
+            # Mock /proc/1/cgroup
+            cat() {
+                printf "%s\n" \
+                    "2:cpu:/\n1:cpuset:/\n0::/init.scope"
+            }
+
+            When call is_in_container
+            The status should be failure
         End
     End
 End
