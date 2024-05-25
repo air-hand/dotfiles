@@ -1,5 +1,5 @@
 # https://coderabbit.ai/integrations/coderabbit-overrides.v2.json
-language: "jp"
+language: "ja-JP"
 early_access: false
 reviews:
   high_level_summary: true

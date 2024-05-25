@@ -9,13 +9,9 @@ on_wsl2() {
 }
 
 is_in_container() {
-    if test -f /.dockerenv; then
-        return 0
-    fi
-    if ! test -z "${REMOTE_CONTAINERS}" || ! test -z "${CODESPACES}"; then
-        return 0
-    fi
-    return 1
+    cat /proc/1/cgroup | grep -q ":/docker/" 2>/dev/null \
+        && return 0 \
+        || return 1
 }
 
 watch_cmd() {
