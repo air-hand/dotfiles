@@ -1,4 +1,5 @@
 name: "Mise hook env for actions"
+description: "Mise hook env for actions"
 
 runs:
   using: "composite"
