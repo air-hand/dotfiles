@@ -15,6 +15,7 @@ jobs:
     permissions:
       statuses: write
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     strategy:
       fail-fast: false
       matrix:
@@ -50,6 +51,7 @@ jobs:
 
   run-install-vm:
     permissions: {}
+    timeout-minutes: 10
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4
@@ -58,6 +60,7 @@ jobs:
   super-linter:
     permissions:
       statuses: write
+    timeout-minutes: 10
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4
