@@ -22,5 +22,15 @@
       "addLabels": ["patch"],
       "automerge": true,
     },
+    {
+      "matchPackagePatterns": [
+        "^.*terraform.*$",
+        "^.*terragrunt.*$",
+        "^.*tflint.*$",
+        "^.*tfsec.*$",
+        "^.*tfcmt.*$",
+      ],
+      "addLabels": ["terraform-deps"],
+    }
   ]
 }
