@@ -13,6 +13,9 @@ locals {
     patch = {
       color = "0000FF"
     },
+    terraform-deps = {
+      color = "CCCCFF"
+    },
   }
 }
 
