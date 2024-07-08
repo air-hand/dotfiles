@@ -1,32 +1,35 @@
 locals {
-  labels = [
-    {
-      name  = "dependencies"
-      color = "CCCCCC"
+  labels = {
+    dependencies = {
+      color       = "0366D6"
+      description = "Pull requests that update a dependency file"
     },
-    {
-      name  = "major"
+    major = {
       color = "FF0000"
     },
-    {
-      name  = "minor"
+    minor = {
       color = "00FF00"
     },
-    {
-      name  = "patch"
+    patch = {
       color = "0000FF"
     },
-  ]
+  }
 }
 
-resource "github_issue_labels" "dependencies" {
-  repository = data.github_repository.current.name
+resource "github_issue_label" "dependencies" {
+  for_each = local.labels
 
-  dynamic "label" {
-    for_each = local.labels
-    content {
-      name  = label.value.name
-      color = label.value.color
-    }
+  repository  = data.github_repository.current.name
+  name        = each.key
+  color       = each.value.color
+  description = lookup(each.value, "description", null)
+}
+
+import {
+  for_each = {
+    for k, v in local.labels : k => v
+    if k != "major"
   }
+  to = github_issue_label.dependencies[each.key]
+  id = "${data.github_repository.current.name}:${each.key}"
 }
