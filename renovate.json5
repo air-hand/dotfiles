@@ -4,4 +4,23 @@
   ],
   "prConcurrentLimit": 10,
   "enabledManagers": ["custom.regex"], // update only aqua compoments.
+  "labels": [
+    "dependencies",
+  ],
+  "assigneesFromCodeOwners": true,
+  "packageRules": [
+    {
+      "matchUpdateTypes": ["major"],
+      "addLabels": ["major"],
+    },
+    {
+      "matchUpdateTypes": ["minor"],
+      "addLabels": ["minor"],
+    },
+    {
+      "matchUpdateTypes": ["patch"],
+      "addLabels": ["patch"],
+      "automerge": true,
+    },
+  ]
 }
