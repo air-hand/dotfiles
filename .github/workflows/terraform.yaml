@@ -1,16 +1,14 @@
 name: "Terraform plan and apply"
 
-on:
+on: # yamllint disable-line rule:truthy
   pull_request:
     branches:
       - main
-    paths:
-      - terraform/**
-      - .github/workflows/terraform.yaml
     types:
       - opened
       - synchronize
       - reopened
+      - labeled
       - closed
 
 concurrency:
@@ -26,13 +24,14 @@ jobs:
       contents: read
       pull-requests: write
     timeout-minutes: 10
+    if: contains(github.event.pull_request.labels.*.name, 'terraform-deps')
     env:
       TF_CLOUD_WORKSPACE: ${{ vars.TF_CLOUD_WORKSPACE }}
     steps:
       - uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4
 
       # just use to login to terraform cloud
-      - uses: hashicorp/setup-terraform@3235006f3a5bc0e29fb49e41401c5bff62c4d885 # v3
+      - uses: hashicorp/setup-terraform@651471c36a6092792c552e8b1bef71e592b462d8 # v3.1.1
         with:
           cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
 
