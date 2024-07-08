@@ -6,5 +6,6 @@
   "enabledManagers": ["custom.regex"], // update only aqua compoments.
   "labels": [
     "dependencies",
-  ]
+  ],
+  "assigneesFromCodeOwners": true,
 }
