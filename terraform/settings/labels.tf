@@ -24,12 +24,3 @@ resource "github_issue_label" "dependencies" {
   color       = each.value.color
   description = lookup(each.value, "description", null)
 }
-
-import {
-  for_each = {
-    for k, v in local.labels : k => v
-    if k != "major"
-  }
-  to = github_issue_label.dependencies[each.key]
-  id = "${data.github_repository.current.name}:${each.key}"
-}
