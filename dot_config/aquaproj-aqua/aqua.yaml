@@ -18,7 +18,7 @@ packages:
   - name: twistedpair/google-cloud-sdk@479.0.0
   - name: aws/aws-cli@2.16.2
   - name: aquasecurity/trivy@v0.52.0
-  - name: aquasecurity/tfsec@v1.28.6
+  - name: aquasecurity/tfsec@v1.28.10
   - name: rhysd/actionlint@v1.7.1
   - name: tsenart/vegeta@v12.11.1
   - name: argoproj/argo-cd@v2.11.3
