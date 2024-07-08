@@ -17,7 +17,7 @@ packages:
   - name: helm/helm@v3.15.1
   - name: twistedpair/google-cloud-sdk@479.0.0
   - name: aws/aws-cli@2.16.2
-  - name: aquasecurity/trivy@v0.52.0
+  - name: aquasecurity/trivy@v0.53.0
   - name: aquasecurity/tfsec@v1.28.10
   - name: rhysd/actionlint@v1.7.1
   - name: tsenart/vegeta@v12.11.1
