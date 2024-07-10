@@ -73,3 +73,19 @@ jobs:
       - uses: super-linter/super-linter/slim@88ea3923a7e1f89dd485d079f6eb5f5e8f937589 # v6
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  check-ci-result:
+    needs: [run-install-test, run-install-vm, super-linter]
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    if: always()
+    steps:
+      - name: check results
+        run: |
+          FAILURE_JOBS=$(echo "${NEEDS_JSON}" | jq -r 'to_entries | map(select(.value.result == "failure")) | map(.key + " " + .value.result) | join("\n")')
+          if [ -n "${FAILURE_JOBS}" ]; then
+            echo "The following jobs failed: ${FAILURE_JOBS}"
+            exit 1
+          fi
+        env:
+          NEEDS_JSON: ${{ toJSON(needs) }}
