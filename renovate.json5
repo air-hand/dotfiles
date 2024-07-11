@@ -3,7 +3,7 @@
     "github>aquaproj/aqua-renovate-config#2.3.1"
   ],
   "prConcurrentLimit": 10,
-  "enabledManagers": ["custom.regex"], // update only aqua compoments.
+  "enabledManagers": ["custom.regex", "terraform"], // update aqua and terraform.
   "labels": [
     "dependencies",
   ],
