@@ -3,10 +3,8 @@ resource "github_branch_protection" "main" {
   pattern       = "main"
   required_status_checks {
     contexts = [
-      "run-install-test (debian)",
-      "run-install-test (ubuntu)",
-      "run-install-vm",
-      "super-linter",
+      "check-ci-result",
+      "check-tf-result",
     ]
     strict = true
   }

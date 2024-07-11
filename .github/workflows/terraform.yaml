@@ -75,3 +75,19 @@ jobs:
           GITHUB_APP_INSTALLATION_ID: ${{ secrets.GH_APP_INSTALLATION_ID }}
           GITHUB_APP_PEM_FILE: ${{ secrets.GH_APP_PEM_FILE }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  check-tf-result:
+    needs: terraform
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    if: always()
+    steps:
+      - name: check results
+        run: |
+          FAILURE_JOBS=$(echo "${NEEDS_JSON}" | jq -r 'to_entries | map(select(.value.result == "failure")) | map(.key + " " + .value.result) | join("\n")')
+          if [ -n "${FAILURE_JOBS}" ]; then
+            echo "The following jobs failed: ${FAILURE_JOBS}"
+            exit 1
+          fi
+        env:
+          NEEDS_JSON: ${{ toJSON(needs) }}
