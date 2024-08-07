@@ -33,3 +33,4 @@ packages:
   - name: kubernetes-sigs/kustomize@kustomize/v5.4.3
   - name: loft-sh/devpod@v0.5.18
   - name: coder/coder@v2.13.3
+  - name: opentofu/opentofu@v1.8.0
