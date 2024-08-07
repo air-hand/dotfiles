@@ -16,6 +16,7 @@
     {
       "matchUpdateTypes": ["minor"],
       "addLabels": ["minor"],
+      "automerge": true,
     },
     {
       "matchUpdateTypes": ["patch"],
