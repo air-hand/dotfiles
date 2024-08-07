@@ -1,5 +1,6 @@
 terraform {
   cloud {
+    hostname = "app.terraform.io"
     organization = "${TF_CLOUD_ORGANIZATION}"
     workspaces {
       name = "${TF_CLOUD_WORKSPACE}"

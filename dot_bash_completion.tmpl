@@ -4,20 +4,17 @@ command -v mise &> /dev/null && \
     eval "$(mise completion bash)"
 command -v aqua &> /dev/null && source <(aqua completion bash)
 
-# terraform
-if command -v terraform &> /dev/null; then
-    #$(command -v terraform) -install-autocomplete 2>/dev/null
-    complete -C $(command -v terraform) terraform
-fi
-# terragrunt
-if command -v terragrunt &> /dev/null; then
-    #$(command -v terragrunt) -install-autocomplete 2>/dev/null
-    complete -C $(command -v terragrunt) terragrunt
-fi
-# aws
-if command -v aws_completer &> /dev/null; then
-    complete -C "$(command -v aws_completer)" aws 
-fi
+# terraform and etc.
+while read cmd
+do
+    if command -v $cmd &> /dev/null; then
+        complete -C $(command -v $cmd) $cmd
+    fi
+done << EOF
+terraform
+terragrunt
+tofu
+EOF
 
 # git
 if [ -f ~/.git-completion.sh ]; then
@@ -39,18 +36,17 @@ if command -v direnv &> /dev/null; then
     eval "$(direnv hook bash)"
 fi
 
-commands=(
-    "kubectl" \
-    "helm" \
-    "helmfile" \
-    "kustomize" \
-    "devpod"
-)
-for cmd in ${commands[@]}
+while read cmd
 do
     if command -v $cmd &> /dev/null; then
         eval "$($cmd completion bash)"
     fi
-done
+done << EOF
+kubectl
+helm
+helmfile
+kustomize
+devpod
+EOF
 
 {{ completion "bash" }}
