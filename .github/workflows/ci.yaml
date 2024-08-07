@@ -69,7 +69,7 @@ jobs:
       - name: load env
         run: |
           grep -v '#' .superlinterenv >> "$GITHUB_ENV"
-      - uses: super-linter/super-linter/slim@3fe03abab2eafb293ace16d4a3b07aeabcb3f1a0 # v6
+      - uses: super-linter/super-linter/slim@b4515bd4ad9d0aa4681960e053916ab991bdbe96 # v6
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
