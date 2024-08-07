@@ -25,6 +25,7 @@
     {
       "matchPackagePatterns": [
         "^.*terraform.*$",
+        "^.*tofu.*$",
         "^.*terragrunt.*$",
         "^.*tflint.*$",
         "^.*tfsec.*$",
