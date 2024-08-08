@@ -86,6 +86,7 @@ jobs:
         shell: bash -leo pipefail {0}
         env:
           LOG_LEVEL: debug
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   check-ci-result:
     needs: [run-install-test, run-install-vm, super-linter]
