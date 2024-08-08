@@ -73,6 +73,20 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+  renovate:
+    permissions: {}
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4
+      - uses: ./.github/actions/run-install
+      - name: renovate
+        run: |
+          make renovate
+        shell: bash -leo pipefail {0}
+        env:
+          LOG_LEVEL: debug
+
   check-ci-result:
     needs: [run-install-test, run-install-vm, super-linter]
     runs-on: ubuntu-latest
