@@ -42,6 +42,6 @@ renovate: LOG_LEVEL ?= info
 renovate:
 #	LOG_LEVEL=$(LOG_LEVEL) npx renovate --platform=local --token=$$(gh auth token)
 	CURRENT_REPO=$$(gh repo view --json 'nameWithOwner' --jq '.nameWithOwner') && \
-	LOG_LEVEL=$(LOG_LEVEL) RENOVATE_CONFIG_FILE=renovate.json5 npx renovate $${CURRENT_REPO} --dry-run --token=$$(gh auth token) --require-config=ignored --schedule= 
+	LOG_LEVEL=$(LOG_LEVEL) RENOVATE_CONFIG_FILE=./renovate.json5 RENOVATE_BASE_BRANCHES=$$(git branch --show-current) npx renovate $${CURRENT_REPO} --dry-run --token=$$(gh auth token) --require-config=ignored --schedule=
 
 include $(MAKEFILE_DIR)mkfiles/*.mk
