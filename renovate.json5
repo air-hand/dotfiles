@@ -33,6 +33,10 @@
         "^.*tfcmt.*$",
       ],
       "addLabels": ["terraform-deps"],
+    },
+    {
+      "matchDatasources": ["terraform-provider"],
+      "registryUrls": ["https://registry.opentofu.org"]
     }
   ]
 }
