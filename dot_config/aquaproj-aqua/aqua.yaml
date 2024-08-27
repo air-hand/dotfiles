@@ -21,7 +21,7 @@ packages:
   - name: aquasecurity/tfsec@v1.28.10
   - name: rhysd/actionlint@v1.7.1
   - name: tsenart/vegeta@v12.12.0
-  - name: argoproj/argo-cd@v2.12.2
+  - name: argoproj/argo-cd@v2.12.3
   - name: reviewdog/reviewdog@v0.20.1
   - name: shellspec/shellspec@0.28.1
   - name: jdx/mise@v2024.8.13
