@@ -19,6 +19,18 @@ Describe 'functions.sh'
         End
     End
 
+    Describe 'multiline2oneline()'
+        It 'should return oneline'
+            Data
+                #|foo
+                #|bar
+                #|baz
+            End
+            When call multiline2oneline
+            The output should eq "foo\nbar\nbaz\n"
+        End
+    End
+
     Describe 'prepend()'
         Describe 'parameters'
             Parameters

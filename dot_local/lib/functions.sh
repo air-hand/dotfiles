@@ -58,6 +58,10 @@ random_string() {
     cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w $LENGTH | head -n 1
 }
 
+multiline2oneline() {
+    cat /dev/stdin | sed -z 's/\n/\\n/g'
+}
+
 prepend() {
     if [ $# -lt 1 ]; then
         echo "Usage: echo '<string1> <string2> ...' | ${FUNCNAME[0]} <prefix>" >&2
