@@ -4,7 +4,7 @@
 # Add 'terraform-deps' label to PRs that change terraform files
 terraform-deps:
   - changed-files:
-    - any-glob-to-any-file:
-      - 'terraform/**'
-      - '.github/workflows/terraform.yaml'
-      - '.github/scripts/tfwrapper.sh'
+      - any-glob-to-any-file:
+          - "terraform/**"
+          - ".github/workflows/terraform.yaml"
+          - ".github/scripts/tfwrapper.sh"
