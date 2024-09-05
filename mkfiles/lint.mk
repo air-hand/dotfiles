@@ -18,6 +18,10 @@ lint-gha:
 		find .github/actions -type f -name "action.yaml" -o -name "action.yml" | \
 		xargs -I{} ghalint run-action {}
 
+.PHONY: prettier
+prettier:
+	@npx prettier --write ./*
+
 .PHONY: pre-commit-all
 pre-commit-all:
 	@pre-commit run --all-files
