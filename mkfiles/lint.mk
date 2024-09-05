@@ -20,7 +20,7 @@ lint-gha:
 
 .PHONY: prettier
 prettier:
-	@npx prettier --write ./*
+	@npx prettier --write ./
 
 .PHONY: pre-commit-all
 pre-commit-all:
