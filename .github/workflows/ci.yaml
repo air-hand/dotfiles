@@ -81,6 +81,8 @@ jobs:
     steps:
       - uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4
       - uses: ./.github/actions/run-install # for node.
+      - name: mise env
+        uses: ./.github/actions/mise-hook-env
       - name: test renovate config
         run: |
           LOG_LEVEL=debug GH_TOKEN=${GH_TOKEN} make renovate
