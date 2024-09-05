@@ -27,7 +27,7 @@ pre-commit-all:
 	@pre-commit run --all-files
 
 .PHONY: super-linter
-super-linter: SUPERLINTER_IMAGE ?= ghcr.io/super-linter/super-linter:slim-v6
+super-linter: SUPERLINTER_IMAGE ?= ghcr.io/super-linter/super-linter:slim-v7
 super-linter:
 	@docker pull $(SUPERLINTER_IMAGE); \
 	ARGS=""; \
