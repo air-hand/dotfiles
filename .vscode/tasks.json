@@ -1,16 +1,19 @@
 {
-  "version": "2.0.0",
-  "tasks": [
-    {
-      "label": "watch: chezmoi apply",
-      "type": "shell",
-      "command": "make",
-      "args": ["--no-print-directory", "watch"],
-      "options": {
-        "cwd": "${workspaceFolder}"
-      },
-      "isBackground": true,
-      "problemMatcher": []
-    }
-  ]
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "watch: chezmoi apply",
+            "type": "shell",
+            "command": "make",
+            "args": [
+                "--no-print-directory",
+                "watch",
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "isBackground": true,
+            "problemMatcher": []
+        }
+    ]
 }

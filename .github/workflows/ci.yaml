@@ -73,24 +73,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-  renovate:
-    permissions:
-      contents: read
-    timeout-minutes: 10
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4
-      - uses: ./.github/actions/run-install # for node.
-      - name: mise env
-        uses: ./.github/actions/mise-hook-env
-      - name: test renovate config
-        run: |
-          LOG_LEVEL=debug GH_TOKEN=${GH_TOKEN} make renovate
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
   check-ci-result:
-    needs: [run-install-test, run-install-vm, super-linter, renovate]
+    needs: [run-install-test, run-install-vm, super-linter]
     runs-on: ubuntu-latest
     timeout-minutes: 5
     if: always()

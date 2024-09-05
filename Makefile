@@ -38,9 +38,7 @@ watch-test:
 	/bin/bash -i -c 'watch_cmd "\.sh" "$(MAKE) test"'
 
 .PHONY: renovate
-renovate: export GH_TOKEN ?=
-renovate: LOG_LEVEL ?= info
 renovate:
-	LOG_LEVEL=$(LOG_LEVEL) npx renovate --platform=local --token=$${GH_TOKEN}
+	npx renovate --platform=local
 
 include $(MAKEFILE_DIR)mkfiles/*.mk
