@@ -3,7 +3,7 @@
     "github>aquaproj/aqua-renovate-config#2.3.1"
   ],
   "prConcurrentLimit": 10,
-  "enabledManagers": ["custom.regex", "terraform"], // update aqua and terraform.
+  "enabledManagers": ["custom.regex", "terraform", "mise"], // update aqua and terraform.
   "labels": [
     "dependencies",
   ],
@@ -33,6 +33,17 @@
         "^.*tfcmt.*$",
       ],
       "addLabels": ["terraform-deps"],
-    }
+    },
+    {
+      "matchPackageNames": [
+        "twistedpair/google-cloud-sdk",
+      ],
+      "labels": ["minor"],
+      "automerge": true,
+    },
+    {
+      "matchDatasources": ["terraform-provider"],
+      "registryUrls": ["https://registry.opentofu.org"],
+    },
   ]
 }
