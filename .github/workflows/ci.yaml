@@ -46,7 +46,6 @@ jobs:
       - name: test
         run: |
           make test
-        shell: bash -leo pipefail {0}
 
   run-install-vm:
     permissions: {}
@@ -73,15 +72,36 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+  renovate:
+    permissions:
+      contents: read
+    timeout-minutes: 10
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4
+      - uses: ./.github/actions/run-install # for node.
+      - name: setup
+        run: |
+          make setup
+        shell: bash -leo pipefail {0}
+      - name: mise env
+        uses: ./.github/actions/mise-hook-env
+      - name: test renovate config
+        run: |
+          LOG_LEVEL=debug GH_TOKEN=${GH_TOKEN} make renovate
+        shell: bash -leo pipefail {0}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
   check-ci-result:
-    needs: [run-install-test, run-install-vm, super-linter]
+    needs: [run-install-test, run-install-vm, super-linter, renovate]
     runs-on: ubuntu-latest
     timeout-minutes: 5
     if: always()
     steps:
       - name: check results
         run: |
-          FAILURE_JOBS=$(echo "${NEEDS_JSON}" | jq -r 'to_entries | map(select(.value.result == "failure")) | map(.key + " " + .value.result) | join("\n")')
+          FAILURE_JOBS=$(echo "${NEEDS_JSON}" | jq -r 'to_entries | map(select(.value.result != "success")) | map(.key + " " + .value.result) | join("\n")')
           if [ -n "${FAILURE_JOBS}" ]; then
             echo "The following jobs failed: ${FAILURE_JOBS}"
             exit 1

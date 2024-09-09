@@ -12,4 +12,3 @@ Command Pallete -> Open Settings -> dotfiles
 dotfiles.repository: "OWNER/dotfiles",
 dotfiles.installCommand: "~/dotfiles/path-to-installer.sh",
 ```
-
