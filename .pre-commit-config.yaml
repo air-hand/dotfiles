@@ -5,7 +5,7 @@ repos:
     rev: v1.6.26
     hooks:
       - id: actionlint-system
-        args: ['--config-file', '.github/linters/actionlint.yml']
+        args: ["--config-file", ".github/linters/actionlint.yml"]
   - repo: https://github.com/mrtazz/checkmake
     rev: 0.2.2
     hooks:
@@ -22,7 +22,7 @@ repos:
         name: "YAML lint"
         language: python
         entry: yamllint
-        args: ['--config-file', '.github/linters/.yaml-lint.yml']
+        args: ["--config-file", ".github/linters/.yaml-lint.yml"]
         types: [file, yaml]
       - id: make_lint
         name: "Make lint"

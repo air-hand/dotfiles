@@ -18,12 +18,16 @@ lint-gha:
 		find .github/actions -type f -name "action.yaml" -o -name "action.yml" | \
 		xargs -I{} ghalint run-action {}
 
+.PHONY: prettier
+prettier:
+	@npx prettier --write ./
+
 .PHONY: pre-commit-all
 pre-commit-all:
 	@pre-commit run --all-files
 
 .PHONY: super-linter
-super-linter: SUPERLINTER_IMAGE ?= ghcr.io/super-linter/super-linter:slim-v6
+super-linter: SUPERLINTER_IMAGE ?= ghcr.io/super-linter/super-linter:slim-v7
 super-linter:
 	@docker pull $(SUPERLINTER_IMAGE); \
 	ARGS=""; \

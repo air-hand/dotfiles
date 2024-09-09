@@ -1,30 +1,26 @@
 {
-  "extends": [
-    "github>aquaproj/aqua-renovate-config#2.3.1"
-  ],
-  "prConcurrentLimit": 10,
-  "enabledManagers": ["custom.regex", "terraform"], // update aqua and terraform.
-  "labels": [
-    "dependencies",
-  ],
-  "assigneesFromCodeOwners": true,
-  "packageRules": [
+  extends: ["github>aquaproj/aqua-renovate-config#2.3.1"],
+  prConcurrentLimit: 10,
+  enabledManagers: ["custom.regex", "terraform", "mise"], // update aqua and terraform.
+  labels: ["dependencies"],
+  assigneesFromCodeOwners: true,
+  packageRules: [
     {
-      "matchUpdateTypes": ["major"],
-      "addLabels": ["major"],
+      matchUpdateTypes: ["major"],
+      addLabels: ["major"],
     },
     {
-      "matchUpdateTypes": ["minor"],
-      "addLabels": ["minor"],
-      "automerge": true,
+      matchUpdateTypes: ["minor"],
+      addLabels: ["minor"],
+      automerge: true,
     },
     {
-      "matchUpdateTypes": ["patch"],
-      "addLabels": ["patch"],
-      "automerge": true,
+      matchUpdateTypes: ["patch"],
+      addLabels: ["patch"],
+      automerge: true,
     },
     {
-      "matchPackagePatterns": [
+      matchPackageNames: [
         "^.*terraform.*$",
         "^.*tofu.*$",
         "^.*terragrunt.*$",
@@ -32,11 +28,16 @@
         "^.*tfsec.*$",
         "^.*tfcmt.*$",
       ],
-      "addLabels": ["terraform-deps"],
+      addLabels: ["terraform-deps"],
     },
     {
-      "matchDatasources": ["terraform-provider"],
-      "registryUrls": ["https://registry.opentofu.org"]
-    }
-  ]
+      matchPackageNames: ["twistedpair/google-cloud-sdk"],
+      labels: ["minor"],
+      automerge: true,
+    },
+    {
+      matchDatasources: ["terraform-provider"],
+      registryUrls: ["https://registry.opentofu.org"],
+    },
+  ],
 }

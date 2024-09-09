@@ -32,13 +32,13 @@ jobs:
       - uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4
 
       # just use to login to terraform cloud
-      - uses: hashicorp/setup-terraform@651471c36a6092792c552e8b1bef71e592b462d8 # v3.1.1
+      - uses: hashicorp/setup-terraform@b9cd54a3c349d3f38e8881555d616ced269862dd # v3.1.2
         with:
           cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
 
       - uses: aquaproj/aqua-installer@6ce1f8848ec8e61f14d57bd5d7597057a6dd187c # v3.0.1
         with:
-          aqua_version: v2.30.0
+          aqua_version: v2.31.0
           aqua_opts: ""
 
       - name: init

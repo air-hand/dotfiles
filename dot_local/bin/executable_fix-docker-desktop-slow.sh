@@ -1,8 +1,5 @@
 #!/bin/bash
 
-echo "run $0"
-exit 0
-
 if ! command -v docker-credential-desktop.exe &>/dev/null; then
     exit 0
 fi

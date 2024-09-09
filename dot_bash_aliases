@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
 
 alias awsp='export AWS_PROFILE=$(aws configure list-profiles | fzf)'
+alias awsenv='$(aws configure export-credentials --format env)'
