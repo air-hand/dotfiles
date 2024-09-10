@@ -21,12 +21,12 @@
     },
     {
       matchPackageNames: [
-        "^.*terraform.*$",
-        "^.*tofu.*$",
-        "^.*terragrunt.*$",
-        "^.*tflint.*$",
-        "^.*tfsec.*$",
-        "^.*tfcmt.*$",
+        "/^.*terraform.*$/",
+        "/^.*tofu.*$/",
+        "/^.*terragrunt.*$/",
+        "/^.*tflint.*$/",
+        "/^.*tfsec.*$/",
+        "/^.*tfcmt.*$/",
       ],
       addLabels: ["terraform-deps"],
     },
