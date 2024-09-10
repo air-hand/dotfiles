@@ -75,6 +75,7 @@ jobs:
   renovate:
     permissions:
       contents: read
+      pull-requests: read
     timeout-minutes: 10
     runs-on: ubuntu-latest
     steps:
