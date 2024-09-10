@@ -8,7 +8,6 @@ test -f /home/linuxbrew/.linuxbrew/bin/brew &&
 
 # install by brew
 install_by_brew=(
-    "aquaproj/aqua/aqua"
     # not managed by aqua or for some reasons.
     # for vscode-neovim
     "nvim"
@@ -18,15 +17,21 @@ for inst in "${install_by_brew[@]}"; do
     brew install $inst
 done
 
-# remove nvim managed by aqua if exists for vscode-neovim.
-test -f "$(aqua root-dir)/bin/nvim" && rm "$(aqua root-dir)/bin/nvim"
+# install aqua
+if ! command -v aqua &>/dev/null; then
+    curl -sSfL -O https://raw.githubusercontent.com/aquaproj/aqua-installer/v3.0.1/aqua-installer
+    echo "fb4b3b7d026e5aba1fc478c268e8fbd653e01404c8a8c6284fdba88ae62eda6a  aqua-installer" | sha256sum -c
+    chmod +x aqua-installer
+    ./aqua-installer
+    rm -f ./aqua-installer
+fi
+export PATH=~/.local/share/aquaproj-aqua/bin:$PATH
 
 {{ if not .is_in_container -}}
 {{/* install cli globally except for a dev-container. -*/}}
 # install cli globally by aqua. aqua.yaml hash: {{ include "dot_config/aquaproj-aqua/aqua.yaml" | sha256sum }}
 export AQUA_GLOBAL_CONFIG=$HOME/.config/aquaproj-aqua/aqua.yaml
 aqua install --all
-export PATH="$(aqua root-dir)/bin:$PATH"
 
 # install cli globally by mise. mise/config-global.toml hash: {{ include "dot_config/mise/config-global.toml" | sha256sum }}
 # change default env to avoid using in dev-containers as it may conflict with container tools.
