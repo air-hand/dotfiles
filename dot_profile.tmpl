@@ -11,8 +11,11 @@ if test -f /home/linuxbrew/.linuxbrew/bin/brew; then
     eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
 
-command -v aqua &> /dev/null && export PATH="$(aqua root-dir)/bin:$PATH"
+if test -f ~/.local/share/aquaproj-aqua/bin/aqua && ! command -v aqua &>/dev/null; then
+    export PATH=~/.local/share/aquaproj-aqua/bin:$PATH
+fi
 export AQUA_GLOBAL_CONFIG=$HOME/.config/aquaproj-aqua/aqua.yaml
+
 
 # mise
 {{ if not .is_in_container }}
