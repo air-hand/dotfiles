@@ -42,9 +42,8 @@
     {
       matchDatasources: ["github-releases"],
       matchDepTypes: ["required_version"],
-      registryUrls: [
-        "https://github.com/opentofu/opentofu/releases"
-      ]
+      matchDepName: ["hashicorp/terraform"],
+      packageName: "opentofu/opentofu",
     }
   ],
   mise: {
