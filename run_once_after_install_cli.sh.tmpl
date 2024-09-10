@@ -25,13 +25,14 @@ if ! command -v aqua &>/dev/null; then
     ./aqua-installer
     rm -f ./aqua-installer
 fi
+export PATH=~/.local/share/aquaproj-aqua/bin:$PATH
 
 {{ if not .is_in_container -}}
 {{/* install cli globally except for a dev-container. -*/}}
 # install cli globally by aqua. aqua.yaml hash: {{ include "dot_config/aquaproj-aqua/aqua.yaml" | sha256sum }}
 export AQUA_GLOBAL_CONFIG=$HOME/.config/aquaproj-aqua/aqua.yaml
 aqua install --all
-export PATH="$(aqua root-dir)/bin:$PATH"
+#export PATH="$(aqua root-dir)/bin:$PATH"
 
 # install cli globally by mise. mise/config-global.toml hash: {{ include "dot_config/mise/config-global.toml" | sha256sum }}
 # change default env to avoid using in dev-containers as it may conflict with container tools.
