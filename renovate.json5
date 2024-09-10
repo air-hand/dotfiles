@@ -40,4 +40,11 @@
       registryUrls: ["https://registry.opentofu.org"],
     },
   ],
+  mise: {
+    "fileMatch": [
+      "(^|/)\\.?mise\\.toml$",
+      "(^|/)\\.?mise/config\\.toml$",
+      "(^|/)\\.?mise/config.*\\.toml$",
+    ]
+  },
 }
