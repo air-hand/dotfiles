@@ -39,6 +39,13 @@
       matchDatasources: ["terraform-provider"],
       registryUrls: ["https://registry.opentofu.org"],
     },
+    {
+      matchDatasources: ["github-releases"],
+      matchDepTypes: ["required_version"],
+      registryUrls: [
+        "https://github.com/opentofu/opentofu/releases"
+      ]
+    }
   ],
   mise: {
     "fileMatch": [
