@@ -39,12 +39,6 @@
       matchDatasources: ["terraform-provider"],
       registryUrls: ["https://registry.opentofu.org"],
     },
-    {
-      matchDatasources: ["github-releases"],
-      matchDepTypes: ["required_version"],
-      matchPackageNames: ["hashicorp/terraform"],
-      replacementName: "opentofu/opentofu",
-    },
   ],
   mise: {
     fileMatch: [
