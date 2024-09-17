@@ -13,7 +13,7 @@ jobs:
     timeout-minutes: 10
     steps:
       # use GitHub Apps token to run other actions.
-      - uses: actions/create-github-app-token@3378cda945da322a8db4b193e19d46352ebe2de5 # v1
+      - uses: actions/create-github-app-token@5d869da34e18e7287c1daad50e0b8ea0f506ce69 # v1
         id: gh-app-token
         with:
           app-id: ${{ secrets.GH_APP_ID }}
