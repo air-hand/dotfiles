@@ -3,7 +3,7 @@
 TERRAGRUNT_TFPATH = "tofu"
 
 [tools]
-poetry = {version='1.8.3'}
+poetry = {version='1.8.4'}
 python = {version='3.13.0', virtualenv='.venv'}
 node = {version='22'}
 
