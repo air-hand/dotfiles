@@ -18,7 +18,7 @@ packages:
   - name: editorconfig-checker/editorconfig-checker@v3.0.3
   - name: suzuki-shunsuke/ghalint@v1.0.0
   - name: mrtazz/checkmake@0.2.2
-  - name: jdx/mise@v2024.11.8
+  - name: jdx/mise@v2024.11.9
   - name: gruntwork-io/terragrunt@v0.68.12
   - name: suzuki-shunsuke/tfcmt@v4.14.0
   - name: terraform-linters/tflint@v0.54.0
