@@ -32,5 +32,5 @@ packages:
   - name: ahmetb/kubectx@v0.9.5
   - name: kubernetes-sigs/kustomize@kustomize/v5.5.0
   - name: loft-sh/devpod@v0.6.3
-  - name: coder/coder@v2.17.2
+  - name: coder/coder@v2.18.0
   - name: opentofu/opentofu@v1.8.2
