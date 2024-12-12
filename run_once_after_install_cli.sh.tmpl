@@ -17,6 +17,15 @@ for inst in "${install_by_brew[@]}"; do
     brew install $inst
 done
 
+while read -r line; do
+    [[ -z "$line" ]] && continue
+    [[ "$line" =~ ^# ]] && continue
+    brew rm "$line" --force
+done < <(cat <<EOF
+aqua
+EOF
+)
+
 # install aqua
 if ! command -v aqua &>/dev/null; then
     curl -sSfL -O https://raw.githubusercontent.com/aquaproj/aqua-installer/v3.0.1/aqua-installer
