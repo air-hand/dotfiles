@@ -1,3 +1,6 @@
+[env]
+#_.python.venv = { path = ".venv", create = true }
+
 [tools]
 python = ['3.13.1']
 go = ['1.23']
@@ -5,7 +8,5 @@ rust = 'stable'
 node = '22'
 
 [settings]
-legacy_version_file = true
 experimental = true
-python_venv_auto_create = true
 python_compile = true
