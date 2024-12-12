@@ -1,12 +1,12 @@
 # https://github.com/jdx/mise#configuration
-[env]
-TERRAGRUNT_TFPATH = "tofu"
-
 [tools]
 poetry = {version='1.8.5'}
-python = {version='3.13.1', virtualenv='.venv'}
+python = {version='3.13.1'}
 node = {version='22'}
 
 [settings]
 experimental = true
-python_venv_auto_create = true
+
+[env]
+TERRAGRUNT_TFPATH = "tofu"
+#_.python.venv = { path = ".venv", create = true, python = "3.13.1" }
