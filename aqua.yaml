@@ -12,7 +12,7 @@ registries:
   - type: standard
     ref: v4.285.1 # renovate: depName=aquaproj/aqua-registry
 packages:
-  - name: rhysd/actionlint@v1.7.4
+  - name: rhysd/actionlint@v1.7.5
   - name: koalaman/shellcheck@v0.10.0
   - name: shellspec/shellspec@0.28.1
   - name: editorconfig-checker/editorconfig-checker@v3.0.3
