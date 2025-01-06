@@ -30,6 +30,8 @@ jobs:
       TERRAGRUNT_PATH: ${{ github.workspace }}/.github/scripts/tfwrapper.sh
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
+        with:
+          persist-credentials: false
 
       # just use to login to terraform cloud
       - uses: hashicorp/setup-terraform@b9cd54a3c349d3f38e8881555d616ced269862dd # v3.1.2
