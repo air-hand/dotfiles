@@ -18,7 +18,7 @@ jobs:
           app-id: ${{ secrets.GH_APP_ID }}
           private-key: ${{ secrets.GH_APP_PEM_FILE }}
       - name: rebase
-        uses: air-hand/common-actions/update-prs-auto-merge-enabled@c5de0a2ea2b240a03ef92b6022008a4b42f0ecbe # v1.0.1-alpha-2
+        uses: air-hand/common-actions/update-prs-auto-merge-enabled@9246a4735948c54bb020ddb91786645160c80b4f # v1.0.1
         with:
           token: ${{ steps.gh-app-token.outputs.token }}
           base_branch: main
