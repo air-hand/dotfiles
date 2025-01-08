@@ -87,11 +87,7 @@ jobs:
     if: always()
     steps:
       - name: check results
-        run: |
-          FAILURE_JOBS=$(echo "${NEEDS_JSON}" | jq -r 'to_entries | map(select(.value.result == "failure")) | map(.key + " " + .value.result) | join("\n")')
-          if [ -n "${FAILURE_JOBS}" ]; then
-            echo "The following jobs failed: ${FAILURE_JOBS}"
-            exit 1
-          fi
-        env:
-          NEEDS_JSON: ${{ toJSON(needs) }}
+        uses: air-hand/common-actions/assert-job-results@9246a4735948c54bb020ddb91786645160c80b4f # v1.0.1
+        with:
+          need-jobs: ${{ toJSON(needs) }}
+          allow-skipped: true
