@@ -69,7 +69,7 @@ else
     # Docker Desktop for Windows
     echo 'running the command below to restart docker desktop on windows host!'
     # In recent versions, the full path to the docker desktop has changed.
-    powershell.exe -Command '$ddPath="C:\Program Files\Docker\frontend\Docker Desktop.exe"; $ddProc=(Get-Process -Name "Docker Desktop" -ErrorAction SilentlyContinue | Select-Object ProcessName,Path -First 1); if ($ddProc) { $ddPath=$ddProc.Path; Stop-Process -Name $ddProc.ProcessName -Force; Wait-Process -Name $ddProc.ProcessName; } Start-Process -FilePath $ddPath; Start-Sleep 10;'
+    powershell.exe -Command '$ddPath="C:\Program Files\Docker\Docker\Docker Desktop.exe"; $ddProc=(Get-Process -Name "Docker Desktop" -ErrorAction SilentlyContinue | Select-Object ProcessName,Path -First 1); if ($ddProc) { $ddPath=$ddProc.Path; Stop-Process -Name $ddProc.ProcessName -Force; Wait-Process -Name $ddProc.ProcessName; } Start-Process -FilePath $ddPath; Start-Sleep 10;'
 fi
 
 # test
