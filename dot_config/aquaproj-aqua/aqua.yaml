@@ -19,7 +19,7 @@ packages:
   - name: aws/aws-cli@2.23.2
   - name: aquasecurity/trivy@v0.58.2
   - name: aquasecurity/tfsec@v1.28.13
-  - name: rhysd/actionlint@v1.7.6
+  - name: rhysd/actionlint@v1.7.7
   - name: tsenart/vegeta@v12.12.0
   - name: argoproj/argo-cd@v2.13.3
   - name: reviewdog/reviewdog@v0.20.3
