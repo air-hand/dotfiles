@@ -57,4 +57,14 @@ cat {{ joinPath .chezmoi.sourceDir "files/setup_wsl2_downloads.json" | quote }} 
 
 cd - &>/dev/null
 
+# setup symlink to Windows.
+while read -r target_dir; do
+    if ! test -L ~/${target_dir}; then
+        rm -rf ~/${target_dir}
+    fi
+    ln -s "$(wslpath $(wslvar USERPROFILE))/${target_dir}" ~/${target_dir}
+done << EOF
+.ssh
+EOF
+
 {{- end -}}
