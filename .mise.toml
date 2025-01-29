@@ -8,5 +8,5 @@ node = {version='22'}
 experimental = true
 
 [env]
-TERRAGRUNT_TFPATH = "tofu"
+TERRAGRUNT_TFPATH = "terraform"
 _.python.venv = { path = ".venv", create = true, python = "3.13.1" }

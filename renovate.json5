@@ -37,7 +37,7 @@
     },
     {
       matchDatasources: ["terraform-provider"],
-      registryUrls: ["https://registry.opentofu.org"],
+      // registryUrls: ["https://registry.opentofu.org"],
     },
   ],
   mise: {
