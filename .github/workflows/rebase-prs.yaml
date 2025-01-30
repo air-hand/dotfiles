@@ -1,9 +1,9 @@
 name: "Rebase PRs auto merge enabled"
 
 on:
-  pull_request:
-    types:
-      - closed
+  push:
+    branches:
+      - main
 
 permissions: {}
 
@@ -18,7 +18,7 @@ jobs:
           app-id: ${{ secrets.GH_APP_ID }}
           private-key: ${{ secrets.GH_APP_PEM_FILE }}
       - name: rebase
-        uses: air-hand/common-actions/update-prs-auto-merge-enabled@9246a4735948c54bb020ddb91786645160c80b4f # v1.0.1
+        uses: air-hand/common-actions/update-prs-auto-merge-enabled@106732e7453e5d3083f73eebef965f843d35f5f7 # v1.1.0
         with:
           token: ${{ steps.gh-app-token.outputs.token }}
           base_branch: main
