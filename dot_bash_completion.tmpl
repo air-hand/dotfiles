@@ -2,7 +2,15 @@
 command -v mise &> /dev/null && \
     eval "$(mise activate bash)" && \
     eval "$(mise completion bash)"
-command -v aqua &> /dev/null && source <(aqua completion bash)
+while read cmd
+do
+    if command -v $cmd &> /dev/null; then
+        source <($cmd completion bash)
+    fi
+done <<EOF
+aqua
+argocd
+EOF
 
 # terraform and etc.
 while read cmd
