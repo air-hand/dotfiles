@@ -60,7 +60,8 @@ if ! is_docker_wsl2; then
     sudo ln -s -f $(wslpath $(wslvar USERPROFILE))/.docker/daemon.json /etc/docker/daemon.json
 fi
 
-sudo nvidia-ctk runtime configure --runtime=docker
+sudo nvidia-ctk runtime configure --runtime=docker --cdi.enabled
+sudo nvidia-ctk config --set accept-nvidia-visible-devices-as-volume-mounts=true --in-place
 
 # restart docker systemd service if installed on wsl2
 if is_docker_wsl2; then
