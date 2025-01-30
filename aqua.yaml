@@ -22,4 +22,4 @@ packages:
   - name: gruntwork-io/terragrunt@v0.72.5
   - name: suzuki-shunsuke/tfcmt@v4.14.1
   - name: terraform-linters/tflint@v0.55.0
-  - name: opentofu/opentofu@v1.8.2
+  - name: hashicorp/terraform@v1.10.5
