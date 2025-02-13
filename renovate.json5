@@ -1,5 +1,5 @@
 {
-  extends: ["github>aquaproj/aqua-renovate-config#2.7.0"],
+  extends: ["github>aquaproj/aqua-renovate-config#2.7.4"],
   prConcurrentLimit: 10,
   enabledManagers: ["custom.regex", "terraform", "mise"], // update aqua and terraform.
   labels: ["dependencies"],
