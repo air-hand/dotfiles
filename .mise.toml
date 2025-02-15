@@ -1,6 +1,6 @@
 # https://github.com/jdx/mise#configuration
 [tools]
-poetry = {version='2.0.1'}
+poetry = {version='2.1.0'}
 python = {version='3.13.1'}
 node = {version='22'}
 
