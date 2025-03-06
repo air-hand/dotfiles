@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# Pull OpenHands Docker images
+docker pull docker.all-hands.dev/all-hands-ai/runtime:0.27-nikolaik
+docker pull docker.all-hands.dev/all-hands-ai/openhands:0.27
+
+# Create state directory
+mkdir -p ~/.openhands-state
