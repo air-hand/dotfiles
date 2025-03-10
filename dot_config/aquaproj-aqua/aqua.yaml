@@ -31,7 +31,7 @@ packages:
   - name: ahmetb/kubectx/kubens@v0.9.5
   - name: ahmetb/kubectx@v0.9.5
   - name: kubernetes-sigs/kustomize@kustomize/v5.6.0
-  - name: loft-sh/devpod@v0.6.14
+  - name: loft-sh/devpod@v0.6.15
   - name: coder/coder@v2.20.0
   - name: opentofu/opentofu@v1.9.0
   - name: suzuki-shunsuke/pinact@v1.2.2
