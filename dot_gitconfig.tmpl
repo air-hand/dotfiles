@@ -6,12 +6,22 @@
 [user]
     name = {{ .git_name }}
     email = {{ .git_email | quote }}
+{{- if .git_signingkey }}
+    signingkey = {{ .git_signingkey }}
+{{- end }}
 [core]
     autocrlf = false
     pager = LESSCHARSET=utf-8 less
     editor = nvim
 [commit]
     verbose = true
+{{- if .git_signingkey }}
+    gpgsign = true
+{{- end }}
+[tag]
+{{- if .git_signingkey }}
+    gpgsign = true
+{{- end }}
 [pull]
     rebase = false
     ff = only
