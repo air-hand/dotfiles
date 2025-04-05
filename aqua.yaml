@@ -20,6 +20,6 @@ packages:
   - name: mrtazz/checkmake@0.2.2
   - name: jdx/mise@v2025.4.0
   - name: gruntwork-io/terragrunt@v0.77.7
-  - name: suzuki-shunsuke/tfcmt@v4.14.2
+  - name: suzuki-shunsuke/tfcmt@v4.14.3
   - name: terraform-linters/tflint@v0.56.0
   - name: hashicorp/terraform@v1.11.3
