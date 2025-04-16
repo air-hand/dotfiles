@@ -116,3 +116,6 @@ fi
 set -o vi
 
 export GPG_TTY=$(tty)
+if command -v gpg-agent &> /dev/null; then
+    eval $(gpg-agent --daemon)
+fi
