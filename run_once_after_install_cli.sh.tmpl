@@ -28,8 +28,8 @@ EOF
 
 # install aqua
 if ! command -v aqua &>/dev/null; then
-    curl -sSfL -O https://raw.githubusercontent.com/aquaproj/aqua-installer/v3.0.1/aqua-installer
-    echo "fb4b3b7d026e5aba1fc478c268e8fbd653e01404c8a8c6284fdba88ae62eda6a  aqua-installer" | sha256sum -c
+    curl -sSfL -O https://raw.githubusercontent.com/aquaproj/aqua-installer/v3.1.2/aqua-installer
+    echo "9a5afb16da7191fbbc0c0240a67e79eecb0f765697ace74c70421377c99f0423  aqua-installer" | sha256sum -c -
     chmod +x aqua-installer
     ./aqua-installer
     rm -f ./aqua-installer
@@ -40,6 +40,7 @@ export PATH=~/.local/share/aquaproj-aqua/bin:$PATH
 {{/* install cli globally except for a dev-container. -*/}}
 # install cli globally by aqua. aqua.yaml hash: {{ include "dot_config/aquaproj-aqua/aqua.yaml" | sha256sum }}
 export AQUA_GLOBAL_CONFIG=$HOME/.config/aquaproj-aqua/aqua.yaml
+aqua update-aqua # update aqua itself
 aqua install --all
 
 # install cli globally by mise. mise/config-global.toml hash: {{ include "dot_config/mise/config-global.toml" | sha256sum }}
