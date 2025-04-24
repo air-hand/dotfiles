@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
-# gpg-agent.conf hash: {{ include (joinPath .chezmoi.sourceDir "private_dot_gnupg/gpg-agent.conf") | sha256sum }}
+# gpg-agent.conf hash: {{ include "private_dot_gnupg/gpg-agent.conf" | sha256sum }}
 gpg-connect-agent reloadagent /bye
