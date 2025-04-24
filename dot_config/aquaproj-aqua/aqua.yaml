@@ -35,3 +35,4 @@ packages:
   - name: coder/coder@v2.21.0
   - name: opentofu/opentofu@v1.9.0
   - name: suzuki-shunsuke/pinact@v2.2.1
+  - name: bahdotsh/wrkflw@v0.3.0
