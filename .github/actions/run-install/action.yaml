@@ -11,5 +11,7 @@ runs:
       working-directory: ${{ github.workspace }}
 
     - name: chezmoi data
-      run: '"$HOME/.local/bin/chezmoi" data'
+      run: |
+        $HOME/.local/bin/chezmoi data
+        $HOME/.local/bin/chezmoi source-path
       shell: bash
