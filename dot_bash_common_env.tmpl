@@ -21,7 +21,21 @@ fi
 export AQUA_GLOBAL_CONFIG=$HOME/.config/aquaproj-aqua/aqua.yaml
 
 # mise
-{{ if not .is_in_container }}
+{{- if not .is_in_container }}
 # change default env to avoid using in dev-containers as it may conflict with container tools.
 export MISE_CONFIG_FILE=$HOME/.config/mise/config-global.toml
-{{ end }}
+{{- end }}
+
+# proxy
+{{- if .http_proxy }}
+export http_proxy={{ .http_proxy }}
+export HTTP_PROXY=$http_proxy
+{{- end }}
+{{- if .https_proxy }}
+export https_proxy={{ .https_proxy }}
+export HTTPS_PROXY=$https_proxy
+{{- end }}
+{{- if .no_proxy }}
+export no_proxy={{ .no_proxy }}
+export NO_PROXY=$no_proxy
+{{- end }}
