@@ -6,7 +6,6 @@ test -f ~/.bash_common_env && source ~/.bash_common_env
 
 # If not running interactively, don't do anything
 if [ -z "$PS1" ]; then
-    echo "This is not an interactive shell. Exiting..." >&2
     return
 fi
 
