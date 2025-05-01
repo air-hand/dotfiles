@@ -22,4 +22,5 @@ jobs:
         with:
           token: ${{ steps.gh-app-token.outputs.token }}
           base_branch: main
+          # Using 'merge' as the update method to avoid commit signature issues.
           update_method: merge
