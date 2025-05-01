@@ -1,4 +1,4 @@
-name: "Rebase PRs auto merge enabled"
+name: "Update PRs auto merge enabled"
 
 on:
   push:
@@ -8,7 +8,7 @@ on:
 permissions: {}
 
 jobs:
-  rebase-auto-merge-enabled:
+  update-auto-merge-enabled:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
@@ -17,8 +17,10 @@ jobs:
         with:
           app-id: ${{ secrets.GH_APP_ID }}
           private-key: ${{ secrets.GH_APP_PEM_FILE }}
-      - name: rebase
-        uses: air-hand/common-actions/update-prs-auto-merge-enabled@ce745b3f8fea2e8aebe5808ba7a4d60f69ee6821 # v1.2.2
+      - name: update
+        uses: air-hand/common-actions/update-prs-auto-merge-enabled@73b8f89422a45004462c715a10d2159667a57e06 # v1.2.4
         with:
           token: ${{ steps.gh-app-token.outputs.token }}
           base_branch: main
+          # Using 'merge' as the update method to avoid commit signature issues.
+          update_method: merge
