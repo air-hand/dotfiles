@@ -1,3 +1,8 @@
 # ~/.profile: executed by Bourne-compatible login shells.
 
+# add shims to path for tools (e.g. IDE)
+# https://mise.jdx.dev/dev-tools/shims.html#how-to-add-mise-shims-to-path
+command -v mise &> /dev/null && \
+    eval "$(mise activate bash --shims)"
+
 mesg n 2> /dev/null || true
