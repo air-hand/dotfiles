@@ -1,4 +1,2 @@
-# mise python
-pipenv
-poetry
-pre-commit
+# pipx for mise pipx backend https://mise.jdx.dev/dev-tools/backends/pipx.html#pipx-backend
+pipx
