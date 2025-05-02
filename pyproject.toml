@@ -6,7 +6,7 @@ authors = ["air-hand <45233435+air-hand@users.noreply.github.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.12"
+python = "^3.13"
 
 
 [tool.poetry.group.dev.dependencies]
