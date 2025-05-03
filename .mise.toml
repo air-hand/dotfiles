@@ -1,7 +1,7 @@
 # https://github.com/jdx/mise#configuration
 [tools]
 poetry = {version='2.1.2'}
-python = {version='3.13.2'}
+python = {version='3.13.3'}
 node = {version='22'}
 
 [settings]
@@ -9,4 +9,4 @@ experimental = true
 
 [env]
 TERRAGRUNT_TFPATH = "terraform"
-_.python.venv = { path = ".venv", create = true, python = "3.13.2" }
+_.python.venv = { path = ".venv", create = true, python = "3.13.3" }
