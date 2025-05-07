@@ -12,12 +12,12 @@
     {
       matchUpdateTypes: ["minor"],
       addLabels: ["minor"],
-      automerge: true,
+      // automerge: true,
     },
     {
       matchUpdateTypes: ["patch"],
       addLabels: ["patch"],
-      automerge: true,
+      // automerge: true,
     },
     {
       matchPackageNames: [
@@ -33,7 +33,7 @@
     {
       matchPackageNames: ["twistedpair/google-cloud-sdk"],
       labels: ["minor"],
-      automerge: true,
+      // automerge: true,
     },
     {
       matchDatasources: ["terraform-provider"],
