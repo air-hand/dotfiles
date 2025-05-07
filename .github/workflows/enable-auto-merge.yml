@@ -19,4 +19,6 @@ jobs:
       if: contains(github.event.pull_request.labels.*.name, 'patch') || contains(github.event.pull_request.labels.*.name, 'minor')
       name: enable auto merge patch version
       run: gh pr merge --auto --squash "$PR_NUMBER"
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
