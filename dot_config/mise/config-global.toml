@@ -3,7 +3,7 @@
 
 [tools]
 python = ['3.13.3']
-go = ['1.24.2']
+go = ['1.24.3']
 rust = 'stable'
 node = '22'
 
