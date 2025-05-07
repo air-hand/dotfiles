@@ -15,10 +15,10 @@ jobs:
     permissions:
       pull-requests: write
     env:
-      PR_NUMBER: ${{ github.event.pull_request.number }}
+      PR_URL: ${{ github.event.pull_request.html_url }}
     steps:
       - if: contains(github.event.pull_request.labels.*.name, 'patch') || contains(github.event.pull_request.labels.*.name, 'minor')
         name: enable auto merge patch version
-        run: gh pr merge --auto --squash "$PR_NUMBER"
+        run: gh pr merge --auto --squash "$PR_URL"
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
