@@ -6,3 +6,17 @@ on:
       - labeled
 
 permissions: {}
+
+jobs:
+  enable-auto-merge:
+    runs-on: ubuntu-latest
+    if: contains(github.event.pull_request.labels.*.name, 'dependencies')
+    permissions:
+      pull-requests: write
+    steps:
+      if: contains(github.event.pull_request.labels.*.name, 'patch')
+      name: enable auto merge patch version
+      run: gh pr merge --auto --squash "$PR_NUMBER"
+      env:
+        PR_NUMBER: ${{ github. }}
+
