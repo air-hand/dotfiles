@@ -19,7 +19,7 @@ jobs:
       PR_URL: ${{ github.event.pull_request.html_url }}
     steps:
       - if: contains(github.event.pull_request.labels.*.name, 'patch') || contains(github.event.pull_request.labels.*.name, 'minor')
-        name: enable auto merge patch version
+        name: enable auto merge minor and patch version
         run: gh pr merge --auto --squash "$PR_URL"
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
