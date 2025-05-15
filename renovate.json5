@@ -32,7 +32,7 @@
     },
     {
       matchPackageNames: ["twistedpair/google-cloud-sdk"],
-      labels: ["minor"],
+      addLabels: ["minor"],
       // automerge: true,
     },
     {
