@@ -41,10 +41,10 @@
     },
   ],
   mise: {
-    fileMatch: [
-      "(^|/)\\.?mise\\.toml$",
-      "(^|/)\\.?mise/config\\.toml$",
-      "(^|/)\\.?mise/config.*\\.toml$",
+    managerFilePatterns: [
+      "/(^|/)\\.?mise\\.toml$/",
+      "/(^|/)\\.?mise/config\\.toml$/",
+      "/(^|/)\\.?mise/config.*\\.toml$/",
     ],
   },
 }
