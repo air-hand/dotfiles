@@ -45,13 +45,13 @@ jobs:
 
       - name: init
         run: |
-          terragrunt run-all init --terragrunt-non-interactive
+          terragrunt init --all --non-interactive
         env:
           TF_CLOUD_ORGANIZATION: ${{ secrets.TF_CLOUD_ORGANIZATION }}
 
       - name: validate
         run: |
-          terragrunt run-all validate --terragrunt-non-interactive
+          terragrunt validate --all --non-interactive
         env:
           TF_CLOUD_ORGANIZATION: ${{ secrets.TF_CLOUD_ORGANIZATION }}
           GITHUB_APP_ID: ${{ secrets.GH_APP_ID }}
@@ -61,7 +61,7 @@ jobs:
 
       - name: plan
         run: |
-          terragrunt run-all plan --terragrunt-non-interactive
+          terragrunt plan --all --non-interactive
         env:
           TF_CLOUD_ORGANIZATION: ${{ secrets.TF_CLOUD_ORGANIZATION }}
           GITHUB_APP_ID: ${{ secrets.GH_APP_ID }}
@@ -72,7 +72,7 @@ jobs:
       - name: apply
         if: github.event.pull_request.merged == true
         run: |
-          terragrunt run-all apply --terragrunt-non-interactive
+          terragrunt apply --all --non-interactive
         env:
           TF_CLOUD_ORGANIZATION: ${{ secrets.TF_CLOUD_ORGANIZATION }}
           GITHUB_APP_ID: ${{ secrets.GH_APP_ID }}
