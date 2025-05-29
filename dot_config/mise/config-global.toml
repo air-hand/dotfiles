@@ -9,7 +9,7 @@ node = '22'
 
 "npm:renovate" = "39.264.1"
 "npm:prettier" = "3.5.3"
-"npm:@commitlint/cli" = "19.6.1"
+"npm:@commitlint/cli" = "19.8.1"
 "npm:@devcontainers/cli" = "0.72.0"
 "npm:conventional-changelog" = "6.0.0"
 "npm:release-please" = "16.15.0"
