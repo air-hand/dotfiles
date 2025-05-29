@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
-sudo apt update && sudo apt install -y \
+export DEBIAN_FRONTEND=noninteractive
+
+sudo -E apt-get update && sudo -E apt-get install -y --no-install-recommends \
     curl \
     bash-completion \
     make \
@@ -19,38 +21,23 @@ sudo apt update && sudo apt install -y \
     libssl-dev zlib1g-dev \
     libbz2-dev libreadline-dev libsqlite3-dev \
     libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev \
+    libncurses5-dev libgdbm-dev libnss3-dev wget \
     qemu-system-x86 \
     ;
 
-# python3 dependencies
-sudo apt install -y \
-    build-essential \
-    zlib1g-dev \
-    libncurses5-dev \
-    libgdbm-dev \
-    libnss3-dev \
-    libssl-dev \
-    libreadline-dev \
-    libffi-dev \
-    libsqlite3-dev \
-    libbz2-dev \
-    liblzma-dev \
-    wget \
-    ;
-
 {{ if and (eq .chezmoi.os "linux") (eq .chezmoi.osRelease.id "ubuntu") -}}
-sudo add-apt-repository -y ppa:git-core/ppa && sudo apt update &&
+sudo add-apt-repository -y ppa:git-core/ppa && sudo  -E apt-get update &&
 {{- end }}
-    sudo apt install -y \
+    sudo -E apt-get install -y --no-install-recommends \
         git \
         git-lfs \
         tig \
-    ;
+        ;
 
 {{ if .is_wsl2 -}}
 sudo add-apt-repository -y ppa:wslutilities/wslu &&
-    sudo apt update &&
-    sudo apt install -y --no-install-recommends wslu
+    sudo -E apt-get update &&
+    sudo -E apt-get install -y --no-install-recommends wslu
 {{- end }}
 
 curl -o $HOME/.git-completion.sh -sL \
