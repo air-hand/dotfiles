@@ -2,11 +2,11 @@
 
 export DEBIAN_FRONTEND=noninteractive
 
-sudo -E apt-get update && sudo -E apt-get install -y --no-install-recommends \
+sudo -E apt-get update && sudo -E apt-get install -y  \
     curl \
     bash-completion \
     make \
-    vim vim-common \
+    vim \
     tree \
     socat \
     software-properties-common \
@@ -28,7 +28,7 @@ sudo -E apt-get update && sudo -E apt-get install -y --no-install-recommends \
 {{ if and (eq .chezmoi.os "linux") (eq .chezmoi.osRelease.id "ubuntu") -}}
 sudo add-apt-repository -y ppa:git-core/ppa && sudo  -E apt-get update &&
 {{- end }}
-    sudo -E apt-get install -y --no-install-recommends \
+    sudo -E apt-get install -y \
         git \
         git-lfs \
         tig \
