@@ -22,7 +22,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        distro: ["ubuntu", "debian"]
+        distro: ["ubuntu-24.04", "debian-12"]
     container:
       image: mcr.microsoft.com/vscode/devcontainers/base:${{ matrix.distro }}
       env:
