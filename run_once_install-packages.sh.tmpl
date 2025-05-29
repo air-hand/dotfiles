@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
-sudo apt update && sudo apt install -y \
+export DEBIAN_FRONTEND=noninteractive
+
+sudo -E apt-get update && sudo -E apt-get install -y --no-install-recommends \
     curl \
     bash-completion \
     make \
@@ -24,9 +26,9 @@ sudo apt update && sudo apt install -y \
     ;
 
 {{ if and (eq .chezmoi.os "linux") (eq .chezmoi.osRelease.id "ubuntu") -}}
-sudo add-apt-repository -y ppa:git-core/ppa && sudo apt update &&
+sudo add-apt-repository -y ppa:git-core/ppa && sudo  -E apt-get update &&
 {{- end }}
-    sudo apt install -y \
+    sudo -E apt-get install -y --no-install-recommends \
         git \
         git-lfs \
         tig \
@@ -34,8 +36,8 @@ sudo add-apt-repository -y ppa:git-core/ppa && sudo apt update &&
 
 {{ if .is_wsl2 -}}
 sudo add-apt-repository -y ppa:wslutilities/wslu &&
-    sudo apt update &&
-    sudo apt install -y --no-install-recommends wslu
+    sudo -E apt-get update &&
+    sudo -E apt-get install -y --no-install-recommends wslu
 {{- end }}
 
 curl -o $HOME/.git-completion.sh -sL \
