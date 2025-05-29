@@ -22,22 +22,6 @@ sudo apt update && sudo apt install -y \
     qemu-system-x86 \
     ;
 
-# python3 dependencies
-sudo apt install -y \
-    build-essential \
-    zlib1g-dev \
-    libncurses5-dev \
-    libgdbm-dev \
-    libnss3-dev \
-    libssl-dev \
-    libreadline-dev \
-    libffi-dev \
-    libsqlite3-dev \
-    libbz2-dev \
-    liblzma-dev \
-    wget \
-    ;
-
 {{ if and (eq .chezmoi.os "linux") (eq .chezmoi.osRelease.id "ubuntu") -}}
 sudo add-apt-repository -y ppa:git-core/ppa && sudo apt update &&
 {{- end }}
@@ -45,7 +29,19 @@ sudo add-apt-repository -y ppa:git-core/ppa && sudo apt update &&
         git \
         git-lfs \
         tig \
-    ;
+        # python3 dependencies
+        zlib1g-dev \
+        libncurses5-dev \
+        libgdbm-dev \
+        libnss3-dev \
+        libssl-dev \
+        libreadline-dev \
+        libffi-dev \
+        libsqlite3-dev \
+        libbz2-dev \
+        liblzma-dev \
+        wget \
+       ;
 
 {{ if .is_wsl2 -}}
 sudo add-apt-repository -y ppa:wslutilities/wslu &&
