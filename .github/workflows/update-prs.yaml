@@ -19,8 +19,9 @@ jobs:
           private-key: ${{ secrets.GH_APP_PEM_FILE }}
           permission-contents: write
           permission-pull-requests: write
+          permission-workflows: write
       - name: update
-        uses: air-hand/common-actions/update-prs-auto-merge-enabled@73b8f89422a45004462c715a10d2159667a57e06 # v1.2.4
+        uses: air-hand/common-actions/update-prs-auto-merge-enabled@96e26a07ebb9c1e543a022947a7ff31e66eed0b9 # v1.2.5
         with:
           token: ${{ steps.gh-app-token.outputs.token }}
           base_branch: main
