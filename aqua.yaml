@@ -10,13 +10,13 @@
 #   - all
 registries:
   - type: standard
-    ref: v4.373.0 # renovate: depName=aquaproj/aqua-registry
+    ref: v4.374.0 # renovate: depName=aquaproj/aqua-registry
 packages:
   - name: rhysd/actionlint@v1.7.7
   - name: koalaman/shellcheck@v0.10.0
   - name: shellspec/shellspec@0.28.1
   - name: editorconfig-checker/editorconfig-checker@v3.3.0
-  - name: suzuki-shunsuke/ghalint@v1.4.0
+  - name: suzuki-shunsuke/ghalint@v1.4.1
   - name: mrtazz/checkmake@0.2.2
   - name: jdx/mise@v2025.5.15
   - name: gruntwork-io/terragrunt@v0.80.4
