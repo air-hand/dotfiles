@@ -87,7 +87,7 @@ jobs:
     if: always()
     steps:
       - name: check results
-        uses: air-hand/common-actions/assert-job-results@73b8f89422a45004462c715a10d2159667a57e06 # v1.2.4
+        uses: air-hand/common-actions/assert-job-results@96e26a07ebb9c1e543a022947a7ff31e66eed0b9 # v1.2.5
         with:
           need-jobs: ${{ toJSON(needs) }}
           allow-skipped: true
