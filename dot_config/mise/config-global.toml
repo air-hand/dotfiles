@@ -13,7 +13,7 @@ node = '22'
 "npm:@devcontainers/cli" = "0.72.0"
 "npm:conventional-changelog" = "6.0.0"
 "npm:release-please" = "16.15.0"
-"npm:@anthropic-ai/claude-code" = "1.0.6"
+"npm:@anthropic-ai/claude-code" = "1.0.8"
 
 # pipx for cli (not library)
 "pipx:pipenv" = "2024.4.1"
