@@ -7,7 +7,7 @@ go = ['1.24.3']
 rust = 'stable'
 node = '22'
 
-"npm:renovate" = "40.39.2"
+"npm:renovate" = "40.40.1"
 "npm:prettier" = "3.5.3"
 "npm:@commitlint/cli" = "19.8.1"
 "npm:@devcontainers/cli" = "0.72.0"
