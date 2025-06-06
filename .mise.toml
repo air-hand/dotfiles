@@ -9,4 +9,4 @@ experimental = true
 
 [env]
 TERRAGRUNT_TFPATH = "terraform"
-_.python.venv = { path = ".venv", create = true, python = "3.13.3" }
+_.python.venv = { path = ".venv", create = true }
