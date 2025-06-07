@@ -18,7 +18,7 @@ node = '22'
 # pipx for cli (not library)
 "pipx:pipenv" = "2025.0.3"
 "pipx:poetry" = "2.1.3"
-"pipx:uv" = "0.7.11"
+"pipx:uv" = "0.7.12"
 "pipx:pre-commit" = "4.2.0"
 "pipx:markitdown[all]" = "0.1.2"
 
