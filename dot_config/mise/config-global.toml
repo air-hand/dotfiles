@@ -12,7 +12,7 @@ node = '22'
 "npm:@commitlint/cli" = "19.8.1"
 "npm:@devcontainers/cli" = "0.76.0"
 "npm:conventional-changelog" = "7.0.2"
-"npm:release-please" = "17.0.0"
+"npm:release-please" = "17.1.0"
 "npm:@anthropic-ai/claude-code" = "1.0.17"
 
 # pipx for cli (not library)
