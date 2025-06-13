@@ -25,3 +25,4 @@ node = '22'
 [settings]
 experimental = true
 python_compile = true
+idiomatic_version_file_enable_tools = []
