@@ -15,7 +15,7 @@ packages:
   - name: jqlang/jq@jq-1.8.0
   - name: kubernetes/kubectl@v1.33.1
   - name: helm/helm@v3.18.3
-  - name: twistedpair/google-cloud-sdk@526.0.1
+  - name: twistedpair/google-cloud-sdk@527.0.0
   - name: aws/aws-cli@2.27.36
   - name: aquasecurity/trivy@v0.63.0
   - name: aquasecurity/tfsec@v1.28.14
