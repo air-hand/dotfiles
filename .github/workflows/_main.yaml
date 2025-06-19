@@ -27,9 +27,14 @@ jobs:
 
   ci-jobs:
     uses: ./.github/workflows/_ci.yaml
-    permissions: {}
+    permissions:
+      contents: read
+      statuses: write
+      pull-requests: read
 
   iac-jobs:
     needs: labeler
     uses: ./.github/workflows/_iac.yaml
-    permissions: {}
+    permissions:
+      contents: read
+      pull-requests: write
