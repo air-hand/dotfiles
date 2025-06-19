@@ -1,0 +1,52 @@
+name: main
+
+on: # yamllint disable-line rule:truthy
+  pull_request:
+    branches:
+      - main
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions: {}
+
+jobs:
+  call-main:
+    uses: ./.github/workflows/_main.yaml
+    permissions: {}
+    secrets: inherit
+
+  check-result:
+    needs: call-main
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    if: always()
+    steps:
+      - name: check results
+        uses: air-hand/common-actions/assert-job-results@b6cd8fd819881794d7f99df5fc19d82b56d01755 # v1.2.9
+        with:
+          need-jobs: ${{ toJSON(needs) }}
+
+  check-ci-result:
+    needs: call-main
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    if: always()
+    steps:
+      - name: check results
+        uses: air-hand/common-actions/assert-job-results@b6cd8fd819881794d7f99df5fc19d82b56d01755 # v1.2.9
+        with:
+          need-jobs: ${{ toJSON(needs) }}
+
+  check-tf-result:
+    needs: call-main
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    if: always()
+    steps:
+      - name: check results
+        uses: air-hand/common-actions/assert-job-results@b6cd8fd819881794d7f99df5fc19d82b56d01755 # v1.2.9
+        with:
+          need-jobs: ${{ toJSON(needs) }}
+          allow-skipped: true

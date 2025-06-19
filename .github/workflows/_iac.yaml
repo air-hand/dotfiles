@@ -1,19 +1,8 @@
-name: "Terraform plan and apply"
+name: "Infrastructure as Code"
 
-on: # yamllint disable-line rule:truthy
-  pull_request:
-    branches:
-      - main
-    types:
-      - opened
-      - synchronize
-      - reopened
-      - labeled
-      - closed
+on:
+  workflow_call:
 
-concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: false
 
 permissions: {}
 
@@ -80,14 +69,3 @@ jobs:
           GITHUB_APP_PEM_FILE: ${{ secrets.GH_APP_PEM_FILE }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-  check-tf-result:
-    needs: terraform
-    runs-on: ubuntu-latest
-    timeout-minutes: 5
-    if: always()
-    steps:
-      - name: check results
-        uses: air-hand/common-actions/assert-job-results@b6cd8fd819881794d7f99df5fc19d82b56d01755 # v1.2.9
-        with:
-          need-jobs: ${{ toJSON(needs) }}
-          allow-skipped: true
