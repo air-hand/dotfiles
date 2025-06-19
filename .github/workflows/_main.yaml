@@ -34,6 +34,7 @@ jobs:
 
   iac-jobs:
     needs: labeler
+    if: contains(github.event.pull_request.labels.*.name, 'terraform-deps')
     uses: ./.github/workflows/_iac.yaml
     permissions:
       contents: read

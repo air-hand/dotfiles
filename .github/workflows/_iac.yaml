@@ -3,6 +3,9 @@ name: "Infrastructure as Code"
 on:
   workflow_call:
 
+concurrency:
+  group: iac
+  cancel-in-progress: false
 
 permissions: {}
 
@@ -13,7 +16,6 @@ jobs:
       contents: read
       pull-requests: write
     timeout-minutes: 10
-    if: contains(github.event.pull_request.labels.*.name, 'terraform-deps')
     env:
       TF_CLOUD_WORKSPACE: ${{ vars.TF_CLOUD_WORKSPACE }}
       TERRAGRUNT_PATH: ${{ github.workspace }}/.github/scripts/tfwrapper.sh
