@@ -6,5 +6,5 @@ terraform-deps:
   - changed-files:
       - any-glob-to-any-file:
           - "terraform/**"
-          - ".github/workflows/terraform.yaml"
+          - ".github/workflows/_iac.yaml"
           - ".github/scripts/tfwrapper.sh"
