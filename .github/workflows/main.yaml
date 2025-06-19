@@ -14,39 +14,35 @@ permissions: {}
 jobs:
   call-main:
     uses: ./.github/workflows/_main.yaml
-    permissions: {}
+    permissions:
+      contents: read
+      pull-requests: write
+      statuses: write
     secrets: inherit
 
   check-result:
     needs: call-main
     runs-on: ubuntu-latest
     timeout-minutes: 5
-    if: always()
+    if: failure()
     steps:
-      - name: check results
-        uses: air-hand/common-actions/assert-job-results@b6cd8fd819881794d7f99df5fc19d82b56d01755 # v1.2.9
-        with:
-          need-jobs: ${{ toJSON(needs) }}
+      - name: exit with failure
+        run: exit 1
 
   check-ci-result:
     needs: call-main
     runs-on: ubuntu-latest
     timeout-minutes: 5
-    if: always()
+    if: failure()
     steps:
-      - name: check results
-        uses: air-hand/common-actions/assert-job-results@b6cd8fd819881794d7f99df5fc19d82b56d01755 # v1.2.9
-        with:
-          need-jobs: ${{ toJSON(needs) }}
+      - name: exit with failure
+        run: exit 1
 
   check-tf-result:
     needs: call-main
     runs-on: ubuntu-latest
     timeout-minutes: 5
-    if: always()
+    if: failure()
     steps:
-      - name: check results
-        uses: air-hand/common-actions/assert-job-results@b6cd8fd819881794d7f99df5fc19d82b56d01755 # v1.2.9
-        with:
-          need-jobs: ${{ toJSON(needs) }}
-          allow-skipped: true
+      - name: exit with failure
+        run: exit 1
