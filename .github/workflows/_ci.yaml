@@ -3,6 +3,10 @@ name: CI Jobs
 on:
   workflow_call:
 
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
 permissions: {}
 
 jobs:
