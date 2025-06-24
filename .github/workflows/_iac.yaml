@@ -13,8 +13,6 @@ on:
         required: true
       GH_APP_PEM_FILE:
         required: true
-      GITHUB_TOKEN:
-        required: true
 
 concurrency:
   group: iac

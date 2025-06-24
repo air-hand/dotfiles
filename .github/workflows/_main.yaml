@@ -3,8 +3,6 @@ name: Main Jobs
 on:
   workflow_call:
     secrets:
-      GITHUB_TOKEN:
-        required: true
       GH_APP_ID:
         required: true
       GH_APP_PEM_FILE:
@@ -44,8 +42,6 @@ jobs:
       contents: read
       statuses: write
       pull-requests: read
-    secrets:
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   iac-jobs:
     needs: labeler
@@ -60,4 +56,3 @@ jobs:
       GH_APP_ID: ${{ secrets.GH_APP_ID }}
       GH_APP_INSTALLATION_ID: ${{ secrets.GH_APP_INSTALLATION_ID }}
       GH_APP_PEM_FILE: ${{ secrets.GH_APP_PEM_FILE }}
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
