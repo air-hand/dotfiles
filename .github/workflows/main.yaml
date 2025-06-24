@@ -14,7 +14,7 @@ on: # yamllint disable-line rule:truthy
 permissions: {}
 
 jobs:
-  call-main:
+  main:
     uses: ./.github/workflows/_main.yaml
     permissions:
       contents: read
@@ -28,25 +28,7 @@ jobs:
       GH_APP_INSTALLATION_ID: ${{ secrets.GH_APP_INSTALLATION_ID }}
 
   check-result:
-    needs: call-main
-    runs-on: ubuntu-latest
-    timeout-minutes: 5
-    if: failure()
-    steps:
-      - name: exit with failure
-        run: exit 1
-
-  check-ci-result:
-    needs: call-main
-    runs-on: ubuntu-latest
-    timeout-minutes: 5
-    if: failure()
-    steps:
-      - name: exit with failure
-        run: exit 1
-
-  check-tf-result:
-    needs: call-main
+    needs: main
     runs-on: ubuntu-latest
     timeout-minutes: 5
     if: failure()
