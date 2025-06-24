@@ -2,16 +2,6 @@ data "github_app" "actions" {
   slug = "github-actions"
 }
 
-resource "github_branch_protection" "main" {
-  repository_id = data.github_repository.current.node_id
-  pattern       = "main"
-  required_status_checks {
-    contexts = [
-      "check-result",
-    ]
-    strict = true
-  }
-}
 
 resource "github_repository_ruleset" "main" {
   name        = "main"
