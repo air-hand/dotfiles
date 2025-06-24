@@ -2,17 +2,6 @@ data "github_app" "actions" {
   slug = "github-actions"
 }
 
-resource "github_branch_protection" "main" {
-  repository_id = data.github_repository.current.node_id
-  pattern       = "main"
-  required_status_checks {
-    contexts = [
-      "check-ci-result",
-      "check-tf-result",
-    ]
-    strict = true
-  }
-}
 
 resource "github_repository_ruleset" "main" {
   name        = "main"
@@ -37,11 +26,7 @@ resource "github_repository_ruleset" "main" {
 
     required_status_checks {
       required_check {
-        context        = "check-ci-result"
-        integration_id = data.github_app.actions.id
-      }
-      required_check {
-        context        = "check-tf-result"
+        context        = "check-result"
         integration_id = data.github_app.actions.id
       }
       strict_required_status_checks_policy = true

@@ -1,19 +1,18 @@
-name: check
+name: CI Jobs
 
-on: # yamllint disable-line rule:truthy
-  pull_request:
-    branches:
-      - main
+on:
+  workflow_call:
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
+  group: ci-${{ github.ref }}
   cancel-in-progress: true
 
 permissions: {}
 
 jobs:
   run-install-test:
-    permissions: {}
+    permissions:
+      contents: read
     runs-on: ubuntu-latest
     timeout-minutes: 10
     strategy:
@@ -49,7 +48,8 @@ jobs:
           make test
 
   run-install-vm:
-    permissions: {}
+    permissions:
+      contents: read
     timeout-minutes: 10
     strategy:
       fail-fast: false
@@ -66,6 +66,7 @@ jobs:
 
   super-linter:
     permissions:
+      contents: read
       statuses: write
     timeout-minutes: 10
     runs-on: ubuntu-latest
@@ -106,14 +107,3 @@ jobs:
           LOG_LEVEL=debug GH_TOKEN=${GH_TOKEN} make renovate
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-  check-ci-result:
-    needs: [run-install-test, run-install-vm, super-linter, renovate]
-    runs-on: ubuntu-latest
-    timeout-minutes: 5
-    if: always()
-    steps:
-      - name: check results
-        uses: air-hand/common-actions/assert-job-results@b6cd8fd819881794d7f99df5fc19d82b56d01755 # v1.2.9
-        with:
-          need-jobs: ${{ toJSON(needs) }}
