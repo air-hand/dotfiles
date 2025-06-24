@@ -2,6 +2,9 @@ name: CI Jobs
 
 on:
   workflow_call:
+    secrets:
+      GITHUB_TOKEN:
+        required: true
 
 concurrency:
   group: ci-${{ github.ref }}

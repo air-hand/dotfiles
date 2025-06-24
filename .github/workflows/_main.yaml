@@ -2,6 +2,19 @@ name: Main Jobs
 
 on:
   workflow_call:
+    secrets:
+      GITHUB_TOKEN:
+        required: true
+      GH_APP_ID:
+        required: true
+      GH_APP_PEM_FILE:
+        required: true
+      TF_API_TOKEN:
+        required: true
+      TF_CLOUD_ORGANIZATION:
+        required: true
+      GH_APP_INSTALLATION_ID:
+        required: true
 
 permissions: {}
 
@@ -31,7 +44,8 @@ jobs:
       contents: read
       statuses: write
       pull-requests: read
-    secrets: inherit
+    secrets:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   iac-jobs:
     needs: labeler
@@ -40,4 +54,10 @@ jobs:
     permissions:
       contents: read
       pull-requests: write
-    secrets: inherit
+    secrets:
+      TF_API_TOKEN: ${{ secrets.TF_API_TOKEN }}
+      TF_CLOUD_ORGANIZATION: ${{ secrets.TF_CLOUD_ORGANIZATION }}
+      GH_APP_ID: ${{ secrets.GH_APP_ID }}
+      GH_APP_INSTALLATION_ID: ${{ secrets.GH_APP_INSTALLATION_ID }}
+      GH_APP_PEM_FILE: ${{ secrets.GH_APP_PEM_FILE }}
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
