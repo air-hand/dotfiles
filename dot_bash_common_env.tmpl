@@ -15,16 +15,18 @@ if test -f /home/linuxbrew/.linuxbrew/bin/brew; then
     eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
 
-if test -f ~/.local/share/aquaproj-aqua/bin/aqua && ! command -v aqua &>/dev/null; then
-    export PATH=~/.local/share/aquaproj-aqua/bin:$PATH
-fi
-export AQUA_GLOBAL_CONFIG=$HOME/.config/aquaproj-aqua/aqua.yaml
-
 # mise
 {{- if not .is_in_container }}
 # change default env to avoid using in dev-containers as it may conflict with container tools.
 export MISE_CONFIG_FILE=$HOME/.config/mise/config-global.toml
 {{- end }}
+
+# enable aqua after other tools.
+# https://zenn.dev/shunsuke_suzuki/books/aqua-handbook/viewer/tips
+if test -f ~/.local/share/aquaproj-aqua/bin/aqua && ! command -v aqua &>/dev/null; then
+    export PATH=~/.local/share/aquaproj-aqua/bin:$PATH
+fi
+export AQUA_GLOBAL_CONFIG=$HOME/.config/aquaproj-aqua/aqua.yaml
 
 # proxy
 {{- if .http_proxy }}
