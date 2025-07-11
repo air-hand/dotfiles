@@ -11,7 +11,7 @@ node = '22'
 "npm:prettier" = "3.6.2"
 "npm:@commitlint/cli" = "19.8.1"
 "npm:@devcontainers/cli" = "0.79.0"
-"npm:conventional-changelog" = "7.1.0"
+"npm:conventional-changelog" = "7.1.1"
 "npm:release-please" = "17.1.1"
 "npm:@anthropic-ai/claude-code" = "1.0.48"
 
