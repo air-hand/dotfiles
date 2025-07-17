@@ -34,5 +34,5 @@ packages:
   - name: loft-sh/devpod@v0.6.15
   - name: coder/coder@v2.24.2
   - name: opentofu/opentofu@v1.10.3
-  - name: suzuki-shunsuke/pinact@v3.3.1
+  - name: suzuki-shunsuke/pinact@v3.3.2
   - name: bahdotsh/wrkflw@v0.4.0
