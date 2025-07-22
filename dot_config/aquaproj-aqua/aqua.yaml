@@ -16,7 +16,7 @@ packages:
   - name: kubernetes/kubectl@v1.33.3
   - name: helm/helm@v3.18.4
   - name: twistedpair/google-cloud-sdk@530.0.0
-  - name: aws/aws-cli@2.27.55
+  - name: aws/aws-cli@2.27.56
   - name: aquasecurity/trivy@v0.64.1
   - name: aquasecurity/tfsec@v1.28.14
   - name: rhysd/actionlint@v1.7.7
