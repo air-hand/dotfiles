@@ -1,4 +1,6 @@
-
+# NOTE: mise activate is placed here due to dependency ordering complexity
+# mise (installed via aqua) → aqua (needs "last-win") → linuxbrew conflicts are resolved in bash_common_env.
+# This ensures all dependencies are resolved before mise activation
 command -v mise &> /dev/null && \
     eval "$(mise activate bash)" && \
     eval "$(mise completion bash)"
