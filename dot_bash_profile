@@ -1,5 +1,9 @@
 # .bash_profile
 
+if [ -f ~/.bash_common_env ]; then
+    . ~/.bash_common_env
+fi
+
 if [ -f ~/.profile ]; then
     . ~/.profile
 fi
