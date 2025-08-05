@@ -72,11 +72,11 @@ jobs:
       - uses: ./.github/actions/run-install
       - run: |
           git config --global --add safe.directory "${GITHUB_WORKSPACE}"
+      - name: mise env
+        uses: ./.github/actions/mise-hook-env
       - name: setup
         run: |
           make setup
-      - name: mise env
-        uses: ./.github/actions/mise-hook-env
       - name: lint
         run: |
           make lint
@@ -85,7 +85,6 @@ jobs:
           make test
 
   renovate:
-    #needs: run-install-vm
     permissions:
       contents: read
       pull-requests: read
@@ -103,7 +102,6 @@ jobs:
         uses: ./.github/actions/mise-hook-env
       - name: setup
         run: |
-          echo "$PATH"
           make setup
       - name: test renovate config
         run: |
