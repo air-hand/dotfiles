@@ -101,6 +101,7 @@ jobs:
       - uses: ./.github/actions/run-install # for node.
       - name: setup
         run: |
+          echo "$PATH"
           make setup
       - name: mise env
         uses: ./.github/actions/mise-hook-env
