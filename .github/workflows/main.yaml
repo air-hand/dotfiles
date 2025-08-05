@@ -31,7 +31,7 @@ jobs:
     needs: main
     runs-on: ubuntu-latest
     timeout-minutes: 5
-    if: failure()
+    if: failure() || cancelled()
     steps:
       - name: exit with failure
         run: exit 1
