@@ -72,11 +72,11 @@ jobs:
       - uses: ./.github/actions/run-install
       - run: |
           git config --global --add safe.directory "${GITHUB_WORKSPACE}"
-      - name: mise env
-        uses: ./.github/actions/mise-hook-env
       - name: setup
         run: |
           make setup
+      - name: mise env
+        uses: ./.github/actions/mise-hook-env
       - name: lint
         run: |
           make lint
@@ -92,7 +92,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        shell: bash -l -eox pipefail {0}
+        shell: bash -l -eo pipefail {0}
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         with:
