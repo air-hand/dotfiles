@@ -85,7 +85,7 @@ jobs:
           make test
 
   renovate:
-    needs: run-install-vm
+    #needs: run-install-vm
     permissions:
       contents: read
       pull-requests: read
