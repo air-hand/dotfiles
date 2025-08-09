@@ -19,7 +19,7 @@ node = '22'
 "pipx:pipenv" = "2025.0.4"
 "pipx:poetry" = "2.1.4"
 "pipx:uv" = "0.8.8"
-"pipx:pre-commit" = "4.2.0"
+"pipx:pre-commit" = "4.3.0"
 "pipx:markitdown[all]" = "0.1.2"
 
 [settings]
