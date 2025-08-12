@@ -36,3 +36,4 @@ packages:
   - name: opentofu/opentofu@v1.10.5
   - name: suzuki-shunsuke/pinact@v3.3.2
   - name: bahdotsh/wrkflw@v0.6.0
+  - name: tofuutils/tenv@v4.7.6
