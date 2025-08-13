@@ -3,22 +3,22 @@
 
 [tools]
 python = ['3.13.6']
-go = ['1.24.6']
+go = ['1.25.0']
 rust = 'stable'
 node = '22'
 
-"npm:renovate" = "41.62.3"
+"npm:renovate" = "41.70.0"
 "npm:prettier" = "3.6.2"
 "npm:@commitlint/cli" = "19.8.1"
 "npm:@devcontainers/cli" = "0.80.0"
 "npm:conventional-changelog" = "7.1.1"
 "npm:release-please" = "17.1.1"
-"npm:@anthropic-ai/claude-code" = "1.0.73"
+"npm:@anthropic-ai/claude-code" = "1.0.77"
 
 # pipx for cli (not library)
 "pipx:pipenv" = "2025.0.4"
 "pipx:poetry" = "2.1.4"
-"pipx:uv" = "0.8.8"
+"pipx:uv" = "0.8.9"
 "pipx:pre-commit" = "4.3.0"
 "pipx:markitdown[all]" = "0.1.2"
 
