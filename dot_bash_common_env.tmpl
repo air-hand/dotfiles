@@ -27,6 +27,7 @@ if test -f ~/.local/share/aquaproj-aqua/bin/aqua && ! command -v aqua &>/dev/nul
     export PATH=~/.local/share/aquaproj-aqua/bin:$PATH
 fi
 export AQUA_GLOBAL_CONFIG=$HOME/.config/aquaproj-aqua/aqua.yaml
+export AQUA_DISABLE_GITHUB_ARTIFACT_ATTESTATION={{ .aqua_disable_github_artifact_attestation }}
 
 # proxy
 {{- if .http_proxy }}
