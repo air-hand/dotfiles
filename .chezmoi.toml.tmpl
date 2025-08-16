@@ -28,9 +28,7 @@ sourceDir = "{{ env "MY_CHEZMOI_SOURCE" }}"
     git_name = {{ $git_name | quote }}
     git_email = {{ $git_email | quote }}
     git_signingkey = {{ $git_signingkey | quote }}
-    http_proxy = "{{ env "HTTP_PROXY" }}"
-    https_proxy = "{{ env "HTTPS_PROXY" }}"
-    no_proxy = "{{ env "NO_PROXY" }}"
     aqua_disable_github_artifact_attestation = {{ $aqua_disable_github_artifact_attestation }}
     {{/* pass .chezmoi dictionary to template */}}
     {{ includeTemplate "host.toml.tmpl" .chezmoi }}
+    {{ includeTemplate "proxy.toml.tmpl" .chezmoi }}
