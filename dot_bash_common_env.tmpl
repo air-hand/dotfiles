@@ -42,3 +42,7 @@ export HTTPS_PROXY=$https_proxy
 export no_proxy={{ .no_proxy }}
 export NO_PROXY=$no_proxy
 {{- end }}
+
+if command -v tenv &> /dev/null; then
+    export TENV_AUTO_INSTALL=true
+fi
