@@ -20,7 +20,7 @@ node = '22'
 "pipx:poetry" = "2.1.4"
 "pipx:uv" = "0.8.13"
 "pipx:pre-commit" = "4.3.0"
-"pipx:markitdown[all]" = "0.1.2"
+"pipx:markitdown[all]" = "0.1.3"
 
 [settings]
 experimental = true
