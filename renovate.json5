@@ -48,4 +48,5 @@
     ],
   },
   rebaseWhen: "behind-base-branch",
+  minimumReleaseAge: "3 days",
 }
