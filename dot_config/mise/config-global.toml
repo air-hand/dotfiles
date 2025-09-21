@@ -6,7 +6,7 @@ python = ['3.13.7']
 go = ['1.25.1']
 rust = 'stable'
 node = '22'
-uv = '0.8.17'
+uv = '0.8.18'
 
 "npm:renovate" = "41.116.6"
 "npm:prettier" = "3.6.2"
