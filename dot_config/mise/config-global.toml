@@ -19,7 +19,7 @@ uv = '0.8.19'
 
 # pipx for cli (not library)
 "pipx:pipenv" = "2025.0.4"
-"pipx:poetry" = "2.2.0"
+"pipx:poetry" = "2.2.1"
 "pipx:pre-commit" = "4.3.0"
 "pipx:markitdown[all]" = "0.1.3"
 
