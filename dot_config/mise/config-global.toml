@@ -15,7 +15,7 @@ uv = '0.8.23'
 "npm:conventional-changelog" = "7.1.1"
 "npm:release-please" = "17.1.3"
 "npm:@anthropic-ai/claude-code" = "2.0.9"
-"npm:@openai/codex" = "0.44.0"
+"npm:@openai/codex" = "0.45.0"
 
 # pipx for cli (not library)
 "pipx:pipenv" = "2025.0.4"
