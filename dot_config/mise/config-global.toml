@@ -14,7 +14,7 @@ uv = '0.9.4'
 "npm:@devcontainers/cli" = "0.80.1"
 "npm:conventional-changelog" = "7.1.1"
 "npm:release-please" = "17.1.3"
-"npm:@anthropic-ai/claude-code" = "2.0.23"
+"npm:@anthropic-ai/claude-code" = "2.0.24"
 "npm:@openai/codex" = "0.47.0"
 "npm:@github/copilot" = "0.0.346"
 
