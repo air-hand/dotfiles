@@ -2,7 +2,7 @@
 [tools]
 poetry = {version='2.2.1'}
 python = {version='3.13.7'}
-node = {version='22'}
+node = {version='24'}
 
 [settings]
 experimental = true
