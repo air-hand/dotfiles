@@ -3,7 +3,7 @@
 
 [tools]
 python = ['3.13.7']
-go = ['1.25.3']
+go = ['1.25.4']
 rust = 'stable'
 node = '24'
 uv = '0.9.7'
