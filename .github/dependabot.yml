@@ -6,3 +6,6 @@ updates:
       interval: "daily"
     cooldown:
       default-days: 5
+      exclude:
+        - "air-hand/*"
+        - "actions/*"
