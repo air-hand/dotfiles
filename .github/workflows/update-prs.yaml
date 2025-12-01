@@ -21,7 +21,7 @@ jobs:
           permission-pull-requests: write
           permission-workflows: write
       - name: update
-        uses: air-hand/common-actions/update-prs-auto-merge-enabled@1b4a34591b9c83599e307f5654dc703deb50be9a # v1.2.10
+        uses: air-hand/common-actions/update-prs-auto-merge-enabled@659c7ba424d838f6ff71e7e5f0a06a346675ad2a # v1.3.0
         with:
           token: ${{ steps.gh-app-token.outputs.token }}
           base_branch: main
