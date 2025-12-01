@@ -6,7 +6,7 @@ python = ['3.13.7']
 go = ['1.25.4']
 rust = 'stable'
 node = '24'
-uv = '0.9.13'
+uv = {version="0.9.13", backend="cargo"}
 
 "npm:renovate" = "42.26.2"
 "npm:prettier" = "3.7.1"

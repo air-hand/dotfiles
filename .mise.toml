@@ -1,8 +1,8 @@
 # https://github.com/jdx/mise#configuration
 [tools]
-poetry = {version='2.2.1'}
 python = {version='3.13.7'}
 node = {version='24'}
+uv = {version="0.9.13"}
 
 [settings]
 experimental = true
