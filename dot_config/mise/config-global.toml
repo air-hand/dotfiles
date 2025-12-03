@@ -8,7 +8,7 @@ rust = 'stable'
 node = '24'
 uv = {version="0.9.13", backend="cargo"}
 
-"npm:renovate" = "42.26.11"
+"npm:renovate" = "42.27.0"
 "npm:prettier" = "3.7.3"
 "npm:@commitlint/cli" = "20.1.0"
 "npm:@devcontainers/cli" = "0.80.2"
