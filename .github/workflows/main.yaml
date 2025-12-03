@@ -29,9 +29,9 @@ jobs:
 
   check-result:
     needs: main
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-slim
     timeout-minutes: 5
-    if: failure() || cancelled()
+    if: ${{ always() && needs.main.result != 'success' }}
     steps:
       - name: exit with failure
         run: exit 1
