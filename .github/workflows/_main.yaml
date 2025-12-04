@@ -14,6 +14,11 @@ on:
       GH_APP_INSTALLATION_ID:
         required: true
 
+concurrency:
+  group: main-${{ github.ref }}
+  # Cancel in-progress runs during PR development (merged=false), but preserve merge runs (merged=true) to ensure IAC apply completes safely
+  cancel-in-progress: ${{ github.event.pull_request.merged != true }}
+
 permissions: {}
 
 jobs:
