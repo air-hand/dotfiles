@@ -2,7 +2,7 @@
 [tools]
 python = {version='3.13.7'}
 node = {version='24'}
-uv = {version="0.9.13"}
+uv = {version="0.9.14"}
 
 [settings]
 experimental = true
