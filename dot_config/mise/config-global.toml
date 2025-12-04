@@ -22,7 +22,7 @@ uv = {version="0.9.14", backend="cargo"}
 "pipx:pipenv" = "2025.0.4"
 "pipx:poetry" = "2.2.1"
 "pipx:pre-commit" = "4.5.0"
-"pipx:markitdown[all]" = "0.1.3"
+"pipx:markitdown[all]" = "0.1.4"
 
 [settings]
 experimental = true
