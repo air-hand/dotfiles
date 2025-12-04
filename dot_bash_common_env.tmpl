@@ -11,6 +11,13 @@ if [[ ! "$PATH" =~ ~/.local/bin ]]; then
     export PATH=~/.local/bin:$PATH
 fi
 
+{{- if .is_wsl2 }}
+# Add Windows bin directory for tools like win32yank (for neovim clipboard)
+if [[ ! "$PATH" =~ {{ .windows_bin_path }} ]]; then
+    export PATH={{ .windows_bin_path | quote }}:$PATH
+fi
+{{- end }}
+
 if test -f /home/linuxbrew/.linuxbrew/bin/brew; then
     eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
