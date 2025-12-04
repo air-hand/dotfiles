@@ -15,7 +15,7 @@ cat {{ joinPath .chezmoi.sourceDir "files/setup_wsl2_downloads.json" | quote }} 
 
 # neovim with vscode + wsl2
 # note: vscode-neovim won't load bashrc or profile, so put exe globally.
-install_dir=$(wslpath $(wslvar USERPROFILE))/AppData/Local/bin
+install_dir={{ .windows_bin_path | quote }}
 sudo mkdir -p $install_dir
 cd $install_dir
 
@@ -62,7 +62,7 @@ while read -r target_dir; do
     if ! test -L ~/${target_dir}; then
         rm -rf ~/${target_dir}
     fi
-    ln -s "$(wslpath $(wslvar USERPROFILE))/${target_dir}" ~/${target_dir}
+    ln -s -f "$(wslpath $(wslvar USERPROFILE))/${target_dir}" ~/${target_dir}
 done << EOF
 .ssh
 EOF

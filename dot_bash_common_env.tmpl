@@ -3,13 +3,20 @@ export VISUAL=nvim
 #export LANG=en_US.UTF-8
 export LESS="-Q -i -R"
 
-if [[ ! "$PATH" =~ ~/bin ]]; then
-    export PATH=~/bin:$PATH
+if [[ ":$PATH:" != *":$HOME/bin:"* ]]; then
+    export PATH=$HOME/bin:$PATH
 fi
 
-if [[ ! "$PATH" =~ ~/.local/bin ]]; then
-    export PATH=~/.local/bin:$PATH
+if [[ ":$PATH:" != *":$HOME/.local/bin:"* ]]; then
+    export PATH=$HOME/.local/bin:$PATH
 fi
+
+{{- if .is_wsl2 }}
+# Add Windows bin directory for tools like win32yank (for neovim clipboard)
+if [[ ":$PATH:" != *":{{ .windows_bin_path }}:"* ]]; then
+    export PATH={{ .windows_bin_path | quote }}:$PATH
+fi
+{{- end }}
 
 if test -f /home/linuxbrew/.linuxbrew/bin/brew; then
     eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"

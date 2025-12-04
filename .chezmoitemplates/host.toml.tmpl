@@ -16,3 +16,10 @@ is_in_container = {{ $is_in_container }}
 {{ $is_wsl2 = true }}
 {{- end -}}
 is_wsl2 = {{ and $is_wsl2 (not $is_in_container) }}
+
+{{ $windows_bin_path := "" }}
+{{- if $is_wsl2 -}}
+{{ $windows_userprofile := output "wslpath" (output "wslvar" "USERPROFILE" | trim) | trim }}
+{{ $windows_bin_path = printf "%s/AppData/Local/bin" $windows_userprofile }}
+{{- end -}}
+windows_bin_path = {{ $windows_bin_path | quote }}
