@@ -1,4 +1,4 @@
-UV := mise exec -- uv
+UV := uv
 PRE_COMMIT := mise exec -- pre-commit
 
 .PHONY: setup
