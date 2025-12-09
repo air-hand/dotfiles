@@ -39,3 +39,4 @@ packages:
   - name: tofuutils/tenv@v4.9.0
   - name: ast-grep/ast-grep@0.40.0
   - name: fullstorydev/grpcurl@v1.9.3
+  - name: astral-sh/uv@v0.9.15
