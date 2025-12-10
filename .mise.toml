@@ -1,6 +1,6 @@
 # https://github.com/jdx/mise#configuration
 [tools]
-python = {version='3.13.7'}
+python = {version='3.14.2'}
 node = {version='24'}
 "ubi:astral-sh/uv" = '0.9.16'
 
