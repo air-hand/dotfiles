@@ -2,7 +2,7 @@
 [tools]
 python = {version='3.13.7'}
 node = {version='24'}
-"ubi:astral-sh/uv" = '0.9.15'
+"ubi:astral-sh/uv" = '0.9.16'
 
 [settings]
 experimental = true
