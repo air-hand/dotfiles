@@ -37,5 +37,5 @@ packages:
   - name: suzuki-shunsuke/pinact@v3.4.6
   - name: bahdotsh/wrkflw@v0.7.3
   - name: tofuutils/tenv@v4.9.0
-  - name: ast-grep/ast-grep@0.40.0
+  - name: ast-grep/ast-grep@0.40.1
   - name: fullstorydev/grpcurl@v1.9.3
