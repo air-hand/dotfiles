@@ -14,7 +14,7 @@ packages:
   - name: nektos/act@v0.2.83
   - name: jqlang/jq@jq-1.8.1
   - name: kubernetes/kubectl@v1.34.2
-  - name: helm/helm@v4.0.1
+  - name: helm/helm@v4.0.2
   - name: twistedpair/google-cloud-sdk@548.0.0
   - name: aws/aws-cli@2.32.14
   - name: aquasecurity/trivy@v0.68.1
