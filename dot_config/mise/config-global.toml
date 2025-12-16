@@ -15,7 +15,7 @@ node = '24'
 "npm:conventional-changelog" = "7.1.1"
 "npm:release-please" = "17.1.3"
 "npm:@anthropic-ai/claude-code" = "2.0.69"
-"npm:@openai/codex" = "0.71.0"
+"npm:@openai/codex" = "0.72.0"
 "npm:@github/copilot" = "0.0.369"
 
 # pipx for cli (not library)
