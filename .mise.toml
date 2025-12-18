@@ -2,11 +2,11 @@
 [tools]
 python = {version='3.13.7'}
 node = {version='24'}
-"ubi:astral-sh/uv" = '0.9.17'
+"pipx:pre-commit" = "4.5.0"
+"pipx:yamllint" = "1.37.1"
 
 [settings]
 experimental = true
 
 [env]
 TERRAGRUNT_TFPATH = "terraform"
-_.python.venv = { path = ".venv", create = true }
