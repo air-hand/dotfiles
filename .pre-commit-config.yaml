@@ -20,7 +20,7 @@ repos:
     hooks:
       - id: yamllint-system
         name: "YAML lint"
-        language: python
+        language: system
         entry: yamllint
         args: ["--config-file", ".github/linters/.yaml-lint.yml"]
         types: [file, yaml]
