@@ -4,6 +4,11 @@ description: "Install dotfiles"
 runs:
   using: "composite"
   steps:
+    - name: Enable mise verbose logging
+      if: runner.debug == '1'
+      run: echo "MISE_VERBOSE=1" >> "$GITHUB_ENV"
+      shell: bash
+
     - name: install
       run: ./install.sh
       shell: bash

@@ -4,9 +4,10 @@
 [tools]
 python = ['3.13.7']
 go = ['1.25.5']
-rust = 'stable'
+rust = ['1.88', 'stable']
 node = '24'
-"ubi:astral-sh/uv" = '0.9.18'
+#"github:astral-sh/uv" = '0.9.18'
+uv = '0.9.18'
 
 "npm:renovate" = "42.64.1"
 "npm:prettier" = "3.7.4"
