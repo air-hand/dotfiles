@@ -6,16 +6,12 @@ set -eo pipefail
 test -f /home/linuxbrew/.linuxbrew/bin/brew &&
     eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
-# install by brew
-install_by_brew=(
-    # not managed by aqua or for some reasons.
-    # for vscode-neovim
-    "nvim"
-    "kcov"
-)
-for inst in "${install_by_brew[@]}"; do
-    brew install $inst
-done
+# not managed by aqua or for some reasons.
+# for vscode-neovim
+brew install \
+    nvim \
+    kcov \
+;
 
 while read -r line; do
     [[ -z "$line" ]] && continue

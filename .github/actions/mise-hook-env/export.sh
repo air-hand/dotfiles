@@ -5,6 +5,7 @@ set -eo pipefail
 _set_github_env() {
     local key="${1}"
     local value="${2}"
+    value=$(echo "${value}" | sed "s/^'//;s/'$//")
     case "${key}" in
     "PATH")
         echo "${value}" >"$GITHUB_PATH"

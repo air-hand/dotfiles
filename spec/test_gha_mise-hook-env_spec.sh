@@ -64,5 +64,20 @@ Describe 'export.sh'
             The line 1 of contents of file "$GITHUB_ENV" should equal "BAZ=QUX"
             The line 2 of contents of file "$GITHUB_ENV" should equal "FOO_PATH=~/.local/bin:/usr/local/bin:/usr/bin"
         End
+
+        It 'should export variables remove trailing single quotes (path)'
+            # stub mise command
+            mise() {
+                if [[ "$1" != "hook-env" ]]; then
+                    command mise "$@"
+                    return
+                fi
+                %text
+                #|export PATH='~/.local/bin:/usr/local/bin:/usr/bin'
+            }
+
+            When call mise-hook-env
+            The line 1 of contents of file "$GITHUB_PATH" should equal "~/.local/bin:/usr/local/bin:/usr/bin"
+        End
     End
 End
