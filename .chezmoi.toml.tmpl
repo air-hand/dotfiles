@@ -20,6 +20,12 @@
 sourceDir = "{{ env "MY_CHEZMOI_SOURCE" }}"
 {{- end }}
 
+{{/* skip aqua cosign if needed */}}
+{{ $aqua_disable_cosign := false }}
+{{- if $interactive }}
+{{ $aqua_disable_cosign = promptBoolOnce . "aqua_disable_github_artifact_attestation" "Do you want to disable cosign." }}
+{{- end }}
+
 [edit]
     command = "vim"
     apply = true
@@ -29,6 +35,7 @@ sourceDir = "{{ env "MY_CHEZMOI_SOURCE" }}"
     git_email = {{ $git_email | quote }}
     git_signingkey = {{ $git_signingkey | quote }}
     aqua_disable_github_artifact_attestation = {{ $aqua_disable_github_artifact_attestation }}
+    aqua_disable_cosign = {{ $aqua_disable_cosign }}
     {{/* pass .chezmoi dictionary to template */}}
     {{ includeTemplate "host.toml.tmpl" .chezmoi }}
     {{ includeTemplate "proxy.toml.tmpl" .chezmoi }}
