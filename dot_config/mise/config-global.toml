@@ -23,7 +23,7 @@ uv = '0.9.24'
 "pipx:pipenv" = "2026.0.3"
 "pipx:poetry" = "2.2.1"
 "pipx:pre-commit" = "4.5.1"
-"pipx:markitdown[all]" = "0.1.4"
+# "pipx:markitdown[all]" = "0.1.4"
 
 [settings]
 experimental = true
