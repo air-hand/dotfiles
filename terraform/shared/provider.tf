@@ -1,4 +1,4 @@
 provider "github" {
   owner = local.github_owner
-  app_auth {}
+  # token is read from GITHUB_TOKEN environment variable
 }
