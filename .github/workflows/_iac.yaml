@@ -69,6 +69,7 @@ jobs:
         env:
           TF_CLOUD_ORGANIZATION: ${{ secrets.TF_CLOUD_ORGANIZATION }}
           GITHUB_TOKEN: ${{ steps.gh-app-token.outputs.token }}
+          TFCMT_DISABLE_LABEL: "true"
 
       - name: apply
         if: github.event.pull_request.merged == true
@@ -77,3 +78,4 @@ jobs:
         env:
           TF_CLOUD_ORGANIZATION: ${{ secrets.TF_CLOUD_ORGANIZATION }}
           GITHUB_TOKEN: ${{ steps.gh-app-token.outputs.token }}
+          TFCMT_DISABLE_LABEL: "true"
