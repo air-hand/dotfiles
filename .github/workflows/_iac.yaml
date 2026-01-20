@@ -29,7 +29,7 @@ jobs:
     timeout-minutes: 10
     env:
       TF_CLOUD_WORKSPACE: ${{ vars.TF_CLOUD_WORKSPACE }}
-      TERRAGRUNT_TFPATH: ${{ github.workspace }}/.github/scripts/tfwrapper.sh
+      TG_TF_PATH: ${{ github.workspace }}/.github/scripts/tfwrapper.sh
     steps:
       - uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
         with:
