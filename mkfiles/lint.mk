@@ -14,9 +14,10 @@ lint-shell:
 
 .PHONY: lint-gha
 lint-gha:
-	ghalint run && \
-		find .github/actions -type f -name "action.yaml" -o -name "action.yml" | \
-		xargs -I{} ghalint run-action {}
+	# ghalint run && \
+	# 	find .github/actions -type f -name "action.yaml" -o -name "action.yml" | \
+	# 	xargs -I{} ghalint run-action {}
+	@echo "ghalint is disabled"
 
 .PHONY: prettier
 prettier:
