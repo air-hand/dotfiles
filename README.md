@@ -12,3 +12,11 @@ Command Pallete -> Open Settings -> dotfiles
 dotfiles.repository: "OWNER/dotfiles",
 dotfiles.installCommand: "~/dotfiles/path-to-installer.sh",
 ```
+
+## How to apply changes?
+
+```sh
+make
+```
+
+This runs `chezmoi apply` to sync dotfiles.

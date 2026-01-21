@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+{{ if .is_wsl2 -}}
+
+# sync Claude Code skills to Windows
+# skills hash: {{ output "sh" "-c" (print "find " (joinPath .chezmoi.sourceDir "dot_claude/skills") " -type f | sort | xargs cat") | sha256sum }}
+WINDOWS_CLAUDE_DIR=$(wslpath "$(wslvar USERPROFILE)/.claude")
+mkdir -p "$WINDOWS_CLAUDE_DIR/skills"
+echo "syncing Claude Code skills to Windows"
+rsync -a ~/.claude/skills/ "$WINDOWS_CLAUDE_DIR/skills/"
+
+{{- end -}}
