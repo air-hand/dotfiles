@@ -18,3 +18,6 @@ indent_size = 2
 
 [*.{tf,hcl,tftpl}]
 indent_size = 2
+
+[dot_claude/**]
+indent_size = unset
