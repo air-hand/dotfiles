@@ -2,7 +2,9 @@
 
 ## How to enable dotfiles?
 
+```sh
 sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply $GITHUB_USERNAME
+```
 
 ## How to use for DevContainer?
 
