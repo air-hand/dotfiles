@@ -19,7 +19,7 @@ packages:
   - name: suzuki-shunsuke/ghalint@v1.5.4
   - name: mrtazz/checkmake@v0.3.2
   - name: jdx/mise@v2026.1.5
-  - name: gruntwork-io/terragrunt@v0.97.2
+  - name: gruntwork-io/terragrunt@v0.98.0
   - name: suzuki-shunsuke/tfcmt@v4.14.14
   - name: terraform-linters/tflint@v0.60.0
   - name: hashicorp/terraform@v1.14.3
