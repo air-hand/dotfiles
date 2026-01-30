@@ -7,7 +7,7 @@ go = ['1.25.6']
 rust = ['1.93.0', 'stable']
 node = '24'
 #"github:astral-sh/uv" = '0.9.18'
-uv = '0.9.26'
+uv = '0.9.27'
 
 "npm:renovate" = "42.92.10"
 "npm:prettier" = "3.8.1"
