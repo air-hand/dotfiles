@@ -11,7 +11,7 @@ uv = '0.9.28'
 
 "npm:renovate" = "43.0.5"
 "npm:prettier" = "3.8.1"
-"npm:@commitlint/cli" = "20.3.1"
+"npm:@commitlint/cli" = "20.4.0"
 "npm:@devcontainers/cli" = "0.82.0"
 "npm:conventional-changelog" = "7.1.1"
 "npm:release-please" = "17.2.0"
