@@ -36,6 +36,11 @@
       // automerge: true,
     },
     {
+      // AI tools - immediate updates
+      matchPackageNames: ["@openai/codex", "@github/copilot"],
+      minimumReleaseAge: "0 days",
+    },
+    {
       matchDatasources: ["terraform-provider"],
       // registryUrls: ["https://registry.opentofu.org"],
     },

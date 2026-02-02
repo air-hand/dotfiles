@@ -6,11 +6,6 @@ repos:
     hooks:
       - id: actionlint-system
         args: ["--config-file", ".github/linters/actionlint.yml"]
-  - repo: https://github.com/mrtazz/checkmake
-    rev: 0.2.2
-    hooks:
-      - id: checkmake-system
-        exclude: mkfiles/.*
   - repo: https://github.com/editorconfig-checker/editorconfig-checker.python
     rev: 2.7.3
     hooks:
