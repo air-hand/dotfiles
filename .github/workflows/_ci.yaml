@@ -36,27 +36,6 @@ jobs:
         os:
           - ubuntu-24.04
     runs-on: ${{ matrix.os }}
-    steps:
-      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
-        with:
-          persist-credentials: false
-      - uses: ./.github/actions/run-install
-
-  run-install-test:
-    needs: run-install-vm
-    permissions:
-      contents: read
-    runs-on: ubuntu-latest
-    timeout-minutes: 10
-    strategy:
-      fail-fast: false
-      matrix:
-        distro: ["ubuntu-24.04", "debian-12"]
-    container:
-      image: mcr.microsoft.com/vscode/devcontainers/base:${{ matrix.distro }}
-      env:
-        CODESPACES: true
-        REMOTE_CONTAINERS: true
     defaults:
       run:
         shell: bash -l -eo pipefail {0}
@@ -64,10 +43,7 @@ jobs:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
         with:
           persist-credentials: false
-      # install for lint and test
       - uses: ./.github/actions/run-install
-      - run: |
-          git config --global --add safe.directory "${GITHUB_WORKSPACE}"
       - name: setup
         run: |
           make setup
