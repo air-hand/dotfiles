@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-{{ if .is_wsl2 -}}
+{{ if and .is_wsl2 (not .disable_setup_wsl2_docker) -}}
 
 # check docker running on wsl2 or docker desktop
 function is_docker_wsl2() {

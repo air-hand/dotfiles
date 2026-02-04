@@ -22,6 +22,12 @@
 {{ $aqua_disable_cosign = promptBoolOnce . "aqua_disable_cosign" "Do you want to disable cosign." }}
 {{- end }}
 
+{{/* skip setup wsl2 docker if needed */}}
+{{ $disable_setup_wsl2_docker := false }}
+{{- if $interactive }}
+{{ $disable_setup_wsl2_docker = promptBoolOnce . "disable_setup_wsl2_docker" "Do you want to disable WSL2 Docker setup." }}
+{{- end }}
+
 {{- if (env "MY_CHEZMOI_SOURCE") }}
 sourceDir = "{{ env "MY_CHEZMOI_SOURCE" }}"
 {{- end }}
@@ -36,6 +42,7 @@ sourceDir = "{{ env "MY_CHEZMOI_SOURCE" }}"
     git_signingkey = {{ $git_signingkey | quote }}
     aqua_disable_github_artifact_attestation = {{ $aqua_disable_github_artifact_attestation }}
     aqua_disable_cosign = {{ $aqua_disable_cosign }}
+    disable_setup_wsl2_docker = {{ $disable_setup_wsl2_docker }}
     {{/* pass .chezmoi dictionary to template */}}
     {{ includeTemplate "host.toml.tmpl" .chezmoi }}
     {{ includeTemplate "proxy.toml.tmpl" .chezmoi }}
