@@ -9,7 +9,7 @@ node = '24'
 #"github:astral-sh/uv" = '0.9.18'
 uv = '0.9.28'
 
-"npm:renovate" = "43.0.9"
+"npm:renovate" = "43.2.1"
 "npm:prettier" = "3.8.1"
 "npm:@commitlint/cli" = "20.4.1"
 "npm:@devcontainers/cli" = "0.82.0"
