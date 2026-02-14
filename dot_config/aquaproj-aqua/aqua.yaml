@@ -37,7 +37,7 @@ packages:
   - name: opentofu/opentofu@v1.11.4
   - name: suzuki-shunsuke/pinact@v3.9.0
   - name: bahdotsh/wrkflw@v0.7.3
-  - name: tofuutils/tenv@v4.9.1
+  - name: tofuutils/tenv@v4.9.3
   - name: ast-grep/ast-grep@0.40.5
   - name: fullstorydev/grpcurl@v1.9.3
   - name: k3d-io/k3d@v5.8.3
