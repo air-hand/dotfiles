@@ -4,7 +4,7 @@
 [tools]
 python = ['3.14.3']
 go = ['1.26.0']
-rust = ['1.93.0', 'stable']
+rust = ['1.93.1', 'stable']
 node = '24'
 #"github:astral-sh/uv" = '0.9.18'
 uv = '0.10.2'
