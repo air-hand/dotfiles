@@ -14,7 +14,7 @@ uv = '0.10.4'
 "npm:@commitlint/cli" = "20.4.2"
 "npm:@devcontainers/cli" = "0.83.2"
 "npm:conventional-changelog" = "7.1.1"
-"npm:release-please" = "17.2.1"
+"npm:release-please" = "17.3.0"
 "npm:@openai/codex" = "0.104.0"
 "npm:@github/copilot" = "0.0.414"
 
