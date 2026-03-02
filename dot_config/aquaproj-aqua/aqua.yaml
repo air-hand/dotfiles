@@ -24,7 +24,7 @@ packages:
   - name: argoproj/argo-cd@v3.3.2
   - name: reviewdog/reviewdog@v0.21.0
   - name: shellspec/shellspec@0.28.1
-  - name: jdx/mise@v2026.2.21
+  - name: jdx/mise@v2026.2.22
   - name: junegunn/fzf@v0.68.0
   - name: hashicorp/terraform@v1.14.6
   - name: helmfile/helmfile@v1.3.2
@@ -33,7 +33,7 @@ packages:
   - name: kubernetes-sigs/kustomize@kustomize/v5.8.1
   - name: loft-sh/devpod@v0.6.15
   - name: coder/coder@v2.30.2
-  - name: dagger/dagger@v0.19.11
+  - name: dagger/dagger@v0.20.0
   - name: opentofu/opentofu@v1.11.5
   - name: suzuki-shunsuke/pinact@v3.9.0
   - name: bahdotsh/wrkflw@v0.7.3
