@@ -15,7 +15,7 @@ uv = '0.10.10'
 "npm:@devcontainers/cli" = "0.84.0"
 "npm:conventional-changelog" = "7.2.0"
 "npm:release-please" = "17.3.0"
-"npm:@openai/codex" = "0.115.0"
+"npm:@openai/codex" = "0.116.0"
 "npm:@github/copilot" = "1.0.9"
 
 # pipx for cli (not library)
