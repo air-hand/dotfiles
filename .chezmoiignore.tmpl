@@ -6,8 +6,13 @@ README.md
 .vscode/
 vscode/
 Makefile
+mkfiles/
 files/
 terraform/
+aqua.yaml
+pyproject.toml
+*.log
+*.md
 {{- if eq (env "REMOTE_CONTAINERS") "true" }}
 {{/* skip apply .gitconfig on devcontainer */}}
 /.gitconfig
