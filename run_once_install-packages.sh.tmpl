@@ -24,6 +24,7 @@ sudo -E apt-get update && sudo -E apt-get install -y  \
     libncurses5-dev libgdbm-dev libnss3-dev wget \
     qemu-system-x86 \
     podman \
+    bubblewrap \
     ;
 
 {{ if and (eq .chezmoi.os "linux") (eq .chezmoi.osRelease.id "ubuntu") -}}
