@@ -29,7 +29,7 @@ packages:
   - name: hashicorp/terraform@v1.14.7
   - name: helmfile/helmfile@v1.4.2
   - name: ahmetb/kubectx/kubens@v0.10.0
-  - name: ahmetb/kubectx@v0.10.0
+  - name: ahmetb/kubectx@v0.10.2
   - name: kubernetes-sigs/kustomize@kustomize/v5.8.1
   - name: loft-sh/devpod@v0.6.15
   - name: coder/coder@v2.31.5
