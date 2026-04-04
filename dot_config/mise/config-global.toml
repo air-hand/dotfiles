@@ -19,7 +19,7 @@ uv = '0.11.2'
 "npm:@github/copilot" = "1.0.18"
 
 # pipx for cli (not library)
-"pipx:pipenv" = "2026.5.0"
+"pipx:pipenv" = "2026.5.1"
 "pipx:poetry" = "2.3.3"
 "pipx:pre-commit" = "4.5.1"
 # "pipx:markitdown[all]" = "0.1.4"
