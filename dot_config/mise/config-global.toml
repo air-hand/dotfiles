@@ -26,5 +26,5 @@ uv = '0.11.3'
 
 [settings]
 experimental = true
-python_compile = true
+python.compile = true
 idiomatic_version_file_enable_tools = []
