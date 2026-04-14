@@ -26,6 +26,7 @@ let g:nvim_config_root = stdpath('config')
 let s:config_files = [
     \ 'clipboard.vim',
     \ 'zenhan.vim',
+    \ 'vscode.vim',
     \ 'dein.vim'
     \ ]
 for conf in s:config_files
