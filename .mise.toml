@@ -10,4 +10,4 @@ node = {version='24'}
 experimental = true
 
 [env]
-TERRAGRUNT_TFPATH = "terraform"
+TG_TF_PATH = "terraform"

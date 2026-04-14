@@ -19,6 +19,7 @@ jobs:
     permissions:
       contents: read
       pull-requests: write
+      issues: write
       statuses: write
     secrets:
       GH_APP_PEM_FILE: ${{ secrets.GH_APP_PEM_FILE }}
