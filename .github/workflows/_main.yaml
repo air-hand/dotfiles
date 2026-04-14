@@ -44,7 +44,8 @@ jobs:
     permissions:
       contents: read
       statuses: write
-      pull-requests: read
+      pull-requests: write
+      issues: write
 
   iac-jobs:
     needs: labeler
