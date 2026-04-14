@@ -21,7 +21,6 @@ jobs:
       pull-requests: write
       statuses: write
     secrets:
-      GH_APP_ID: ${{ secrets.GH_APP_ID }}
       GH_APP_PEM_FILE: ${{ secrets.GH_APP_PEM_FILE }}
       TF_API_TOKEN: ${{ secrets.TF_API_TOKEN }}
       TF_CLOUD_ORGANIZATION: ${{ secrets.TF_CLOUD_ORGANIZATION }}

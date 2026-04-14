@@ -8,7 +8,6 @@ data "github_dependabot_secrets" "current" {
         for expected in [
           "TF_API_TOKEN",
           "TF_CLOUD_ORGANIZATION",
-          "GH_APP_ID",
           "GH_APP_INSTALLATION_ID",
           "GH_APP_PEM_FILE",
         ] : contains([for s in self.secrets : s.name], expected)
