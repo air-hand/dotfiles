@@ -8,7 +8,7 @@ sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply $GITHUB_USERNAME
 
 ## How to use for DevContainer?
 
-Command Pallete -> Open Settings -> dotfiles
+Command Palette -> Open Settings -> dotfiles
 
 ```json
 dotfiles.repository: "OWNER/dotfiles",
