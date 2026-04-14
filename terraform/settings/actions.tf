@@ -9,8 +9,3 @@ resource "github_actions_variable" "gh_app_client_id" {
   variable_name = "GH_APP_CLIENT_ID"
   value         = "Iv1.2fe071558871cd68"
 }
-
-import {
-  to = github_actions_variable.gh_app_client_id
-  id = "dotfiles:GH_APP_CLIENT_ID"
-}
