@@ -41,3 +41,4 @@ packages:
   - name: ast-grep/ast-grep@0.42.1
   - name: fullstorydev/grpcurl@v1.9.3
   - name: k3d-io/k3d@v5.8.3
+  - name: zizmorcore/zizmor@v1.24.1
