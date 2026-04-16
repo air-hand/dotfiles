@@ -21,4 +21,15 @@ if has('nvim') && $TERM_PROGRAM ==# 'vscode'
     cnoremap <S-7> '
     cnoremap <S-8> (
     cnoremap <S-9> )
+
+    nnoremap <S-1> !
+    " char-34 means '"'. ignore vimscript's comment.
+    nnoremap <S-2> <char-34>
+    nnoremap <S-3> #
+    nnoremap <S-4> $
+    nnoremap <S-5> %
+    nnoremap <S-6> &
+    nnoremap <S-7> '
+    nnoremap <S-8> (
+    nnoremap <S-9> )
 endif
