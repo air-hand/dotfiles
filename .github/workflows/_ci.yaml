@@ -2,6 +2,9 @@ name: CI Jobs
 
 on:
   workflow_call:
+    secrets:
+      GH_APP_PEM_FILE:
+        required: true
 
 permissions: {}
 
@@ -9,6 +12,7 @@ jobs:
   super-linter:
     permissions:
       contents: read
+      packages: read
       statuses: write
       # post results as pull requests comments
       issues: write
@@ -17,6 +21,13 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event.action != 'closed'
     steps:
+      - uses: actions/create-github-app-token@1b10c78c7865c340bc4f6099eb2f838309f1e8c3 # v3.1.1
+        id: gh-app-token
+        with:
+          client-id: ${{ vars.GH_APP_CLIENT_ID }}
+          private-key: ${{ secrets.GH_APP_PEM_FILE }}
+          permission-issues: write
+          permission-pull-requests: write
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
         with:
           # for super-linter
@@ -28,6 +39,17 @@ jobs:
       - uses: super-linter/super-linter/slim@9e863354e3ff62e0727d37183162c4a88873df41 # v8.6.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ENABLE_GITHUB_PULL_REQUEST_SUMMARY_COMMENT: false
+          SAVE_SUPER_LINTER_SUMMARY: true
+          ENABLE_GITHUB_ACTIONS_STEP_SUMMARY: false
+
+      - name: Update sticky PR comment
+        if: always() && github.event_name == 'pull_request'
+        uses: marocchino/sticky-pull-request-comment@0ea0beb66eb9baf113663a64ec522f60e49231c0 # v3.0.4
+        with:
+          header: super-linter-report
+          path: ${{ github.workspace }}/super-linter-output/super-linter-summary.md
+          GITHUB_TOKEN: ${{ steps.gh-app-token.outputs.token }}
 
   run-install-vm:
     permissions:
