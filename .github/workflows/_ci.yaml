@@ -49,7 +49,7 @@ jobs:
         with:
           header: super-linter-report
           path: ${{ github.workspace }}/super-linter-output/super-linter-summary.md
-          token: ${{ steps.gh-app-token.outputs.token }}
+          GITHUB_TOKEN: ${{ steps.gh-app-token.outputs.token }}
 
   run-install-vm:
     permissions:
