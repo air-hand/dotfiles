@@ -2,6 +2,9 @@ name: CI Jobs
 
 on:
   workflow_call:
+    secrets:
+      GH_APP_PEM_FILE:
+        required: true
 
 permissions: {}
 
