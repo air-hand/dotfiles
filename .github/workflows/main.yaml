@@ -18,6 +18,7 @@ jobs:
     uses: ./.github/workflows/_main.yaml
     permissions:
       contents: read
+      packages: read
       pull-requests: write
       issues: write
       statuses: write
