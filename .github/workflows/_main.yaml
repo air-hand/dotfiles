@@ -43,6 +43,7 @@ jobs:
     uses: ./.github/workflows/_ci.yaml
     permissions:
       contents: read
+      packages: read
       statuses: write
       pull-requests: write
       issues: write
