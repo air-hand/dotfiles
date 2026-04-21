@@ -47,6 +47,8 @@ jobs:
       statuses: write
       pull-requests: write
       issues: write
+    secrets:
+      GH_APP_PEM_FILE: ${{ secrets.GH_APP_PEM_FILE }}
 
   iac-jobs:
     needs: labeler
