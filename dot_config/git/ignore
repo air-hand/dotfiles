@@ -1,3 +1,4 @@
 **/.claude/settings.local.json
 **/.codex
 .terragrunt-cache/
+__pycache__/
