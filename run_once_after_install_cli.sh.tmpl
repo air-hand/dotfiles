@@ -38,6 +38,7 @@ export PATH=~/.local/share/aquaproj-aqua/bin:$PATH
 export AQUA_GLOBAL_CONFIG=$HOME/.config/aquaproj-aqua/aqua.yaml
 aqua update-aqua # update aqua itself
 aqua install --all --only-link
+aqua vacuum -d 1 # remove unused tools
 
 # install cli globally by mise. mise/config-global.toml hash: {{ include "dot_config/mise/config-global.toml" | sha256sum }}
 # change default env to avoid using in dev-containers as it may conflict with container tools.
