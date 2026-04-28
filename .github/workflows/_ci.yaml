@@ -87,21 +87,8 @@ jobs:
       pull-requests: read
     timeout-minutes: 10
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        shell: bash -l -eo pipefail {0}
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
         with:
           persist-credentials: false
-      - uses: ./.github/actions/run-install # for node.
-      - name: mise env
-        uses: ./.github/actions/mise-hook-env
-      - name: setup
-        run: |
-          make setup
-      - name: test renovate config
-        run: |
-          LOG_LEVEL=debug GH_TOKEN=${GH_TOKEN} make renovate
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - uses: suzuki-shunsuke/github-action-renovate-config-validator@ee9f69e1f683ed0d08225086482b34fc9abe9300 # v2.1.0
