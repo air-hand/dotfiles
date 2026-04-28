@@ -14,7 +14,7 @@ uv = '0.11.7'
 "npm:@devcontainers/cli" = "0.86.0"
 "npm:conventional-changelog" = "7.2.0"
 "npm:@openai/codex" = "0.125.0"
-"npm:@github/copilot" = "1.0.36"
+"npm:@github/copilot" = "1.0.38"
 
 # pipx for cli (not library)
 "pipx:pipenv" = "2026.5.2"
