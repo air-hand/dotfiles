@@ -24,7 +24,7 @@ packages:
   - name: argoproj/argo-cd@v3.3.8
   - name: reviewdog/reviewdog@v0.21.0
   - name: shellspec/shellspec@0.28.1
-  - name: jdx/mise@v2026.4.24
+  - name: jdx/mise@v2026.4.25
   - name: junegunn/fzf@v0.72.0
   - name: hashicorp/terraform@v1.14.9
   - name: helmfile/helmfile@v1.4.4
