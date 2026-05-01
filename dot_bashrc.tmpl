@@ -98,6 +98,11 @@ if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
+# enable conda before mise
+if [ -f $HOME/miniforge3/etc/profile.d/conda.sh ]; then
+    source $HOME/miniforge3/etc/profile.d/conda.sh
+fi
+
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
@@ -113,10 +118,6 @@ test -f $HOME/.local/lib/functions.sh && source $HOME/.local/lib/functions.sh
 
 if [ -f $HOME/.local/bin/setup-socat-ssh-agent.sh ] && on_wsl2 && ! is_in_container; then
     source $HOME/.local/bin/setup-socat-ssh-agent.sh
-fi
-
-if [ -f $HOME/miniforge3/etc/profile.d/conda.sh ]; then
-    source $HOME/miniforge3/etc/profile.d/conda.sh
 fi
 
 ~/.local/bin/fix-docker-desktop-slow.sh &> /dev/null
