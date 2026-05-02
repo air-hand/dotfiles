@@ -21,3 +21,6 @@ indent_size = 2
 
 [dot_claude/**]
 indent_size = unset
+
+[dot_codex/**]
+indent_size = unset
