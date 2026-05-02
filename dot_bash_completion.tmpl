@@ -36,7 +36,8 @@ if [ -f ~/.git-prompt.sh ]; then
     source ~/.git-prompt.sh
 fi
 
-export PS1='[\[\033[32m\]\u\[\033[00m\]:\[\033[33m\]\w\[\033[00m\]]\[\033[36m\]$(__git_ps1 " (%s)")\[\033[00m\]\n\$ '
+PS1='[\[\033[32m\]\u\[\033[00m\]:\[\033[33m\]\w\[\033[00m\]]\[\033[36m\]$(__git_ps1 " (%s)")\[\033[00m\]\n\$ '
+export -n PS1
 
 # gh
 if command -v gh &> /dev/null; then
