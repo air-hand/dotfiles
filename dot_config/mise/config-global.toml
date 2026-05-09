@@ -7,6 +7,7 @@ go = ['1.26.2']
 rust = ['1.95.0']
 node = '24'
 uv = '0.11.10'
+zellij = '0.44.2'
 
 "npm:prettier" = "3.8.3"
 "npm:@commitlint/cli" = "20.5.3"
