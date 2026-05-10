@@ -33,7 +33,7 @@ packages:
   - name: kubernetes-sigs/kustomize@kustomize/v5.8.1
   - name: loft-sh/devpod@v0.6.15
   - name: coder/coder@v2.33.1
-  - name: dagger/dagger@v0.20.7
+  - name: dagger/dagger@v0.20.8
   - name: opentofu/opentofu@v1.11.6
   - name: suzuki-shunsuke/pinact@v3.9.2
   - name: bahdotsh/wrkflw@v0.8.0
