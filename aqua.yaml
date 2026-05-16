@@ -21,5 +21,5 @@ packages:
   - name: jdx/mise@v2026.5.7
   - name: gruntwork-io/terragrunt@v1.0.4
   - name: suzuki-shunsuke/tfcmt@v4.14.15
-  - name: terraform-linters/tflint@v0.62.0
+  - name: terraform-linters/tflint@v0.62.1
   - name: hashicorp/terraform@v1.15.3
