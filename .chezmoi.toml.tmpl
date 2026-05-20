@@ -28,6 +28,12 @@
 {{ $disable_setup_wsl2_docker = promptBoolOnce . "disable_setup_wsl2_docker" "Do you want to disable WSL2 Docker setup." }}
 {{- end }}
 
+{{/* local llm server access */}}
+{{ $local_llm_enabled := false }}
+{{- if $interactive }}
+{{ $local_llm_enabled = promptBoolOnce . "local_llm_enabled" "Do you want to access local llm server." }}
+{{- end }}
+
 {{- if (env "MY_CHEZMOI_SOURCE") }}
 sourceDir = "{{ env "MY_CHEZMOI_SOURCE" }}"
 {{- end }}
@@ -43,6 +49,8 @@ sourceDir = "{{ env "MY_CHEZMOI_SOURCE" }}"
     aqua_disable_github_artifact_attestation = {{ $aqua_disable_github_artifact_attestation }}
     aqua_disable_cosign = {{ $aqua_disable_cosign }}
     disable_setup_wsl2_docker = {{ $disable_setup_wsl2_docker }}
+    local_llm_enabled = {{ $local_llm_enabled }}
     {{/* pass .chezmoi dictionary to template */}}
     {{ includeTemplate "host.toml.tmpl" .chezmoi }}
     {{ includeTemplate "proxy.toml.tmpl" .chezmoi }}
+    {{ includeTemplate "local_llm.toml.tmpl" (dict "enabled" $local_llm_enabled) }}

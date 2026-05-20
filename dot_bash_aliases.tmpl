@@ -2,3 +2,6 @@
 
 alias awsp='export AWS_PROFILE=$(aws configure list-profiles | fzf)'
 alias awsenv='$(aws configure export-credentials --format env)'
+{{- if .local_llm.enabled }}
+alias codex-local='codex --profile local'
+{{- end }}
