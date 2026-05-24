@@ -14,7 +14,7 @@ zellij = '0.44.3'
 "npm:@devcontainers/cli" = "0.87.0"
 "npm:conventional-changelog" = "7.2.0"
 "npm:@openai/codex" = "0.133.0"
-"npm:@github/copilot" = "1.0.51"
+"npm:@github/copilot" = "1.0.52"
 
 # pipx for cli (not library)
 "pipx:pipenv" = "2026.6.1"
