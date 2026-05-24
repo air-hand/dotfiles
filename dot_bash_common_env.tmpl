@@ -28,11 +28,6 @@ fi
 export MISE_CONFIG_FILE=$HOME/.config/mise/config-global.toml
 {{- end }}
 
-# enable aqua after other tools.
-# https://zenn.dev/shunsuke_suzuki/books/aqua-handbook/viewer/tips
-if test -f ~/.local/share/aquaproj-aqua/bin/aqua && ! command -v aqua &>/dev/null; then
-    export PATH=~/.local/share/aquaproj-aqua/bin:$PATH
-fi
 export AQUA_GLOBAL_CONFIG=$HOME/.config/aquaproj-aqua/aqua.yaml
 export AQUA_DISABLE_GITHUB_ARTIFACT_ATTESTATION={{ .aqua_disable_github_artifact_attestation }}
 export AQUA_DISABLE_COSIGN={{ .aqua_disable_cosign }}
