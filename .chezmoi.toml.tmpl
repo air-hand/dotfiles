@@ -42,6 +42,10 @@ sourceDir = "{{ env "MY_CHEZMOI_SOURCE" }}"
     command = "vim"
     apply = true
 
+[interpreters.py]
+    command = "{{ .chezmoi.homeDir }}/.local/bin/mise"
+    args = ["exec", "uv", "--", "uv", "run", "--script"]
+
 [data]
     git_name = {{ $git_name | quote }}
     git_email = {{ $git_email | quote }}

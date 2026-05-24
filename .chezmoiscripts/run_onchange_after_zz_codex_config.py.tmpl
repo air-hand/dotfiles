@@ -1,41 +1,22 @@
-#!/bin/sh
-set -eu
+#!/usr/bin/env -S uv run --script
+# /// script
+# dependencies = [
+#   "tomlkit",
+# ]
+# ///
 
-enabled={{ if .local_llm.enabled }}"true"{{ else }}"false"{{ end }}
-config="${CODEX_CONFIG_PATH:-${HOME}/.codex/config.toml}"
-
-if [ "$enabled" != "true" ] && [ ! -f "$config" ]; then
-    # local LLM is disabled, so this script does not need to create or modify Codex config.
-    exit 0
-fi
-
-export PATH="${HOME}/.local/share/mise/shims:${HOME}/.local/share/aquaproj-aqua/bin:${HOME}/.local/bin:${PATH}"
-uv_bin="$(command -v uv || true)"
-if [ -z "$uv_bin" ]; then
-    echo "uv is required to update Codex local profile: $config" >&2
-    exit 1
-fi
-
-export CODEX_LOCAL_ENABLED="$enabled"
-export CODEX_LOCAL_MODEL={{ .local_llm.modelAlias | quote }}
-export CODEX_LOCAL_HOST={{ .local_llm.serverHost | quote }}
-export CODEX_LOCAL_PORT={{ .local_llm.serverPort | quote }}
-export CODEX_LOCAL_IS_WSL2={{ if .is_wsl2 }}"true"{{ else }}"false"{{ end }}
-export CODEX_CONFIG_PATH="$config"
-
-"$uv_bin" run --no-project --isolated --with tomlkit --python python3 python3 - <<'PY'
 import os
 import subprocess
 from pathlib import Path
 
 import tomlkit
 
-enabled = os.environ["CODEX_LOCAL_ENABLED"] == "true"
-model_alias = os.environ["CODEX_LOCAL_MODEL"]
-server_host = os.environ["CODEX_LOCAL_HOST"]
-server_port = os.environ["CODEX_LOCAL_PORT"]
-is_wsl2 = os.environ["CODEX_LOCAL_IS_WSL2"] == "true"
-path = Path(os.environ["CODEX_CONFIG_PATH"])
+enabled = {{ if .local_llm.enabled }}True{{ else }}False{{ end }}
+model_alias = {{ .local_llm.modelAlias | quote }}
+server_host = {{ .local_llm.serverHost | quote }}
+server_port = {{ .local_llm.serverPort | quote }}
+is_wsl2 = {{ if .is_wsl2 }}True{{ else }}False{{ end }}
+path = Path(os.environ.get("CODEX_CONFIG_PATH", Path.home() / ".codex/config.toml"))
 
 
 def detect_wsl2_host() -> str:
@@ -70,7 +51,6 @@ if not path.exists():
 doc = tomlkit.parse(path.read_text())
 model_providers = doc.setdefault("model_providers", tomlkit.table())
 profiles = doc.setdefault("profiles", tomlkit.table())
-features = doc.setdefault("features", tomlkit.table())
 
 if enabled:
     host = detect_wsl2_host() if is_wsl2 else server_host
@@ -86,13 +66,15 @@ if enabled:
     local_profile["model_provider"] = "local"
     local_profile["model"] = model_alias
     local_profile["web_search"] = "disabled"
-    profiles["local"] = local_profile
 
-    features["image_generation"] = False
+    local_features = tomlkit.table()
+    local_features["image_generation"] = False
+    local_features["apps"] = False
+    local_profile["features"] = local_features
+
+    profiles["local"] = local_profile
 else:
     model_providers.pop("local", None)
     profiles.pop("local", None)
-    features.pop("image_generation", None)
 
 path.write_text(tomlkit.dumps(doc))
-PY
