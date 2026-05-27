@@ -13,7 +13,7 @@ zellij = '0.44.3'
 "npm:@commitlint/cli" = "21.0.1"
 "npm:@devcontainers/cli" = "0.87.0"
 "npm:conventional-changelog" = "7.2.0"
-"npm:@openai/codex" = "0.133.0"
+"npm:@openai/codex" = "0.134.0"
 "npm:@github/copilot" = "1.0.54"
 
 # pipx for cli (not library)
