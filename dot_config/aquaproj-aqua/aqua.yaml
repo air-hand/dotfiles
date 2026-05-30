@@ -33,7 +33,7 @@ packages:
   - name: loft-sh/devpod@v0.6.15
   - name: coder/coder@v2.33.6
   - name: dagger/dagger@v0.21.0
-  - name: opentofu/opentofu@v1.12.0
+  - name: opentofu/opentofu@v1.12.1
   - name: suzuki-shunsuke/pinact@v4.0.0
   - name: bahdotsh/wrkflw@v0.8.0
   - name: tofuutils/tenv@v4.12.2
