@@ -5,7 +5,6 @@
 # ]
 # ///
 
-import os
 import subprocess
 from pathlib import Path
 
@@ -16,8 +15,7 @@ model_alias = {{ .local_llm.modelAlias | quote }}
 server_host = {{ .local_llm.serverHost | quote }}
 server_port = {{ .local_llm.serverPort | quote }}
 is_wsl2 = {{ if .is_wsl2 }}True{{ else }}False{{ end }}
-path = Path(os.environ.get("CODEX_CONFIG_PATH", Path.home() / ".codex/config.toml"))
-
+path = Path.home() / ".codex/local.config.toml"
 
 def detect_wsl2_host() -> str:
     try:
@@ -40,41 +38,33 @@ def detect_wsl2_host() -> str:
 
     return server_host
 
-
-if not path.exists():
+def build_config():
     if not enabled:
-        raise SystemExit(0)
-    raise FileNotFoundError(
-        f"{path} does not exist. Run Codex once to initialize it before applying this chezmoi script."
-    )
-
-doc = tomlkit.parse(path.read_text())
-model_providers = doc.setdefault("model_providers", tomlkit.table())
-profiles = doc.setdefault("profiles", tomlkit.table())
-
-if enabled:
+        if path.exists():
+            path.unlink()
+        return
     host = detect_wsl2_host() if is_wsl2 else server_host
+    doc = tomlkit.table()
+
+    doc["model_provider"] = "local"
+    doc["model"] = model_alias
+    doc["web_search"] = "disabled"
 
     local_provider = tomlkit.table()
     local_provider["name"] = "local"
     local_provider["base_url"] = f"http://{host}:{server_port}/v1"
     local_provider["wire_api"] = "responses"
     local_provider["stream_idle_timeout_ms"] = 10000000
+
+    model_providers = tomlkit.table()
     model_providers["local"] = local_provider
+    doc["model_providers"] = model_providers
 
-    local_profile = tomlkit.table()
-    local_profile["model_provider"] = "local"
-    local_profile["model"] = model_alias
-    local_profile["web_search"] = "disabled"
+    features = tomlkit.table()
+    features["image_generation"] = False
+    features["apps"] = False
+    doc["features"] = features
 
-    local_features = tomlkit.table()
-    local_features["image_generation"] = False
-    local_features["apps"] = False
-    local_profile["features"] = local_features
+    path.write_text(tomlkit.dumps(doc))
 
-    profiles["local"] = local_profile
-else:
-    model_providers.pop("local", None)
-    profiles.pop("local", None)
-
-path.write_text(tomlkit.dumps(doc))
+build_config()
