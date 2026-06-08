@@ -13,4 +13,9 @@ export AQUA_GLOBAL_CONFIG=$HOME/.config/aquaproj-aqua/aqua.yaml
 export MISE_CONFIG_FILE=$HOME/.config/mise/config-global.toml
 {{- end }}
 
+if [ "${CI:-}" = true ]; then
+    echo "Skip bash completion cache generation in CI."
+    exit 0
+fi
+
 "$HOME/.local/bin/generate-bash-completion-cache.sh"
