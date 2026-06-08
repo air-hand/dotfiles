@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+set -eo pipefail
+
+# generate-bash-completion-cache.sh hash: {{ include "dot_local/bin/executable_generate-bash-completion-cache.sh" | sha256sum }}
+# bash_completion hash: {{ include "dot_bash_completion.tmpl" | sha256sum }}
+# aqua.yaml hash: {{ include "dot_config/aquaproj-aqua/aqua.yaml" | sha256sum }}
+# mise/config-global.toml hash: {{ include "dot_config/mise/config-global.toml" | sha256sum }}
+
+export PATH=$HOME/.local/bin:$HOME/.local/share/aquaproj-aqua/bin:$PATH
+export AQUA_GLOBAL_CONFIG=$HOME/.config/aquaproj-aqua/aqua.yaml
+{{- if not .is_in_container }}
+export MISE_CONFIG_FILE=$HOME/.config/mise/config-global.toml
+{{- end }}
+
+if [ "${CI:-}" = true ]; then
+    echo "Skip bash completion cache generation in CI."
+    exit 0
+fi
+
+"$HOME/.local/bin/generate-bash-completion-cache.sh"

@@ -9,7 +9,7 @@ SHELL := /bin/bash
 MAKE := make --no-print-directory
 
 .PHONY: all
-all: apply setup
+all: apply
 
 .PHONY: apply
 apply:

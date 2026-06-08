@@ -69,9 +69,6 @@ jobs:
         with:
           persist-credentials: false
       - uses: ./.github/actions/run-install
-      - name: setup
-        run: |
-          make setup
       - name: mise env
         uses: ./.github/actions/mise-hook-env
       - name: lint
