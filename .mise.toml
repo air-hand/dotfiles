@@ -1,6 +1,6 @@
 # https://github.com/jdx/mise#configuration
 [tools]
-python = {version='3.14.5'}
+python = {version='3.14.6'}
 node = {version='24'}
 
 "pipx:pre-commit" = "4.6.0"
