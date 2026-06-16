@@ -48,5 +48,9 @@ MISE_JOBS=$(fgrep 'processor' /proc/cpuinfo | wc -l) MISE_CONFIG_FILE=$HOME/.con
 "$MISE_BIN" prune -y
 
 # install claude-code globally (native install instead of mise-managed)
-curl -fsSL https://claude.ai/install.sh | bash
+if ! command -v claude &>/dev/null; then
+    curl -fsSL https://claude.ai/install.sh | bash
+else
+    claude upgrade
+fi
 {{ end }}
