@@ -33,12 +33,12 @@ chmod +x aqua-installer
 ./aqua-installer
 rm -f ./aqua-installer
 export PATH=~/.local/share/aquaproj-aqua/bin:$PATH
+aqua update-aqua # update aqua itself
 
 {{ if not .is_in_container -}}
 {{/* install cli globally except for a dev-container. -*/}}
 # install cli globally by aqua. aqua.yaml hash: {{ include "dot_config/aquaproj-aqua/aqua.yaml" | sha256sum }}
 export AQUA_GLOBAL_CONFIG=$HOME/.config/aquaproj-aqua/aqua.yaml
-aqua update-aqua # update aqua itself
 aqua install --all --only-link
 aqua vacuum -d 1 # remove unused tools
 
@@ -53,6 +53,15 @@ if ! command -v claude &>/dev/null; then
 else
     claude upgrade
 fi
+
+if ! test -f "$HOME/.aspire/bin/aspire"; then
+    curl -sSL https://aspire.dev/install.sh | bash -s -- --skip-path
+else
+    "$HOME/.aspire/bin/aspire" update --self -y --channel stable
+fi
+
+"$HOME/.aspire/bin/aspire" --version
+
 {{ end }}
 
 # setup repo level commands
