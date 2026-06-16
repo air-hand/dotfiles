@@ -54,3 +54,17 @@ else
     claude upgrade
 fi
 {{ end }}
+
+# setup repo level commands
+# hash: {{ include ".mise.toml" | sha256sum }}
+# hash: {{ include "Makefile" | sha256sum }}
+# hash: {{ include "aqua.yaml" | sha256sum }}
+
+cd {{ .chezmoi.sourceDir | quote }}
+
+aqua i
+mise trust .mise.toml
+mise settings set experimental true
+mise settings set python.compile true
+mise install
+mise exec -- pre-commit install
