@@ -58,7 +58,7 @@ fi
 if ! test -f "$HOME/.aspire/bin/aspire"; then
     curl -sSL https://aspire.dev/install.sh | bash -s -- --skip-path
 else
-    "$HOME/.aspire/bin/aspire" update --self -y --channel stable
+    "$HOME/.aspire/bin/aspire" update --self -y --non-interactive --channel stable
 fi
 
 "$HOME/.aspire/bin/aspire" --version
