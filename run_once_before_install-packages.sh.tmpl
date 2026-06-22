@@ -25,6 +25,7 @@ sudo -E apt-get update && sudo -E apt-get install -y  \
     qemu-system-x86 \
     podman \
     bubblewrap \
+    tmux \
     ;
 
 {{ if and (eq .chezmoi.os "linux") (eq .chezmoi.osRelease.id "ubuntu") -}}
