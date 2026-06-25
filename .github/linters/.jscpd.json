@@ -1,6 +1,6 @@
 {
   "threshold": 0,
   "reporters": ["consoleFull"],
-  "ignore": ["**/.venv/**","**/.github/**/*.yaml","**/.github/**/*.yml"],
+  "ignore": ["**/.venv/**", "**/.github/**/*.yaml", "**/.github/**/*.yml"],
   "absolute": true
 }
