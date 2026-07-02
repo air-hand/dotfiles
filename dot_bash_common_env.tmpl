@@ -11,6 +11,10 @@ if [[ ":$PATH:" != *":$HOME/.local/bin:"* ]]; then
     export PATH=$HOME/.local/bin:$PATH
 fi
 
+if [[ ":$PATH:" != *":$HOME/.dotnet/tools:"* ]] && [[ -d "$HOME/.dotnet/tools" ]]; then
+    export PATH=$HOME/.dotnet/tools:$PATH
+fi
+
 if [[ ":$PATH:" != *":$HOME/.aspire/bin:"* ]] && [[ -d "$HOME/.aspire/bin" ]]; then
     export PATH=$HOME/.aspire/bin:$PATH
 fi
