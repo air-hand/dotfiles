@@ -14,7 +14,7 @@ usage = '3.5.3'
 #"github:podman-container-tools/podman" = { version = '5.8.3', matching = "podman-remote", rename_exe = "podman" }
 
 "npm:prettier" = "3.9.4"
-"npm:@commitlint/cli" = "21.1.0"
+"npm:@commitlint/cli" = "21.2.0"
 "npm:@devcontainers/cli" = "0.87.0"
 "npm:conventional-changelog" = "8.0.0"
 "npm:@openai/codex" = "0.142.5"
