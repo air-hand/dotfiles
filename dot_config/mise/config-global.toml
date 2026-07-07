@@ -16,7 +16,7 @@ usage = '3.5.3'
 "npm:prettier" = "3.9.4"
 "npm:@commitlint/cli" = "21.2.0"
 "npm:@devcontainers/cli" = "0.87.0"
-"npm:conventional-changelog" = "8.0.0"
+"npm:conventional-changelog" = "8.0.1"
 "npm:@openai/codex" = "0.142.5"
 "npm:@github/copilot" = "1.0.69"
 
