@@ -17,7 +17,7 @@ usage = '3.5.3'
 "npm:@commitlint/cli" = "21.2.0"
 "npm:@devcontainers/cli" = "0.87.0"
 "npm:conventional-changelog" = "8.0.1"
-"npm:@openai/codex" = "0.143.0"
+"npm:@openai/codex" = "0.144.0"
 "npm:@github/copilot" = "1.0.69"
 
 # pipx for cli (not library)
