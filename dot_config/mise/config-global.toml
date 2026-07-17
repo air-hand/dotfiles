@@ -10,7 +10,7 @@ dotnet = '10.0.301'
 
 uv = '0.11.28'
 zellij = '0.44.3'
-usage = '3.5.4'
+usage = '3.5.5'
 #"github:podman-container-tools/podman" = { version = '5.8.3', matching = "podman-remote", rename_exe = "podman" }
 
 "npm:prettier" = "3.9.5"
