@@ -20,5 +20,5 @@ packages:
   - name: mrtazz/checkmake@v0.3.2
   - name: gruntwork-io/terragrunt@v1.1.1
   - name: suzuki-shunsuke/tfcmt@v4.14.15
-  - name: terraform-linters/tflint@v0.63.1
+  - name: terraform-linters/tflint@v0.64.0
   - name: hashicorp/terraform@v1.15.8
