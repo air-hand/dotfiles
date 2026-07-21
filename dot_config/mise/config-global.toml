@@ -18,7 +18,7 @@ usage = '3.5.5'
 "npm:@devcontainers/cli" = "0.87.0"
 "npm:conventional-changelog" = "8.1.0"
 "npm:@openai/codex" = "0.144.6"
-"npm:@github/copilot" = "1.0.71"
+"npm:@github/copilot" = "1.0.73"
 
 # pipx for cli (not library)
 "pipx:pipenv" = "2026.6.2"
