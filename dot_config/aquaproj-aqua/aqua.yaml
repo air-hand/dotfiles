@@ -34,7 +34,7 @@ packages:
   - name: coder/coder@v2.35.3
   - name: dagger/dagger@v0.21.8
   - name: opentofu/opentofu@v1.12.5
-  - name: suzuki-shunsuke/pinact@v4.1.0
+  - name: suzuki-shunsuke/pinact@v4.1.1
   - name: bahdotsh/wrkflw@v0.8.0
   - name: tofuutils/tenv@v4.15.1
   - name: ast-grep/ast-grep@0.45.0
