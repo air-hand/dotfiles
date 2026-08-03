@@ -15,10 +15,10 @@ pyproject.toml
 *.md
 {{- if eq (env "REMOTE_CONTAINERS") "true" }}
 {{/* skip apply .gitconfig on devcontainer */}}
-/.gitconfig
+.gitconfig
 {{- end }}
 
 {{/* shellspec */}}
 spec/
 **/*_spec.sh
-/coverage/
+coverage/
