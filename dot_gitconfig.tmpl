@@ -30,10 +30,10 @@
 [init]
     defaultBranch = main
 [credential "https://github.com"]
-    helper = 
+    helper =
     helper = !gh auth git-credential
 [credential "https://gist.github.com"]
-    helper = 
+    helper =
     helper = !gh auth git-credential
 [alias]
     ft = fetch
@@ -41,4 +41,4 @@
     log-npo = !"git --no-pager log --oneline"
     prn = fetch --prune
     push-f = push --force-with-lease --force-if-includes
-
+    delete-gone = !"~/.local/bin/git-delete-gone-branches.sh"
