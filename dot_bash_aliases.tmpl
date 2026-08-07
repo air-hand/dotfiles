@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# avoid to use homebrew's curl
+alias curl=/usr/bin/curl
 alias awsp='export AWS_PROFILE=$(aws configure list-profiles | fzf)'
 alias awsenv='$(aws configure export-credentials --format env)'
 {{- if .local_llm.enabled }}
