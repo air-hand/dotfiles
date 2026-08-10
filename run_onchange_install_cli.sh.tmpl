@@ -77,4 +77,5 @@ mise trust .mise.toml
 mise settings set experimental true
 mise settings set python.compile true
 mise install
+mise install -f "pipx:*" # reinstall for python updated
 mise exec -- pre-commit install
