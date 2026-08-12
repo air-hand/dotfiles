@@ -18,6 +18,7 @@ brew install -y \
 {{/* install cli globally except for a dev-container. -*/}}
 # install mise standalone before aqua so later mise commands do not depend on aqua proxy.
 MISE_BIN=$HOME/.local/bin/mise
+export MISE_CONFIG_FILE=$HOME/.config/mise/config-global.toml
 if test -x "$MISE_BIN"; then
     "$MISE_BIN" self-update -y --no-plugins
 else
@@ -45,7 +46,7 @@ aqua vacuum -d 1 # remove unused tools
 
 # install cli globally by mise. mise/config-global.toml hash: {{ include "dot_config/mise/config-global.toml" | sha256sum }}
 # change default env to avoid using in dev-containers as it may conflict with container tools.
-MISE_JOBS=$(fgrep 'processor' /proc/cpuinfo | wc -l) MISE_CONFIG_FILE=$HOME/.config/mise/config-global.toml "$MISE_BIN" install
+MISE_JOBS=$(fgrep 'processor' /proc/cpuinfo | wc -l) "$MISE_BIN" install
 "$MISE_BIN" prune -y
 "$MISE_BIN" exec -- playwright-cli install --skills agents --global
 
