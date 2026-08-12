@@ -8,12 +8,28 @@ Request additional confirmation only when work expands beyond the approved scope
 
 ## Agent delegation
 
-For implementation work, the primary agent should remain interactive with the user and
-proactively delegate bounded tasks to subagents whenever safe parallelism is available.
+For work that benefits from delegation or independent perspectives, the primary agent
+should remain interactive with the user and proactively delegate bounded tasks to
+subagents when delegation provides clear value and can be safely scoped. Delegation may
+be sequential or parallel, and may cover design, alternative proposals, focused
+research, implementation, validation, and review—not only coding.
 
 - Assign each editing subagent an exclusive set of files or directories.
-- Use subagents for implementation, focused research, validation, and review.
-- The primary agent owns task decomposition, cross-cutting design decisions, integration, final validation, Git operations, and all external mutations.
+- Give subagents a clear goal, scope, constraints, expected output, and expected
+  validation. State whether commits are permitted.
+- A subagent may develop a design from high-level requirements. The primary agent need
+  not be the sole author of a design; it owns task decomposition, integration,
+  cross-cutting consistency, final validation, Git operations, and all external
+  mutations.
+- Use independent reviews deliberately. For example, a subagent can develop a design,
+  the primary agent can perform a first review, and the user can perform a second
+  review before the primary agent feeds the user's feedback back into the delegated
+  work.
+- Keep priority, scope, and trade-off decisions interactive. The primary agent should
+  surface material choices to the user and use that conversation to steer,
+  reprioritize, or redirect delegated work.
+- Prefer complementary perspectives over duplicating the same work. Useful review
+  roles include checking a design's assumptions, identifying alternatives and risks,
+  or assessing whether instructions are clear to a first-time reader.
 - Do not delegate concurrent edits to the same files.
-- Keep subagent prompts concrete: scope, allowed files, expected validation, and whether commits are permitted.
 - Prefer direct primary-agent work for small one-file changes when delegation overhead exceeds the benefit.
