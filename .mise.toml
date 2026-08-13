@@ -3,7 +3,7 @@
 python = {version='3.14.7'}
 node = {version='24'}
 
-"pipx:pre-commit" = "4.6.1"
+"pipx:pre-commit" = "4.6.2"
 "pipx:yamllint" = "1.38.0"
 
 [settings]
