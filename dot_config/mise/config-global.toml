@@ -24,7 +24,7 @@ usage = '5.1.0'
 # pipx for cli (not library)
 "pipx:pipenv" = "2026.7.1"
 "pipx:poetry" = "2.4.1"
-"pipx:pre-commit" = "4.6.1"
+"pipx:pre-commit" = "4.6.2"
 # "pipx:markitdown[all]" = "0.1.4"
 
 [settings]
