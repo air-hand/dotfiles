@@ -8,7 +8,7 @@ rust = ['1.97.1']
 node = '24'
 dotnet = '10.0.301'
 
-uv = '0.12.4'
+uv = '0.12.5'
 zellij = '0.44.3'
 usage = '5.1.0'
 #"github:podman-container-tools/podman" = { version = '5.8.3', matching = "podman-remote", rename_exe = "podman" }
