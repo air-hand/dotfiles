@@ -22,7 +22,7 @@ usage = '5.1.0'
 "npm:@playwright/cli" = "0.1.18"
 
 # pipx for cli (not library)
-"pipx:pipenv" = "2026.7.1"
+"pipx:pipenv" = "2026.8.0"
 "pipx:poetry" = "2.4.1"
 "pipx:pre-commit" = "4.6.2"
 # "pipx:markitdown[all]" = "0.1.4"
