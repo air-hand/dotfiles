@@ -15,10 +15,6 @@ if [[ ":$PATH:" != *":$HOME/.dotnet/tools:"* ]] && [[ -d "$HOME/.dotnet/tools" ]
     export PATH=$HOME/.dotnet/tools:$PATH
 fi
 
-if [[ ":$PATH:" != *":$HOME/.aspire/bin:"* ]] && [[ -d "$HOME/.aspire/bin" ]]; then
-    export PATH=$HOME/.aspire/bin:$PATH
-fi
-
 {{- if .is_wsl2 }}
 # Add Windows bin directory for tools like win32yank (for neovim clipboard)
 if [[ ":$PATH:" != *":{{ .windows_bin_path }}:"* ]]; then
