@@ -2,13 +2,17 @@
 
 set -euo pipefail
 
+trim_whitespace() {
+    sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//'
+}
+
 invoking_worktree=$(git rev-parse --show-toplevel)
 main_worktree=''
 while IFS= read -r -d '' record; do
     case "${record}" in
         'worktree '*)
             # `git worktree list` always lists the main worktree first.
-            main_worktree=${record#worktree}
+            main_worktree=$(printf '%s' "${record#worktree}" | trim_whitespace)
             break
             ;;
     esac
