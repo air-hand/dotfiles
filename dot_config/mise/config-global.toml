@@ -11,7 +11,7 @@ aspire = '13.5.3'
 
 uv = '0.12.6'
 zellij = '0.45.0'
-usage = '6.4.0'
+usage = '6.4.1'
 #"github:podman-container-tools/podman" = { version = '5.8.3', matching = "podman-remote", rename_exe = "podman" }
 
 "npm:prettier" = "3.9.6"
