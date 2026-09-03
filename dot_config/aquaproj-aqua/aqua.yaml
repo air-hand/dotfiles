@@ -38,6 +38,6 @@ packages:
   - name: bahdotsh/wrkflw@v0.8.0
   - name: tofuutils/tenv@v4.15.1
   - name: ast-grep/ast-grep@0.45.3
-  - name: fullstorydev/grpcurl@v1.9.3
+  - name: fullstorydev/grpcurl@v1.9.4
   - name: k3d-io/k3d@v5.9.0
   - name: zizmorcore/zizmor@v1.30.0
