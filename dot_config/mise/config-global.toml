@@ -9,7 +9,7 @@ node = '24'
 dotnet = '10.0.301'
 aspire = '13.5.3'
 
-uv = '0.12.8'
+uv = '0.12.9'
 zellij = '0.45.1'
 usage = '6.6.1'
 #"github:podman-container-tools/podman" = { version = '5.8.3', matching = "podman-remote", rename_exe = "podman" }
