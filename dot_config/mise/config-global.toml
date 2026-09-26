@@ -14,7 +14,7 @@ zellij = '0.45.1'
 usage = '6.11.0'
 #"github:podman-container-tools/podman" = { version = '5.8.3', matching = "podman-remote", rename_exe = "podman" }
 
-"npm:prettier" = "3.9.8"
+"npm:prettier" = "3.9.9"
 "npm:@commitlint/cli" = "21.2.3"
 "npm:@devcontainers/cli" = "0.89.0"
 "npm:conventional-changelog" = "8.1.3"
