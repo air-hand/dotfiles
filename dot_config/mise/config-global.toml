@@ -20,7 +20,7 @@ usage = '6.12.0'
 "npm:conventional-changelog" = "8.1.3"
 "npm:@openai/codex" = "0.160.0"
 "npm:@github/copilot" = "1.0.91"
-"npm:@playwright/cli" = "0.1.21"
+"npm:@playwright/cli" = "0.1.22"
 
 # pipx for cli (not library)
 "pipx:pipenv" = "2026.8.0"
