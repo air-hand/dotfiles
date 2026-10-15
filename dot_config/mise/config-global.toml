@@ -25,7 +25,7 @@ usage = '6.12.1'
 # pipx for cli (not library)
 "pipx:pipenv" = "2026.9.1"
 "pipx:poetry" = "2.5.1"
-"pipx:pre-commit" = "4.6.2"
+"pipx:pre-commit" = "4.7.0"
 "pipx:git-filter-repo" = "2.47.0"
 # "pipx:markitdown[all]" = "0.1.4"
 
