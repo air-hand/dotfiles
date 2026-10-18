@@ -4,7 +4,7 @@
 [tools]
 python = ['3.15.0']
 go = ['1.27.2']
-rust = ['1.99.0']
+rust = ['1.99.1']
 node = '24'
 dotnet = '10.0.301'
 aspire = '13.6.1'
