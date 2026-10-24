@@ -2,7 +2,7 @@
 #_.python.venv = { path = ".venv", create = true }
 
 [tools]
-python = ['3.15.0']
+python = ['3.15.1']
 go = ['1.27.3']
 rust = ['1.99.1']
 node = '24'
