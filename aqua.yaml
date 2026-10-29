@@ -16,7 +16,7 @@ packages:
   - name: koalaman/shellcheck@v0.11.0
   - name: shellspec/shellspec@0.28.1
   - name: editorconfig-checker/editorconfig-checker@v4.0.2
-  - name: suzuki-shunsuke/ghalint@v1.5.6
+  - name: suzuki-shunsuke/ghalint@v1.5.7
   - name: mrtazz/checkmake@v0.3.2
   - name: gruntwork-io/terragrunt@v1.2.1
   - name: suzuki-shunsuke/tfcmt@v4.14.19
