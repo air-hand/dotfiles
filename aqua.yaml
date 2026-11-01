@@ -21,4 +21,4 @@ packages:
   - name: gruntwork-io/terragrunt@v1.2.1
   - name: suzuki-shunsuke/tfcmt@v4.14.20
   - name: terraform-linters/tflint@v0.65.0
-  - name: hashicorp/terraform@v1.17.0
+  - name: hashicorp/terraform@v1.17.1
