@@ -1,0 +1,4 @@
+rules:
+  github-app:
+    ignore:
+      - _iac.yaml
