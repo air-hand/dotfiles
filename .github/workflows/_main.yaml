@@ -40,7 +40,7 @@ jobs:
           repo-token: ${{ steps.gh-app-token.outputs.token }}
 
   ci-jobs:
-    uses: ./.github/workflows/_ci.yaml
+    uses: $/.github/workflows/_ci.yaml
     permissions:
       contents: read
       packages: read
@@ -53,7 +53,7 @@ jobs:
   iac-jobs:
     needs: labeler
     if: contains(github.event.pull_request.labels.*.name, 'terraform-deps')
-    uses: ./.github/workflows/_iac.yaml
+    uses: $/.github/workflows/_iac.yaml
     permissions:
       contents: read
       pull-requests: write

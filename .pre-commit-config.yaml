@@ -1,11 +1,11 @@
 # See https://pre-commit.com for more information
 # See https://pre-commit.com/hooks.html for more hooks
 repos:
-  - repo: https://github.com/rhysd/actionlint
-    rev: v1.6.26
+  - repo: https://github.com/zizmorcore/zizmor-pre-commit
+    rev: v1.31.1
     hooks:
-      - id: actionlint-system
-        args: ["--config-file", ".github/linters/actionlint.yml"]
+      - id: zizmor
+        args: ["--config", ".github/linters/zizmor.yaml"]
   - repo: https://github.com/editorconfig-checker/editorconfig-checker.python
     rev: 3.11.1
     hooks:

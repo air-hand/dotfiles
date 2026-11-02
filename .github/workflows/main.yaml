@@ -15,7 +15,7 @@ permissions: {}
 
 jobs:
   main:
-    uses: ./.github/workflows/_main.yaml
+    uses: $/.github/workflows/_main.yaml
     permissions:
       contents: read
       packages: read
