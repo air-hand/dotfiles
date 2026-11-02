@@ -25,7 +25,7 @@ prettier:
 
 .PHONY: pre-commit-all
 pre-commit-all:
-	@pre-commit run --all-files
+	@pre-commit install && pre-commit run --all-files
 
 .PHONY: super-linter
 super-linter: SUPERLINTER_IMAGE ?= ghcr.io/super-linter/super-linter:slim-v8
