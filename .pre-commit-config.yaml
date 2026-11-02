@@ -7,10 +7,9 @@ repos:
       - id: actionlint-system
         args: ["--config-file", ".github/linters/actionlint.yml"]
   - repo: https://github.com/editorconfig-checker/editorconfig-checker.python
-    rev: 2.7.3
+    rev: 3.11.1
     hooks:
-      - id: editorconfig-checker-system
-        alias: ec
+      - id: editorconfig-checker
   - repo: local
     hooks:
       - id: yamllint-system
