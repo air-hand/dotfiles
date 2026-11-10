@@ -22,7 +22,7 @@ packages:
   - name: rhysd/actionlint@v1.7.12
   - name: tsenart/vegeta@v12.13.0
   - name: argoproj/argo-cd@v3.6.1
-  - name: reviewdog/reviewdog@v0.21.2
+  - name: reviewdog/reviewdog@v0.21.3
   - name: shellspec/shellspec@0.28.1
   - name: junegunn/fzf@v0.75.0
   - name: hashicorp/terraform@v1.17.1
