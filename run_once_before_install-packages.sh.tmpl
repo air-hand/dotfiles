@@ -27,6 +27,7 @@ sudo -E apt-get update && sudo -E apt-get install -y  \
     bubblewrap \
     tmux \
     dnsutils \
+    graphviz \
     ;
 
 {{ if and (eq .chezmoi.os "linux") (eq .chezmoi.osRelease.id "ubuntu") -}}
