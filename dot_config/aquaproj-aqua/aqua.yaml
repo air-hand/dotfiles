@@ -10,7 +10,7 @@ registries:
   - type: standard
     ref: v4.589.0 # renovate: depName=aquaproj/aqua-registry
 packages:
-  - name: cli/cli@v2.104.0
+  - name: cli/cli@v2.105.0
   - name: nektos/act@v0.2.98
   - name: jqlang/jq@jq-1.8.2
   - name: kubernetes/kubectl@v1.37.2
