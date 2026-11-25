@@ -19,7 +19,7 @@ usage = '7.4.0'
 "npm:@commitlint/cli" = "21.2.4"
 "npm:@devcontainers/cli" = "0.91.0"
 "npm:conventional-changelog" = "8.1.3"
-"npm:@github/copilot" = "1.0.115"
+"npm:@github/copilot" = "1.0.116"
 "npm:@playwright/cli" = "0.1.25"
 
 # pipx for cli (not library)
