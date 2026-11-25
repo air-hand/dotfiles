@@ -37,7 +37,7 @@
     },
     {
       // AI tools - immediate updates
-      matchPackageNames: ["@openai/codex", "@github/copilot"],
+      matchPackageNames: ["openai/codex", "@github/copilot"],
       minimumReleaseAge: "0 days",
     },
     {
