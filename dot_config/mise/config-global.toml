@@ -10,7 +10,7 @@ dotnet = '10.0.301'
 aspire = '17.0.0'
 
 uv = '0.13.9'
-zellij = '0.46.0'
+zellij = '0.46.1'
 usage = '7.4.1'
 "aqua:openai/codex" = "0.172.0"
 #"github:podman-container-tools/podman" = { version = '5.8.3', matching = "podman-remote", rename_exe = "podman" }
