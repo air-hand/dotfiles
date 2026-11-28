@@ -13,7 +13,7 @@ packages:
   - name: cli/cli@v2.105.0
   - name: nektos/act@v0.2.98
   - name: jqlang/jq@jq-1.8.2
-  - name: kubernetes/kubectl@v1.37.2
+  - name: kubernetes/kubectl@v1.37.3
   - name: helm/helm@v4.3.2
   - name: twistedpair/google-cloud-sdk@562.0.0
   - name: aws/aws-cli@2.42.3
