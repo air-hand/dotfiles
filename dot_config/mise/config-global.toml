@@ -9,7 +9,7 @@ node = '26'
 dotnet = '10.0.301'
 aspire = '17.0.0'
 
-uv = '0.13.9'
+uv = '0.13.10'
 zellij = '0.46.1'
 usage = '7.4.1'
 "aqua:openai/codex" = "0.172.0"
